@@ -1,6 +1,6 @@
 # Media Cuts Studio
 
-# Release Build 0.0.1
+# Release Build_v0.0.1-alpha
 #### Section - Login
 - ✅ Login area integrated into the panel
 - ✅ Authentication via Landing page API endpoint
