@@ -1,0 +1,37 @@
+[BUG]: 'charmap' codec can't decode byte 0x8d in position 4043: character maps to <undefined>
+
+## Command Line
+C:\Users\Media Cuts Studio\AppData\Local\Programs\Python\Python39\Scripts\pyarmor g main_control_panel.py
+
+## Environments
+Python 3.9.8
+Pyarmor 9.1.0 (basic), 004289, XXX
+Platform windows.x86_64
+Native windows.amd64
+Home C:\Users\Media Cuts Studio\.pyarmor
+
+## Traceback
+Traceback (most recent call last):
+  File "C:\Users\Media Cuts Studio\AppData\Local\Programs\Python\Python39\lib\site-packages\pyarmor\cli\__main__.py", line 793, in main
+    main_entry(sys.argv[1:])
+  File "C:\Users\Media Cuts Studio\AppData\Local\Programs\Python\Python39\lib\site-packages\pyarmor\cli\__main__.py", line 786, in main_entry
+    return args.func(ctx, args)
+  File "C:\Users\Media Cuts Studio\AppData\Local\Programs\Python\Python39\lib\site-packages\pyarmor\cli\__main__.py", line 248, in cmd_gen
+    builder.process(options)
+  File "C:\Users\Media Cuts Studio\AppData\Local\Programs\Python\Python39\lib\site-packages\pyarmor\cli\generate.py", line 188, in process
+    self._obfuscate_scripts()
+  File "C:\Users\Media Cuts Studio\AppData\Local\Programs\Python\Python39\lib\site-packages\pyarmor\cli\generate.py", line 144, in _obfuscate_scripts
+    code = Pytransform3.generate_obfuscated_script(self.ctx, r)
+  File "C:\Users\Media Cuts Studio\AppData\Local\Programs\Python\Python39\lib\site-packages\pyarmor\cli\core\__init__.py", line 95, in generate_obfuscated_script
+    return m.generate_obfuscated_script(ctx, res)
+  File "<maker>", line 715, in generate_obfuscated_script
+  File "C:\Users\Media Cuts Studio\AppData\Local\Programs\Python\Python39\lib\site-packages\pyarmor\cli\__init__.py", line 16, in process
+    return meth(self, res, *args, **kwargs)
+  File "<maker>", line 512, in process
+  File "C:\Users\Media Cuts Studio\AppData\Local\Programs\Python\Python39\lib\site-packages\pyarmor\cli\resource.py", line 136, in readlines
+    lines = f.readlines()
+  File "C:\Users\Media Cuts Studio\AppData\Local\Programs\Python\Python39\lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x8d in position 4043: character maps to <undefined>
+
+
