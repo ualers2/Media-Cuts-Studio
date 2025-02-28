@@ -58,8 +58,8 @@ import requests
 import time
 
 # Lista de diretórios a serem ignorados
-IGNORE_TXT = {"keys.env"}
-IGNORE_DIRS = {"save", "Build", "Qss/icons/icons", "Qss/icons/0F6464", "CoreApp/Firebase"}
+IGNORE_TXT = {"keys.env", "Media-Cuts-Studio.spec", "release_v1.0.0.zip"}
+IGNORE_DIRS = {"save", "Build", "Release", "generated-files", "logs", "Qss/icons/icons", "Qss/icons/0F6464", "CoreApp/Firebase"}
 
 def upload_files_to_github(directory):
     directory = os.path.abspath(directory)  # Normaliza caminho base
@@ -108,7 +108,7 @@ def upload_files_to_github(directory):
 
             response = requests.put(url, json=data, headers={"Authorization": f"token {token}"})
             print(f"Arquivo: {relative_path} - Status: {response.status_code}")
-            time.sleep(1)
+            time.sleep(4)
 
 diretorio_script = os.path.dirname(os.path.abspath(__file__))
 directorydata = os.path.join(diretorio_script)
