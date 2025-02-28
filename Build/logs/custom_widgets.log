@@ -1,0 +1,893 @@
+2025-02-17 09:20:02,327 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 09:20:02,449 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 09:20:02,452 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 09:20:02,762 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 09:20:02,765 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 09:20:03,240 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 09:20:03,437 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_settings_users.json HTTP/1.1" 200 1142
+2025-02-17 09:21:43,271 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 09:21:43,638 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 13:39:50,505 - ERROR - Error loading your JSON files: 'D:\CompanyApps\Saas\MediaCutsVersions\MediaCutsStudioV3.0.0.0\Control_Panel\QT_Version\Build\MediaCutsStudio\CoreApp\JsonStyle\style_Splash.json' does not exist
+2025-02-17 13:46:42,118 - ERROR - Error loading your JSON files: 'D:\CompanyApps\Saas\MediaCutsVersions\MediaCutsStudioV3.0.0.0\Control_Panel\QT_Version\Build\MediaCutsStudio\Vesion\Vesion_2\CoreApp\JsonStyle\style_Splash.json' does not exist
+2025-02-17 13:52:51,405 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 13:52:51,458 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 13:52:51,483 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 13:52:51,813 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 13:52:51,899 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 13:52:52,561 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 13:52:52,573 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 13:52:52,690 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 13:52:52,692 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 13:52:52,962 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 13:52:53,016 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 13:52:53,429 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 13:52:55,746 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572299
+2025-02-17 13:54:07,050 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/control_panel_update_2.zip?alt=media HTTP/1.1" 200 4451558
+2025-02-17 14:00:05,936 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 14:00:05,994 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 14:00:06,007 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 14:00:06,441 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 14:00:06,513 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 14:00:07,231 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 14:00:07,274 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 14:00:07,332 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 14:00:07,410 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 14:00:07,804 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 14:00:07,890 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 14:00:08,345 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 14:00:10,921 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572299
+2025-02-17 14:06:28,517 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 14:06:28,647 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 14:06:28,650 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 14:06:29,047 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 14:06:29,079 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 14:06:29,822 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 14:06:29,875 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 14:06:29,930 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 14:06:30,059 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 14:06:30,393 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 14:06:30,489 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 14:06:31,140 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 14:06:34,425 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572299
+2025-02-17 14:43:13,893 - ERROR - Error loading your JSON files: 'D:\CompanyApps\Saas\MediaCutsVersions\MediaCutsStudioV3.0.0.0\Control_Panel\QT_Version\Build\CoreApp\JsonStyle\style_Splash.json' does not exist
+2025-02-17 14:47:12,907 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 14:47:12,979 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 14:47:12,982 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 14:47:13,154 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 14:47:13,157 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 14:47:13,603 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 14:47:13,795 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_settings_users.json HTTP/1.1" 200 1142
+2025-02-17 14:48:53,604 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 14:48:53,962 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 14:50:17,397 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 14:50:17,440 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 14:50:17,443 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 14:50:17,613 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 14:50:17,618 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 14:50:17,980 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 14:50:18,165 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_settings_users.json HTTP/1.1" 200 1142
+2025-02-17 15:17:33,982 - ERROR - Error loading your JSON files: 'D:\CompanyApps\Saas\MediaCutsVersions\MediaCutsStudioV3.0.0.0\Control_Panel\QT_Version\Build\MediaCutsStudio\CoreApp\JsonStyle\style_Splash.json' does not exist
+2025-02-17 15:21:26,910 - ERROR - Error loading your JSON files: 'D:\CompanyApps\Saas\MediaCutsVersions\MediaCutsStudioV3.0.0.0\Control_Panel\QT_Version\Build\Versions\Version_2\CoreApp\JsonStyle\style_Splash.json' does not exist
+2025-02-17 15:24:11,406 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:24:11,465 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:24:11,500 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:24:11,872 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:24:11,943 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 15:24:12,690 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 15:24:12,725 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:24:12,802 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:24:12,846 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:24:13,205 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:24:13,279 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 15:24:13,872 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 15:24:16,722 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-17 15:24:16,786 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:16,849 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:16,916 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:16,983 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,049 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,112 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,174 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,230 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,242 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,308 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,372 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,373 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,439 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,440 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,511 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,512 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,589 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,590 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,661 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,729 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,797 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,798 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,862 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,929 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,930 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:17,996 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,061 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,125 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,196 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,218 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,281 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,338 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,347 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,409 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,473 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,547 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,548 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,625 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,696 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,697 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,763 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,832 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,904 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,905 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:18,970 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,038 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,039 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,110 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,173 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,242 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,243 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,308 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,371 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,372 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,435 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,505 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,574 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,638 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,704 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,738 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,770 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,771 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,836 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,837 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,904 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:19,967 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,016 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,034 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,102 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,169 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,170 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,239 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,264 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,311 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,386 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,456 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,457 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,524 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,525 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,587 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,587 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,651 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,651 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,720 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,721 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,804 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,838 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,839 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,915 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:20,990 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,052 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,082 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,119 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,182 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,248 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,248 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,314 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,381 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,450 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,470 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,521 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,522 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,525 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,593 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,594 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,663 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,734 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,735 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,801 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,802 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,866 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,867 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,934 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:21,950 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,000 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,066 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,134 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,198 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,243 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,268 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,269 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,335 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,376 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,402 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,469 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,470 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,533 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,596 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,659 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,660 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,746 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,746 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,811 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,812 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,885 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,886 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:22,953 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,024 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,029 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,075 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,099 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,160 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,180 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,180 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,180 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,251 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,252 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,253 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,319 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,382 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,383 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,450 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,450 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,513 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,513 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,579 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,644 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,664 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,703 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,716 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,716 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,780 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,781 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,846 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,908 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,976 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:23,984 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:24,054 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:24,124 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:24,125 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:24,191 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:24,191 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:24,253 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:24,253 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:24,322 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:24,323 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:24,394 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:24,395 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:24,459 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:24,521 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:24,522 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:24,586 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:24:24,587 - INFO - Download progress:
+ 0.00%
+2025-02-17 15:27:42,220 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:27:42,309 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:27:42,393 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:27:42,737 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:27:42,851 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 15:27:43,336 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 15:27:43,352 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:27:43,441 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:27:43,483 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:27:43,946 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:27:44,014 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 15:27:44,472 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 15:27:47,148 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-17 15:29:04,490 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:29:04,534 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:29:04,537 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:29:04,696 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:29:04,699 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 15:29:05,073 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 15:29:05,262 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_settings_users.json HTTP/1.1" 200 1142
+2025-02-17 15:30:22,948 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:30:22,988 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:30:23,055 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:30:23,374 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:30:23,442 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 15:30:24,077 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 15:30:24,166 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:30:24,227 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:30:24,309 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:30:24,602 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:30:24,787 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 15:30:25,263 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 15:30:27,911 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-17 15:31:44,776 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:31:44,819 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:31:44,823 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:31:45,036 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:31:45,038 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 15:31:45,406 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 15:31:45,596 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_settings_users.json HTTP/1.1" 200 1142
+2025-02-17 15:33:25,409 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 15:33:25,772 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 15:35:05,409 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 15:35:05,774 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 15:36:45,425 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 15:36:45,896 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 15:41:35,038 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:41:35,081 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:41:35,144 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:41:35,590 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:41:35,735 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 15:41:36,288 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 15:41:36,328 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:41:36,416 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:41:36,505 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:41:36,877 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:41:37,031 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 15:41:37,514 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 15:41:59,998 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:42:00,044 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:42:00,047 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:42:00,211 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:42:00,213 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 15:42:00,657 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 15:42:00,844 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_settings_users.json HTTP/1.1" 200 1142
+2025-02-17 15:46:47,527 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:46:47,604 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:46:47,655 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:46:48,093 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:46:48,218 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 15:46:48,831 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 15:46:48,860 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:46:48,964 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:46:49,041 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:46:49,301 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:46:49,401 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 15:46:49,962 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 15:46:52,898 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-17 15:48:11,578 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:48:11,623 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:48:11,625 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:48:11,784 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:48:11,787 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 15:48:12,212 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 15:48:12,405 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_settings_users.json HTTP/1.1" 200 1142
+2025-02-17 15:49:27,732 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:4242
+2025-02-17 15:49:28,258 - DEBUG - http://127.0.0.1:4242 "POST /login HTTP/1.1" 200 228
+2025-02-17 15:49:52,213 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 15:49:52,582 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 15:51:32,213 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 15:51:32,572 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 15:53:57,038 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:53:57,148 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:53:57,261 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:53:57,631 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:53:57,700 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 15:53:58,304 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 15:53:58,339 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:53:58,478 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:53:58,480 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:53:59,031 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:53:59,128 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 15:53:59,649 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 15:54:02,393 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-17 15:55:22,938 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 15:55:22,983 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 15:55:22,987 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 15:55:23,177 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 15:55:23,179 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 15:55:23,530 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 15:55:23,711 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_settings_users.json HTTP/1.1" 200 1142
+2025-02-17 15:55:51,521 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:4242
+2025-02-17 15:55:52,082 - DEBUG - http://127.0.0.1:4242 "POST /login HTTP/1.1" 200 228
+2025-02-17 15:57:03,528 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 15:57:03,884 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 16:00:41,903 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 16:00:41,991 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 16:00:42,069 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 16:00:42,531 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 16:00:42,583 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 16:00:43,291 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 16:00:43,361 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 16:00:43,418 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 16:00:43,490 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 16:00:43,761 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 16:00:43,944 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 16:00:44,569 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 16:00:47,557 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-17 16:02:05,378 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 16:02:05,424 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 16:02:05,427 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 16:02:05,578 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 16:02:05,581 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 16:02:05,950 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 16:02:06,142 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_settings_users.json HTTP/1.1" 200 1142
+2025-02-17 16:02:49,133 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:4242
+2025-02-17 16:02:49,679 - DEBUG - http://127.0.0.1:4242 "POST /login HTTP/1.1" 200 228
+2025-02-17 16:03:45,964 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 16:03:46,330 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 16:12:44,581 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 16:12:44,672 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 16:12:44,798 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 16:12:45,177 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 16:12:45,302 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 16:12:45,870 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 16:12:45,895 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 16:12:46,002 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 16:12:46,053 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 16:12:46,461 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 16:12:46,576 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 16:12:47,087 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 16:12:50,269 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-17 16:14:09,724 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 16:14:09,796 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 16:14:09,801 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 16:14:09,963 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 16:14:09,971 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 16:14:10,342 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 16:14:10,522 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_settings_users.json HTTP/1.1" 200 1142
+2025-02-17 16:14:30,632 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:4242
+2025-02-17 16:14:31,153 - DEBUG - http://127.0.0.1:4242 "POST /login HTTP/1.1" 200 228
+2025-02-17 16:14:31,442 - DEBUG - Starting new HTTP connection (1): localhost:300
+2025-02-17 16:14:33,502 - DEBUG - http://localhost:300 "GET /socket.io/?transport=polling&EIO=4&t=1739819671.439856 HTTP/1.1" 200 118
+2025-02-17 16:14:33,503 - ERROR - websocket-client package not installed, only polling transport is available
+2025-02-17 16:14:33,511 - DEBUG - Starting new HTTP connection (2): localhost:300
+2025-02-17 16:14:33,527 - DEBUG - http://localhost:300 "POST /socket.io/?transport=polling&EIO=4&sid=l4gvQDqBY0K9fSLGAAEi HTTP/1.1" 200 2
+2025-02-17 16:14:34,516 - DEBUG - http://localhost:300 "POST /socket.io/?transport=polling&EIO=4&sid=l4gvQDqBY0K9fSLGAAEi HTTP/1.1" 200 2
+2025-02-17 16:14:35,586 - DEBUG - http://localhost:300 "GET /socket.io/?transport=polling&EIO=4&sid=l4gvQDqBY0K9fSLGAAEi&t=1739819673.5084019 HTTP/1.1" 400 48
+2025-02-17 16:15:50,361 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 16:15:50,711 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 16:16:33,542 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 16:16:33,617 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 16:16:33,693 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 16:16:34,100 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 16:16:34,267 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 16:16:34,796 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 16:16:34,867 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 16:16:34,919 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 16:16:34,937 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 16:16:35,326 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 16:16:35,502 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 16:16:36,021 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 16:16:38,535 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-17 16:17:57,499 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 16:17:57,549 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 16:17:57,552 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 16:17:57,710 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 16:17:57,713 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 16:17:58,129 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 16:17:58,319 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_settings_users.json HTTP/1.1" 200 1142
+2025-02-17 16:19:38,147 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 16:19:38,504 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 16:21:18,144 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 16:21:18,501 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 16:57:14,998 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 16:57:15,093 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 16:57:15,158 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 16:57:15,579 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 16:57:15,666 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 16:57:16,323 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 16:57:16,402 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 16:57:16,446 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 16:57:16,464 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 16:57:16,812 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 16:57:16,971 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 16:57:17,455 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 16:57:20,601 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-17 16:58:39,414 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 16:58:39,489 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 16:58:39,494 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 16:58:39,667 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 16:58:39,672 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 16:58:40,036 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /sessions.json HTTP/1.1" 200 4
+2025-02-17 16:58:40,223 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 16:58:40,407 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_settings_users.json HTTP/1.1" 200 1142
+2025-02-17 16:59:02,653 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:4242
+2025-02-17 16:59:03,179 - DEBUG - http://127.0.0.1:4242 "POST /login HTTP/1.1" 200 228
+2025-02-17 16:59:03,363 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "PUT /sessions.json?print=silent HTTP/1.1" 204 0
+2025-02-17 16:59:03,633 - DEBUG - Starting new HTTP connection (1): localhost:300
+2025-02-17 16:59:05,670 - DEBUG - http://localhost:300 "GET /socket.io/?transport=polling&EIO=4&t=1739822343.6315713 HTTP/1.1" 200 118
+2025-02-17 17:00:20,239 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 17:00:20,597 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 17:20:10,949 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 17:20:11,048 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 17:20:11,099 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 17:20:11,411 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 17:20:11,511 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 17:20:12,044 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 17:20:12,079 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 17:20:12,127 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 17:20:12,206 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 17:20:12,564 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 17:20:12,619 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 17:20:13,084 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 17:20:15,957 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-17 17:21:34,593 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 17:21:34,646 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 17:21:34,649 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 17:21:34,803 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 17:21:34,806 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 17:21:35,162 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /sessions.json HTTP/1.1" 200 243
+2025-02-17 17:21:35,314 - DEBUG - Starting new HTTP connection (1): localhost:300
+2025-02-17 17:21:35,502 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 17:21:35,687 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_settings_users.json HTTP/1.1" 200 1142
+2025-02-17 17:21:37,581 - DEBUG - http://localhost:300 "GET /socket.io/?transport=polling&EIO=4&t=1739823695.308578 HTTP/1.1" 200 118
+2025-02-17 17:23:15,510 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 17:23:15,858 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 17:24:55,509 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 17:24:55,872 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 17:26:35,509 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 17:26:35,978 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 17:28:15,509 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 17:28:15,866 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 17:29:55,511 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 17:29:55,859 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/task.json HTTP/1.1" 200 442
+2025-02-17 17:29:56,046 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 22:19:52,337 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 22:19:52,400 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 22:19:52,404 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 22:19:53,123 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 22:19:53,157 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 22:19:53,775 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 22:19:53,859 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 22:19:53,905 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 22:19:53,949 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 22:19:54,216 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 22:19:54,319 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 22:19:54,919 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 22:19:58,167 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-17 22:21:19,719 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 22:21:19,786 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 22:21:19,789 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 22:21:19,958 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 22:21:19,963 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 22:21:20,335 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /sessions.json HTTP/1.1" 200 4
+2025-02-17 22:21:20,524 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 22:21:20,727 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_settings_users.json HTTP/1.1" 200 1142
+2025-02-17 22:21:59,145 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:4242
+2025-02-17 22:21:59,692 - DEBUG - http://127.0.0.1:4242 "POST /login HTTP/1.1" 404 48
+2025-02-17 22:22:35,410 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:4242
+2025-02-17 22:22:35,603 - DEBUG - http://127.0.0.1:4242 "POST /login HTTP/1.1" 404 48
+2025-02-17 22:23:00,529 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 22:23:00,883 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 22:24:07,155 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:4242
+2025-02-17 22:24:07,518 - DEBUG - http://127.0.0.1:4242 "POST /login HTTP/1.1" 404 48
+2025-02-17 22:24:40,528 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 22:24:40,875 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 22:26:20,544 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 22:26:42,068 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 22:34:02,670 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 22:34:02,733 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 22:34:02,763 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 22:34:03,161 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 22:34:03,297 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 22:34:03,872 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 22:34:03,878 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 22:34:03,963 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 22:34:04,027 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 22:34:04,303 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 22:34:04,382 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 22:34:04,802 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 22:34:07,351 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-17 22:35:27,499 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 22:35:27,555 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 22:35:27,558 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 22:35:27,731 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 22:35:27,735 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 22:35:28,096 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /sessions.json HTTP/1.1" 200 4
+2025-02-17 22:35:41,714 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:4242
+2025-02-17 22:35:42,095 - DEBUG - http://127.0.0.1:4242 "POST /login HTTP/1.1" 404 48
+2025-02-17 22:46:21,333 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:4242
+2025-02-17 22:46:21,526 - DEBUG - http://127.0.0.1:4242 "POST /login HTTP/1.1" 401 60
+2025-02-17 22:46:48,863 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:4242
+2025-02-17 22:46:49,049 - DEBUG - http://127.0.0.1:4242 "POST /login HTTP/1.1" 401 60
+2025-02-17 22:52:35,068 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 22:52:35,133 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 22:52:35,202 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 22:52:35,579 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 22:52:35,667 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 22:52:36,260 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 22:52:36,262 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 22:52:36,301 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 22:52:36,354 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 22:52:36,727 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 22:52:36,802 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 22:52:37,228 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 22:52:40,013 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-17 22:54:00,026 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 22:54:00,087 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 22:54:00,090 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 22:54:00,260 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 22:54:00,269 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 22:54:00,661 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /sessions.json HTTP/1.1" 200 4
+2025-02-17 22:54:17,730 - DEBUG - Starting new HTTP connection (1): 127.0.0.1:4242
+2025-02-17 22:54:18,099 - DEBUG - http://127.0.0.1:4242 "POST /login HTTP/1.1" 200 219
+2025-02-17 22:54:18,287 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "PUT /sessions.json?print=silent HTTP/1.1" 204 0
+2025-02-17 22:54:18,548 - DEBUG - Starting new HTTP connection (1): localhost:300
+2025-02-17 22:54:20,596 - DEBUG - http://localhost:300 "GET /socket.io/?transport=polling&EIO=4&t=1739843658.5453284 HTTP/1.1" 200 118
+2025-02-17 23:00:21,304 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 23:00:21,390 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 23:00:21,437 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 23:00:21,890 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 23:00:22,037 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 23:00:22,719 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 23:00:22,730 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 23:00:22,820 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 23:00:22,901 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 23:00:23,176 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 23:00:23,321 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 23:00:23,729 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 23:00:26,592 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-17 23:01:44,444 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 23:01:44,491 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 23:01:44,495 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 23:01:44,653 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 23:01:44,659 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 23:01:45,019 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /sessions.json HTTP/1.1" 200 242
+2025-02-17 23:01:45,145 - DEBUG - Starting new HTTP connection (1): localhost:300
+2025-02-17 23:01:47,192 - DEBUG - http://localhost:300 "GET /socket.io/?transport=polling&EIO=4&t=1739844105.1439273 HTTP/1.1" 200 118
+2025-02-17 23:07:20,171 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 23:07:20,212 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 23:07:20,275 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 23:07:20,613 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 23:07:20,754 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 23:07:21,310 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 23:07:21,332 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 23:07:21,378 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 23:07:21,382 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 23:07:21,649 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 23:07:21,729 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 23:07:22,170 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 23:07:24,956 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-17 23:08:43,698 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 23:08:43,739 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 23:08:43,743 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 23:08:43,910 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 23:08:43,913 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 23:08:44,262 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /sessions.json HTTP/1.1" 200 242
+2025-02-17 23:08:44,405 - DEBUG - Starting new HTTP connection (1): localhost:300
+2025-02-17 23:08:44,591 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 23:08:44,773 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_settings_users.json HTTP/1.1" 200 1142
+2025-02-17 23:08:46,589 - DEBUG - http://localhost:300 "GET /socket.io/?transport=polling&EIO=4&t=1739844524.4022133 HTTP/1.1" 200 118
+2025-02-17 23:10:24,588 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 23:10:24,946 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 23:12:04,602 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 23:12:04,970 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 23:13:44,617 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 23:13:45,056 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 23:15:24,607 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 23:15:24,958 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 23:17:04,615 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-17 23:17:04,974 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 23:17:05,156 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/task.json HTTP/1.1" 200 442
+2025-02-17 23:18:07,634 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 23:18:07,698 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 23:18:07,767 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 23:18:08,142 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 23:18:08,211 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 23:18:08,721 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-17 23:18:08,763 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 23:18:08,860 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 23:18:08,879 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 23:18:09,257 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 23:18:09,400 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-17 23:18:09,962 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-17 23:18:12,801 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-17 23:19:32,016 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-17 23:19:32,059 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-17 23:19:32,061 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-17 23:19:32,222 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-17 23:19:32,225 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-17 23:19:32,689 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /sessions.json HTTP/1.1" 200 242
+2025-02-17 23:19:32,815 - DEBUG - Starting new HTTP connection (1): localhost:300
+2025-02-17 23:19:32,999 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_tasks_users/treeview.json HTTP/1.1" 200 162
+2025-02-17 23:19:33,193 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /save_settings_users.json HTTP/1.1" 200 1142
+2025-02-17 23:19:35,223 - DEBUG - http://localhost:300 "GET /socket.io/?transport=polling&EIO=4&t=1739845172.8123944 HTTP/1.1" 200 118
+2025-02-28 09:01:19,393 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-28 09:01:19,459 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-28 09:01:19,464 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-28 09:01:20,665 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-28 09:01:20,786 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-28 09:01:21,527 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /Controle_de_versao/Controle_2.json HTTP/1.1" 200 39
+2025-02-28 09:01:21,620 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-28 09:01:21,663 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-28 09:01:21,676 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-28 09:01:22,036 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-28 09:01:22,192 - DEBUG - Starting new HTTPS connection (1): storage.googleapis.com:443
+2025-02-28 09:01:22,686 - DEBUG - https://storage.googleapis.com:443 "GET /storage/v1/b/teste-v-d5b18.appspot.com/o?projection=noAcl&prettyPrint=false HTTP/1.1" 200 318644
+2025-02-28 09:01:26,321 - DEBUG - https://storage.googleapis.com:443 "GET /download/storage/v1/b/teste-v-d5b18.appspot.com/o/update_control_panel_2.zip?alt=media HTTP/1.1" 200 78572700
+2025-02-28 09:02:44,465 - DEBUG - Converted retries value: 3 -> Retry(total=3, connect=None, read=None, redirect=None, status=None)
+2025-02-28 09:02:44,553 - DEBUG - Making request: POST https://oauth2.googleapis.com/token
+2025-02-28 09:02:44,556 - DEBUG - Starting new HTTPS connection (1): oauth2.googleapis.com:443
+2025-02-28 09:02:44,724 - DEBUG - https://oauth2.googleapis.com:443 "POST /token HTTP/1.1" 200 None
+2025-02-28 09:02:44,730 - DEBUG - Starting new HTTPS connection (1): saasmediacuts-default-rtdb.firebaseio.com:443
+2025-02-28 09:02:45,094 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "GET /sessions.json HTTP/1.1" 200 243
+2025-02-28 09:02:45,283 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "DELETE /sessions.json HTTP/1.1" 200 4
+2025-02-28 09:04:51,684 - DEBUG - Starting new HTTPS connection (1): pure-poorly-fly.ngrok-free.app:443
+2025-02-28 09:04:53,172 - DEBUG - https://pure-poorly-fly.ngrok-free.app:443 "POST /proxy-login HTTP/1.1" 401 51
+2025-02-28 09:05:14,298 - DEBUG - Starting new HTTPS connection (1): pure-poorly-fly.ngrok-free.app:443
+2025-02-28 09:05:14,664 - DEBUG - https://pure-poorly-fly.ngrok-free.app:443 "POST /proxy-login HTTP/1.1" 200 202
+2025-02-28 09:05:14,670 - DEBUG - Resetting dropped connection: saasmediacuts-default-rtdb.firebaseio.com
+2025-02-28 09:05:15,030 - DEBUG - https://saasmediacuts-default-rtdb.firebaseio.com:443 "PUT /sessions.json?print=silent HTTP/1.1" 204 0
+2025-02-28 09:05:15,093 - DEBUG - Starting new HTTPS connection (1): accepted-poorly-maggot.ngrok-free.app:443
+2025-02-28 09:05:15,213 - DEBUG - https://accepted-poorly-maggot.ngrok-free.app:443 "GET /socket.io/?transport=polling&EIO=4&t=1740744315.090024 HTTP/1.1" 200 118
