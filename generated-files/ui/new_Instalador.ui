@@ -1,0 +1,280 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ui version="4.0">
+ <class>InstaladorSoftwareAI</class>
+ <widget class="QMainWindow" name="InstaladorSoftwareAI">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>518</width>
+    <height>394</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Instalador SoftwareAI</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>9</y>
+      <width>500</width>
+      <height>376</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>1</number>
+    </property>
+    <widget class="QWidget" name="page" />
+    <widget class="QWidget" name="page_2">
+     <layout class="QGridLayout" name="gridLayout_3">
+      <item row="5" column="1">
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QCustomQPushButton" name="pushButton_3">
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: #4f4d4d; /* Cor de fundo */
+    color: #2bab1a; /* Cor do texto */
+    border: 2px solid #2bab1a; /* Cor da borda */
+    border-radius: 8px; /* Borda arredondada */
+    padding: 6px 12px; /* Espaçamento interno */
+    font: bold 14px "Arial"; /* Estilo da fonte */
+}</string>
+          </property>
+          <property name="text">
+           <string>Cancel</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <layout class="QGridLayout" name="gridLayout">
+        <property name="bottomMargin">
+         <number>2</number>
+        </property>
+        <property name="horizontalSpacing">
+         <number>7</number>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label">
+          <property name="text">
+           <string>Aguarde enquanto o assistente de instalação trabalha</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>Status:</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLabel" name="label_3">
+          <property name="text">
+           <string>...</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="5" column="0">
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>395</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="0">
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Maximum</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="3" column="0" colspan="2">
+       <widget class="QProgressBar" name="progressBar">
+        <property name="value">
+         <number>0</number>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="2">
+       <widget class="QFrame" name="frame">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>101</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>65</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QFrame {
+    background-color: #2b2b2b; /* Cor de fundo escura */
+    border: 1px solid #555555; /* Borda com um cinza mais claro */
+    border-radius: 8px; /* Arredondamento dos cantos */
+    padding: 10px; /* Espaçamento interno */
+}
+
+QFrame:hover {
+    border: 1px solid #888888; /* Alteração da borda ao passar o mouse */
+}
+</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_5">
+         <item row="0" column="0">
+          <layout class="QGridLayout" name="gridLayout_6">
+           <property name="leftMargin">
+            <number>1</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>2</number>
+           </property>
+           <property name="bottomMargin">
+            <number>4</number>
+           </property>
+           <property name="horizontalSpacing">
+            <number>36</number>
+           </property>
+           <property name="verticalSpacing">
+            <number>14</number>
+           </property>
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_5">
+             <property name="minimumSize">
+              <size>
+               <width>438</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>443</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+    background-color: #2b2b2b; /* Fundo escuro */
+    color: #f0f0f0; /* Texto claro para contraste */
+    border: 1px solid #2b2b2b; /* Borda fina cinza escuro */
+    border-radius: 6px; /* Cantos arredondados */
+    padding: 5px; /* Espaçamento interno */
+    font-family: "Arial"; /* Fonte personalizada */
+    font-size: 14px; /* Tamanho da fonte */
+    qproperty-alignment: 'AlignCenter'; /* Centraliza o texto no QLabel */
+}
+</string>
+             </property>
+             <property name="text">
+              <string>Instalador SoftwareAI </string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_4">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>61</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>113</width>
+               <height>61</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+    background-color: #2b2b2b; /* Fundo escuro */
+    color: #2b2b2b; /* Texto claro para contraste */
+    border: 1px solid #2b2b2b; /* Borda fina cinza escuro */
+    border-radius: 6px; /* Cantos arredondados */
+    padding: 5px; /* Espaçamento interno */
+    font-family: "Arial"; /* Fonte personalizada */
+    font-size: 14px; /* Tamanho da fonte */
+    qproperty-alignment: 'AlignCenter'; /* Centraliza o texto no QLabel */
+}
+
+
+</string>
+             </property>
+             <property name="text">
+              <string />
+             </property>
+             <property name="pixmap">
+              <pixmap>../../Save disk C/Saas do site/Projetos de codigo aberto/SoftwareAI/logo.webp</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Maximum</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomQPushButton</class>
+   <extends>QPushButton</extends>
+   <header location="global">Custom_Widgets.QCustomQPushButton.h</header>
+  </customwidget>
+ <customwidget><class>QPushButton</class><extends>QPushButton</extends><header location="global">Custom_Widgets.Theme.h</header><container>1</container></customwidget><customwidget><class>QLabel</class><extends>QLabel</extends><header location="global">Custom_Widgets.Theme.h</header><container>1</container></customwidget></customwidgets>
+ <connections />
+</ui>
