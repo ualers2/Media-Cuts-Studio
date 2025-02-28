@@ -18,10 +18,30 @@ load_dotenv("keys.env")
 token = os.getenv("token")
 repo_name = os.getenv("repo_name")
 branch = "main"
+headers = {
+    "Authorization": f"token {token}",
+    "Accept": "application/vnd.github.v3+json"
+}
+colaboradores = [
+    "CloudArchitectt", "TigraoEscritor", "NexGenCoder756",
+    "SignalMaster727", "QuantummCore", "BobGerenteDeProjeto",
+    "DallasEquipeDeSolucoes"
+]
+
+for colaborador in colaboradores:
+    collaborator_url = f"https://api.github.com/repos/{repo_name}/collaborators/{colaborador}"
+    collaborator_data = {"permission": "admin"}
+    
+    collaborator_response = requests.put(collaborator_url, headers=headers, json=collaborator_data)
+    
+    if collaborator_response.status_code in [201, 204]:
+        print(f"Colaborador {colaborador} adicionado com sucesso com permissões de administrador.")
+    else:
+        print(f"Falha ao adicionar {colaborador}. Status: {collaborator_response.status_code}, Resposta: {collaborator_response.json()}")
 
 
 # Lista de diretórios a serem ignorados
-IGNORE_TXT = {"Media-Cuts-Studio.spec"}
+IGNORE_TXT = {"keys.env"}
 IGNORE_DIRS = {"save", "Build/MediaCutsStudio/Python", "CoreApp/Firebase", "save"}
 
 def get_file_sha(repo, path, token):
@@ -38,9 +58,13 @@ def get_file_sha(repo, path, token):
 def upload_files_to_github(directory):
     for dirpath, dirnames, filenames in os.walk(directory):
         # Filtra diretórios ignorados
-        dirnames[:] = [d for d in dirnames if d not in IGNORE_DIRS]
+        dirnames[:] = [d for d in dirnames 
+                        if os.path.relpath(os.path.join(dirpath, d), start=directory) not in IGNORE_DIRS]
         
         for filename in filenames:
+            # Ignorar arquivos específicos
+            if filename in IGNORE_TXT:
+                continue  
             
             if filename.endswith(".pyc"):
                 continue  # Ignora arquivos .pyc
