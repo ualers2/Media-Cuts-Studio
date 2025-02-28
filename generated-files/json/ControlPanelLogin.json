@@ -1,0 +1,12 @@
+{
+  "QLabel": [
+    {
+      "name": "label_hello_3",
+      "pixmap": "Qss/icons/icons/web_icons/rectangle-3370.png"
+    },
+    {
+      "name": "label_2",
+      "pixmap": "Qss/icons/icons/web_icons/group0.svg"
+    }
+  ]
+}
