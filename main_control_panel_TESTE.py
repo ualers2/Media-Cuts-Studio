@@ -28,8 +28,6 @@ import math
 import torch
 import traceback
 import hashlib
-from concurrent.futures import ThreadPoolExecutor
-import uiautomator2 as u2
 import cv2
 import numpy as np
 import wave
@@ -37,12 +35,6 @@ import srt
 import yt_dlp
 import psutil
 import schedule
-from google.oauth2 import service_account
-from googleapiclient.discovery import build
-from googleapiclient.http import MediaFileUpload
-
-
-
 import websockets
 import asyncio
 import av
@@ -52,21 +44,14 @@ import io
 
 from dotenv import load_dotenv, find_dotenv
 from firebase_admin import credentials, initialize_app, storage, db, delete_app
-from transformers import (
-    AutoModelForSpeechSeq2Seq,
-    AutoTokenizer,
-    AutoFeatureExtractor,
-    pipeline,
-)
+
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 from PySide2 import QtWidgets, QtCore, QtGui
 from PySide2.QtCore import QThread, Signal
 from PySide2.QtWebEngineWidgets import QWebEngineView, QWebEngineProfile, QWebEngineSettings, QWebEngineScript
-from proglog import ProgressBarLogger
 import requests
-import ctypes
 import pytz
 import calendar
 import asyncio
