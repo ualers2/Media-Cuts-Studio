@@ -1,0 +1,684 @@
+{
+  "QPushButton": [
+    {
+      "name": "Control_panel_report",
+      "icon": "Qss/icons/icons/material_design/email.png"
+    },
+    {
+      "name": "Control_panel",
+      "icon": "Qss/icons/icons/web_icons/setting0.svg"
+    },
+    {
+      "name": "Control_panel_process",
+      "icon": "Qss/icons/icons/web_icons/setting1.svg"
+    },
+    {
+      "name": "myaccount",
+      "icon": "Qss/icons/icons/web_icons/mask1.svg"
+    },
+    {
+      "name": "Control_panel_Tasks",
+      "icon": "Qss/icons/icons/material_design/task_alt.png"
+    },
+    {
+      "name": "get_myaccount",
+      "icon": "Qss/icons/icons/font_awesome/user.png"
+    },
+    {
+      "name": "notifications",
+      "icon": "Qss/icons/icons/material_design/notifications.png"
+    },
+    {
+      "name": "restore_window_button",
+      "icon": "Qss/icons/icons/feather/maximize-2.png"
+    },
+    {
+      "name": "close_window_button",
+      "icon": "Qss/icons/icons/feather/window_close.png"
+    },
+    {
+      "name": "minimize_window_button",
+      "icon": "Qss/icons/icons/feather/window_minimize.png"
+    },
+    {
+      "name": "pushButton_11",
+      "icon": "Qss/icons/icons/mediacuts/icons8-c\u00edrculo-rgb-2-48.png"
+    },
+    {
+      "name": "pushButton_10",
+      "icon": "Qss/icons/icons/mediacuts/icons8-c\u00edrculo-rgb-2-48.png"
+    },
+    {
+      "name": "pushButton_9",
+      "icon": "Qss/icons/icons/mediacuts/icons8-c\u00edrculo-rgb-2-48.png"
+    },
+    {
+      "name": "pushButton_8",
+      "icon": "Qss/icons/icons/mediacuts/icons8-c\u00edrculo-rgb-2-48.png"
+    },
+    {
+      "name": "pushButton_7",
+      "icon": "Qss/icons/icons/mediacuts/icons8-c\u00edrculo-rgb-2-48.png"
+    },
+    {
+      "name": "pushButton_6",
+      "icon": "Qss/icons/icons/mediacuts/icons8-c\u00edrculo-rgb-2-48.png"
+    },
+    {
+      "name": "pushButton_3",
+      "icon": "Qss/icons/icons/material_design/animation.png"
+    },
+    {
+      "name": "pushButton_5",
+      "icon": "Qss/icons/icons/material_design/drive_file_rename_outline.png"
+    },
+    {
+      "name": "pushButton_16",
+      "icon": "Qss/icons/icons/material_design/font_download.png"
+    },
+    {
+      "name": "pushButton_4",
+      "icon": "Qss/icons/icons/mediacuts/icons8-c\u00edrculo-rgb-2-48.png"
+    },
+    {
+      "name": "pushButton_2",
+      "icon": "Qss/icons/icons/mediacuts/icons8-efeitos-visuais-96 (1).png"
+    },
+    {
+      "name": "pushButton_15",
+      "icon": "Qss/icons/icons/material_design/hourglass_empty.png"
+    },
+    {
+      "name": "pushButton_14",
+      "icon": "Qss/icons/icons/material_design/today.png"
+    },
+    {
+      "name": "pushButton_12",
+      "icon": "Qss/icons/icons/material_design/date_range.png"
+    },
+    {
+      "name": "pushButton_13",
+      "icon": "Qss/icons/icons/material_design/calendar_month.png"
+    },
+    {
+      "name": "pushButton_17",
+      "icon": "Qss/icons/icons/material_design/today.png"
+    },
+    {
+      "name": "upload_image_watermark_",
+      "icon": "Qss/icons/icons/feather/upload.png"
+    },
+    {
+      "name": "pushButton",
+      "icon": "Qss/icons/icons/web_icons/rectangle-3370.png"
+    },
+    {
+      "name": "pushButton_18",
+      "icon": "Qss/icons/icons/material_design/local_post_office.png"
+    },
+    {
+      "name": "pushButton_19",
+      "icon": "Qss/icons/icons/material_design/password.png"
+    },
+    {
+      "name": "pushButton_login",
+      "icon": "Qss/icons/icons/material_design/login.png"
+    },
+    {
+      "name": "Mode_1_long_video",
+      "icon": "Qss/icons/icons/web_icons/rectangle-3370.png"
+    },
+    {
+      "name": "Mode_Batch_processing",
+      "icon": "Qss/icons/icons/web_icons/rectangle-3370.png"
+    },
+    {
+      "name": "Mode_Shortify",
+      "icon": "Qss/icons/icons/web_icons/rectangle-3370.png"
+    },
+    {
+      "name": "selector_BackColour_Captions_Mode_Batch_processing",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_OutlineColour_Captions_Mode_Batch_processing",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_Reveal_Effect_Final_Color_Captions_Mode_Batch_processing",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_Captions_FontName_Mode_Batch_processing",
+      "icon": "Qss/icons/icons/font_awesome/font.png"
+    },
+    {
+      "name": "selector_Reveal_Effect_Initial_Color_Captions_Mode_Batch_processing",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_PrimaryColour_Captions_Mode_Batch_processing",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_SecondaryColour_Captions_Mode_Batch_processing",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "Start_Batch_processing",
+      "icon": "Qss/icons/icons/mediacuts/icons8-alinhar-\u00e0-direita-100.png"
+    },
+    {
+      "name": "selector_Effects_subtitles_Mode_Batch_processing",
+      "icon": "Qss/icons/icons/material_design/colorize.png"
+    },
+    {
+      "name": "selector_color_subtitles_Mode_Batch_processing",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_animation_subtitles_Mode_Batch_processing",
+      "icon": "Qss/icons/icons/material_design/animation.png"
+    },
+    {
+      "name": "upload_Video_Mode_Batch_processing",
+      "icon": "Qss/icons/icons/feather/film.png"
+    },
+    {
+      "name": "upload_image_watermark_Mode_Batch_processing",
+      "icon": "Qss/icons/icons/feather/upload-cloud.png"
+    },
+    {
+      "name": "selector_FontName_subtitles_Mode_Batch_processing",
+      "icon": "Qss/icons/icons/font_awesome/font.png"
+    },
+    {
+      "name": "Start_1_long_video",
+      "icon": "Qss/icons/icons/material_design/video_file.png"
+    },
+    {
+      "name": "selector_Effects_subtitles_Mode_1_long_video",
+      "icon": "Qss/icons/icons/material_design/colorize.png"
+    },
+    {
+      "name": "selector_color_subtitles_Mode_1_long_video",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_animation_subtitles_Mode_1_long_video",
+      "icon": "Qss/icons/icons/material_design/animation.png"
+    },
+    {
+      "name": "upload_image_watermark_3",
+      "icon": "Qss/icons/icons/font_awesome/arrow-up-from-bracket.png"
+    },
+    {
+      "name": "upload_image_watermark_2",
+      "icon": "Qss/icons/icons/feather/upload-cloud.png"
+    },
+    {
+      "name": "selector_FontName_subtitles_Mode_1_long_video",
+      "icon": "Qss/icons/icons/font_awesome/font.png"
+    },
+    {
+      "name": "selector_BackColour_Captions_Mode_1_long_video",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_OutlineColour_Captions_Mode_1_long_video",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_Reveal_Effect_Final_Color_Captions_Mode_1_long_video",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_Captions_FontName_Mode_1_long_video",
+      "icon": "Qss/icons/icons/material_design/format_color_text.png"
+    },
+    {
+      "name": "selector_Reveal_Effect_Initial_Color_Captions_Mode_1_long_video",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_PrimaryColour_Captions_Mode_1_long_video",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_SecondaryColour_Captions_Mode_1_long_video",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_BackColour_Captions",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_OutlineColour_Captions",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_Reveal_Effect_Final_Color_Captions",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_Reveal_Effect_Initial_Color_Captions",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_PrimaryColour_Captions",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_SecondaryColour_Captions",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_Captions_FontName_",
+      "icon": "Qss/icons/icons/font_awesome/font.png"
+    },
+    {
+      "name": "upload_image_watermark",
+      "icon": "Qss/icons/icons/feather/upload-cloud.png"
+    },
+    {
+      "name": "selector_FontName_subtitles",
+      "icon": "Qss/icons/icons/font_awesome/font.png"
+    },
+    {
+      "name": "selector_color_subtitles",
+      "icon": "Qss/icons/icons/material_design/color_lens.png"
+    },
+    {
+      "name": "selector_animation_subtitles",
+      "icon": "Qss/icons/icons/material_design/animation.png"
+    },
+    {
+      "name": "Select_Time",
+      "icon": "Qss/icons/icons/material_design/more_time.png"
+    },
+    {
+      "name": "selector_Effects_subtitles",
+      "icon": "Qss/icons/icons/material_design/colorize.png"
+    },
+    {
+      "name": "Start_Shortify",
+      "icon": "Qss/icons/icons/mediacuts/icons8-ai-64.png"
+    }
+  ],
+  "QCustomQPushButton": [
+    {
+      "name": "Dashboard",
+      "icon": "Qss/icons/icons/feather/bar-chart.png"
+    },
+    {
+      "name": "pushButton_menu",
+      "icon": "Qss/icons/icons/feather/align-left.png"
+    },
+    {
+      "name": "send_mensage",
+      "icon": "Qss/icons/icons/feather/send.png"
+    }
+  ],
+  "QLabel": [
+    {
+      "name": "label_hello_5",
+      "pixmap": "Qss/icons/icons/web_icons/rectangle-3370.png"
+    },
+    {
+      "name": "label_43",
+      "pixmap": "Qss/icons/icons/web_icons/rectangle-3370.png"
+    },
+    {
+      "name": "label_18",
+      "pixmap": "Qss/icons/icons/web_icons/group0.svg"
+    },
+    {
+      "name": "label_91",
+      "pixmap": "Qss/icons/icons/material_design/format_size.png"
+    },
+    {
+      "name": "label_92",
+      "pixmap": "Qss/icons/icons/material_design/invert_colors.png"
+    },
+    {
+      "name": "label_93",
+      "pixmap": "Qss/icons/icons/material_design/align_horizontal_left.png"
+    },
+    {
+      "name": "label_94",
+      "pixmap": "Qss/icons/icons/material_design/border_color.png"
+    },
+    {
+      "name": "label_95",
+      "pixmap": "Qss/icons/icons/material_design/format_color_fill.png"
+    },
+    {
+      "name": "label_96",
+      "pixmap": "Qss/icons/icons/material_design/format_bold.png"
+    },
+    {
+      "name": "label_97",
+      "pixmap": "Qss/icons/icons/material_design/border_color.png"
+    },
+    {
+      "name": "label_98",
+      "pixmap": "Qss/icons/icons/material_design/edit.png"
+    },
+    {
+      "name": "label_99",
+      "pixmap": "Qss/icons/icons/material_design/border_color.png"
+    },
+    {
+      "name": "label_100",
+      "pixmap": "Qss/icons/icons/material_design/format_underlined.png"
+    },
+    {
+      "name": "label_101",
+      "pixmap": "Qss/icons/icons/material_design/closed_caption.png"
+    },
+    {
+      "name": "label_102",
+      "pixmap": "Qss/icons/icons/material_design/format_italic.png"
+    },
+    {
+      "name": "label_103",
+      "pixmap": "Qss/icons/icons/material_design/brush.png"
+    },
+    {
+      "name": "label_104",
+      "pixmap": "Qss/icons/icons/material_design/text_snippet.png"
+    },
+    {
+      "name": "label_65",
+      "pixmap": "Qss/icons/icons/material_design/water_drop.png"
+    },
+    {
+      "name": "label_82",
+      "pixmap": "Qss/icons/icons/material_design/format_size.png"
+    },
+    {
+      "name": "label_83",
+      "pixmap": "Qss/icons/icons/material_design/format_size.png"
+    },
+    {
+      "name": "label_84",
+      "pixmap": "Qss/icons/icons/material_design/view_timeline.png"
+    },
+    {
+      "name": "label_85",
+      "pixmap": "Qss/icons/icons/feather/video.png"
+    },
+    {
+      "name": "label_86",
+      "pixmap": "Qss/icons/icons/feather/image.png"
+    },
+    {
+      "name": "label_87",
+      "pixmap": "Qss/icons/icons/material_design/timer.png"
+    },
+    {
+      "name": "label_88",
+      "pixmap": "Qss/icons/icons/material_design/font_download.png"
+    },
+    {
+      "name": "label_89",
+      "pixmap": "Qss/icons/icons/material_design/format_color_text.png"
+    },
+    {
+      "name": "label_90",
+      "pixmap": "Qss/icons/icons/material_design/subtitles.png"
+    },
+    {
+      "name": "label_60",
+      "pixmap": "Qss/icons/icons/material_design/water_drop.png"
+    },
+    {
+      "name": "label_66",
+      "pixmap": "Qss/icons/icons/material_design/format_size.png"
+    },
+    {
+      "name": "label_67",
+      "pixmap": "Qss/icons/icons/material_design/format_size.png"
+    },
+    {
+      "name": "label_64",
+      "pixmap": "Qss/icons/icons/material_design/view_timeline.png"
+    },
+    {
+      "name": "label_63",
+      "pixmap": "Qss/icons/icons/feather/video.png"
+    },
+    {
+      "name": "label_57",
+      "pixmap": "Qss/icons/icons/feather/image.png"
+    },
+    {
+      "name": "label_58",
+      "pixmap": "Qss/icons/icons/material_design/timer.png"
+    },
+    {
+      "name": "label_59",
+      "pixmap": "Qss/icons/icons/material_design/font_download.png"
+    },
+    {
+      "name": "label_61",
+      "pixmap": "Qss/icons/icons/material_design/format_color_text.png"
+    },
+    {
+      "name": "label_62",
+      "pixmap": "Qss/icons/icons/material_design/subtitles.png"
+    },
+    {
+      "name": "label_68",
+      "pixmap": "Qss/icons/icons/material_design/format_size.png"
+    },
+    {
+      "name": "label_69",
+      "pixmap": "Qss/icons/icons/material_design/invert_colors.png"
+    },
+    {
+      "name": "label_71",
+      "pixmap": "Qss/icons/icons/material_design/align_horizontal_left.png"
+    },
+    {
+      "name": "label_72",
+      "pixmap": "Qss/icons/icons/material_design/border_color.png"
+    },
+    {
+      "name": "label_70",
+      "pixmap": "Qss/icons/icons/material_design/format_color_fill.png"
+    },
+    {
+      "name": "label_73",
+      "pixmap": "Qss/icons/icons/material_design/format_bold.png"
+    },
+    {
+      "name": "label_74",
+      "pixmap": "Qss/icons/icons/material_design/border_color.png"
+    },
+    {
+      "name": "label_76",
+      "pixmap": "Qss/icons/icons/material_design/edit.png"
+    },
+    {
+      "name": "label_75",
+      "pixmap": "Qss/icons/icons/material_design/border_color.png"
+    },
+    {
+      "name": "label_80",
+      "pixmap": "Qss/icons/icons/material_design/format_underlined.png"
+    },
+    {
+      "name": "label_81",
+      "pixmap": "Qss/icons/icons/font_awesome/closed-captioning.png"
+    },
+    {
+      "name": "label_77",
+      "pixmap": "Qss/icons/icons/material_design/format_italic.png"
+    },
+    {
+      "name": "label_78",
+      "pixmap": "Qss/icons/icons/material_design/brush.png"
+    },
+    {
+      "name": "label_79",
+      "pixmap": "Qss/icons/icons/material_design/text_snippet.png"
+    },
+    {
+      "name": "label_13",
+      "pixmap": "Qss/icons/icons/material_design/format_size.png"
+    },
+    {
+      "name": "label_25",
+      "pixmap": "Qss/icons/icons/material_design/invert_colors.png"
+    },
+    {
+      "name": "label_24",
+      "pixmap": "Qss/icons/icons/material_design/format_color_fill.png"
+    },
+    {
+      "name": "label_12",
+      "pixmap": "Qss/icons/icons/material_design/align_horizontal_left.png"
+    },
+    {
+      "name": "label_15",
+      "pixmap": "Qss/icons/icons/material_design/border_color.png"
+    },
+    {
+      "name": "label_19",
+      "pixmap": "Qss/icons/icons/material_design/format_bold.png"
+    },
+    {
+      "name": "label_17",
+      "pixmap": "Qss/icons/icons/material_design/border_color.png"
+    },
+    {
+      "name": "label_16",
+      "pixmap": "Qss/icons/icons/material_design/border_color.png"
+    },
+    {
+      "name": "label_14",
+      "pixmap": "Qss/icons/icons/material_design/edit.png"
+    },
+    {
+      "name": "label_20",
+      "pixmap": "Qss/icons/icons/material_design/format_italic.png"
+    },
+    {
+      "name": "label_23",
+      "pixmap": "Qss/icons/icons/material_design/brush.png"
+    },
+    {
+      "name": "label_22",
+      "pixmap": "Qss/icons/icons/material_design/text_snippet.png"
+    },
+    {
+      "name": "label_21",
+      "pixmap": "Qss/icons/icons/material_design/format_underlined.png"
+    },
+    {
+      "name": "label_52",
+      "pixmap": "Qss/icons/icons/material_design/text_fields.png"
+    },
+    {
+      "name": "label_4",
+      "pixmap": "Qss/icons/icons/feather/image.png"
+    },
+    {
+      "name": "label_7",
+      "pixmap": "Qss/icons/icons/material_design/timer.png"
+    },
+    {
+      "name": "label_11",
+      "pixmap": "Qss/icons/icons/material_design/font_download.png"
+    },
+    {
+      "name": "label_6",
+      "pixmap": "Qss/icons/icons/material_design/water_drop.png"
+    },
+    {
+      "name": "label_8",
+      "pixmap": "Qss/icons/icons/material_design/format_color_text.png"
+    },
+    {
+      "name": "label_10",
+      "pixmap": "Qss/icons/icons/material_design/subtitles.png"
+    },
+    {
+      "name": "label_26",
+      "pixmap": "Qss/icons/icons/material_design/more_time.png"
+    },
+    {
+      "name": "label_9",
+      "pixmap": "Qss/icons/icons/material_design/view_timeline.png"
+    },
+    {
+      "name": "label_3",
+      "pixmap": "Qss/icons/icons/feather/youtube.png"
+    },
+    {
+      "name": "label_54",
+      "pixmap": "Qss/icons/icons/material_design/format_size.png"
+    },
+    {
+      "name": "label_53",
+      "pixmap": "Qss/icons/icons/material_design/format_size.png"
+    },
+    {
+      "name": "label_accountinfo_9",
+      "pixmap": "Qss/icons/icons/feather/target.png"
+    },
+    {
+      "name": "label_accountinfo_7",
+      "pixmap": "Qss/icons/icons/material_design/timer.png"
+    },
+    {
+      "name": "label_accountinfo_5",
+      "pixmap": "Qss/icons/icons/material_design/video_settings.png"
+    },
+    {
+      "name": "label_accountinfo_6",
+      "pixmap": "Qss/icons/icons/material_design/av_timer.png"
+    },
+    {
+      "name": "label_accountinfo_8",
+      "pixmap": "Qss/icons/icons/font_awesome/file-video.png"
+    },
+    {
+      "name": "label_accountinfo_10",
+      "pixmap": "Qss/icons/icons/feather/tag.png"
+    },
+    {
+      "name": "label_accountinfo_11",
+      "pixmap": "Qss/icons/icons/material_design/timer.png"
+    },
+    {
+      "name": "label_accountinfo_12",
+      "pixmap": "Qss/icons/icons/material_design/mode.png"
+    },
+    {
+      "name": "label_accountinfo_4",
+      "pixmap": "Qss/icons/icons/material_design/person.png"
+    },
+    {
+      "name": "label_29",
+      "pixmap": "Qss/icons/icons/material_design/access_time_filled.png"
+    },
+    {
+      "name": "label_accountinfo_2",
+      "pixmap": "Qss/icons/icons/material_design/email.png"
+    },
+    {
+      "name": "label_accountinfo_3",
+      "pixmap": "Qss/icons/icons/feather/key.png"
+    },
+    {
+      "name": "label_28",
+      "pixmap": "Qss/icons/icons/feather/database.png"
+    },
+    {
+      "name": "label_35",
+      "pixmap": "Qss/icons/icons/material_design/notifications_active.png"
+    }
+  ]
+}
