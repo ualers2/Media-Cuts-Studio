@@ -57,58 +57,61 @@ import base64
 import requests
 import time
 
-# Lista de diretórios a serem ignorados
-IGNORE_TXT = {"keys.env", "Media-Cuts-Studio.spec", "release_v1.0.0.zip"}
-IGNORE_DIRS = {"save", "Build", "Release", "generated-files", "logs", "Qss/icons/icons", "Qss/icons/0F6464", "CoreApp/Firebase"}
+
+def load_gitignore(directory):
+    """Carrega as regras do .gitignore e retorna uma lista de padrões"""
+    gitignore_path = os.path.join(directory, ".gitignore")
+    ignored_paths = set()
+
+    if os.path.exists(gitignore_path):
+        with open(gitignore_path, "r") as file:
+            for line in file:
+                line = line.strip()
+                if line and not line.startswith("#"):  # Ignora comentários e linhas vazias
+                    ignored_paths.add(os.path.normpath(line))
+    
+    return ignored_paths
+
+def is_ignored(file_path, base_directory, ignored_paths):
+    """Verifica se um arquivo ou diretório deve ser ignorado"""
+    rel_path = os.path.relpath(file_path, start=base_directory)
+    for pattern in ignored_paths:
+        if rel_path.startswith(pattern):
+            return True
+    return False
 
 def upload_files_to_github(directory):
-    directory = os.path.abspath(directory)  # Normaliza caminho base
-    
+    directory = os.path.abspath(directory)
+    ignored_paths = load_gitignore(directory)  # Carregar as regras do .gitignore
+
     for dirpath, dirnames, filenames in os.walk(directory):
-        # Caminho relativo do diretório atual
-        rel_dirpath = os.path.relpath(dirpath, start=directory)
-
-        # Verifica se o diretório atual está na lista de ignorados
-        if any(rel_dirpath.startswith(ignored) for ignored in IGNORE_DIRS):
-            print(f"Ignorando diretório: {rel_dirpath}")
-            continue  # Pula o diretório inteiro
-
-        # Filtra diretórios ignorados antes de iterar
-        dirnames[:] = [d for d in dirnames if not any(
-            os.path.relpath(os.path.join(dirpath, d), start=directory).startswith(ignored)
-            for ignored in IGNORE_DIRS
-        )]
-
+        if is_ignored(dirpath, directory, ignored_paths):
+            print(f"Ignorando diretório: {dirpath}")
+            continue
+        
         for filename in filenames:
-            # Ignorar arquivos específicos
-            if filename in IGNORE_TXT or filename.endswith(".pyc"):
-                continue  
-
             file_path = os.path.join(dirpath, filename)
+            if is_ignored(file_path, directory, ignored_paths):
+                print(f"Ignorando arquivo: {file_path}")
+                continue  
 
             with open(file_path, "rb") as file:
                 content = file.read()
                 encoded_content = base64.b64encode(content).decode("utf-8")
 
-            # Caminho relativo ajustado para GitHub
             relative_path = os.path.relpath(file_path, start=directory).replace("\\", "/")
             url = f"https://api.github.com/repos/{repo_name}/contents/{relative_path}"
 
-            # Verifica se o arquivo já existe
             response = requests.get(url, headers={"Authorization": f"token {token}"})
             sha = response.json().get("sha") if response.status_code == 200 else None
 
-            data = {
-                "message": f"Add {filename}",
-                "content": encoded_content,
-                "branch": branch
-            }
+            data = {"message": f"Add {filename}", "content": encoded_content, "branch": branch}
             if sha:
-                data["sha"] = sha  # Atualiza se já existir
+                data["sha"] = sha
 
             response = requests.put(url, json=data, headers={"Authorization": f"token {token}"})
             print(f"Arquivo: {relative_path} - Status: {response.status_code}")
-            time.sleep(4)
+            time.sleep(1)
 
 diretorio_script = os.path.dirname(os.path.abspath(__file__))
 directorydata = os.path.join(diretorio_script)
