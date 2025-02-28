@@ -52,23 +52,40 @@ def get_file_sha(repo, path, token):
     return None
 
 
+#import os
+import base64
+import requests
+import time
+
 # Lista de diretórios a serem ignorados
 IGNORE_TXT = {"keys.env"}
 IGNORE_DIRS = {"save", "Build", "Qss/icons/icons", "Qss/icons/0F6464", "CoreApp/Firebase"}
 
 def upload_files_to_github(directory):
+    directory = os.path.abspath(directory)  # Normaliza caminho base
+    
     for dirpath, dirnames, filenames in os.walk(directory):
-        # Remove da lista de iteração os diretórios a serem ignorados
-        dirnames[:] = [d for d in dirnames 
-                       if not any(os.path.abspath(os.path.join(dirpath, d)).startswith(os.path.abspath(ignored)) 
-                                  for ignored in IGNORE_DIRS)]
-        
+        # Caminho relativo do diretório atual
+        rel_dirpath = os.path.relpath(dirpath, start=directory)
+
+        # Verifica se o diretório atual está na lista de ignorados
+        if any(rel_dirpath.startswith(ignored) for ignored in IGNORE_DIRS):
+            print(f"Ignorando diretório: {rel_dirpath}")
+            continue  # Pula o diretório inteiro
+
+        # Filtra diretórios ignorados antes de iterar
+        dirnames[:] = [d for d in dirnames if not any(
+            os.path.relpath(os.path.join(dirpath, d), start=directory).startswith(ignored)
+            for ignored in IGNORE_DIRS
+        )]
+
         for filename in filenames:
             # Ignorar arquivos específicos
             if filename in IGNORE_TXT or filename.endswith(".pyc"):
                 continue  
-            
+
             file_path = os.path.join(dirpath, filename)
+
             with open(file_path, "rb") as file:
                 content = file.read()
                 encoded_content = base64.b64encode(content).decode("utf-8")
@@ -76,7 +93,7 @@ def upload_files_to_github(directory):
             # Caminho relativo ajustado para GitHub
             relative_path = os.path.relpath(file_path, start=directory).replace("\\", "/")
             url = f"https://api.github.com/repos/{repo_name}/contents/{relative_path}"
-            
+
             # Verifica se o arquivo já existe
             response = requests.get(url, headers={"Authorization": f"token {token}"})
             sha = response.json().get("sha") if response.status_code == 200 else None
