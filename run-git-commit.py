@@ -54,7 +54,7 @@ def get_file_sha(repo, path, token):
 
 # Lista de diretórios a serem ignorados
 IGNORE_TXT = {"keys.env"}
-IGNORE_DIRS = {"save", "Build/MediaCutsStudio/Python", "CoreApp/Firebase"}
+IGNORE_DIRS = {"save", "Build", "Qss/icons/icons", "Qss/icons/0F6464", "CoreApp/Firebase"}
 
 def upload_files_to_github(directory):
     for dirpath, dirnames, filenames in os.walk(directory):
