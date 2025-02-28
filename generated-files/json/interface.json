@@ -1,0 +1,688 @@
+{
+  "QPushButton": [
+    {
+      "name": "subcolor_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-c\u00edrculo-rgb-2-48.png"
+    },
+    {
+      "name": "subfont_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-escolha-a-fonte-100.png"
+    },
+    {
+      "name": "subfontsizre_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-altura-do-texto-96.png"
+    },
+    {
+      "name": "subannimation_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-anima\u00e7\u00e3o-64.png"
+    },
+    {
+      "name": "subeffects_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-efeitos-visuais-96 (1).png"
+    },
+    {
+      "name": "CutingTIME_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-tesoura-48.png"
+    },
+    {
+      "name": "Hardware_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-cpu-48.png"
+    },
+    {
+      "name": "thread_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-processador-96.png"
+    },
+    {
+      "name": "subreference_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-redimensionar-vertical-96.png"
+    },
+    {
+      "name": "scale_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-cortar-96.png"
+    },
+    {
+      "name": "RemovingWords",
+      "icon": "Qss/icons/icons/font_awesome/solid/florin-sign.png"
+    },
+    {
+      "name": "watermask_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-borrar-96.png"
+    },
+    {
+      "name": "AI_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-ai-96.png"
+    },
+    {
+      "name": "upload_secn_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-fazer-upload-100 (1).png"
+    },
+    {
+      "name": "UploadMedia_base_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-folder-48.png"
+    },
+    {
+      "name": "Start_media_Cuts",
+      "icon": "Qss/icons/icons/mediacuts/icons8-online-startup-53.png"
+    },
+    {
+      "name": "Caption",
+      "icon": "Qss/icons/icons/mediacuts/icons8-legendas-64.png"
+    },
+    {
+      "name": "close_window_button",
+      "icon": "Qss/icons/icons/feather/window_close.png"
+    },
+    {
+      "name": "restore_window_button",
+      "icon": "Qss/icons/icons/feather/maximize-2.png"
+    },
+    {
+      "name": "pushButton_5",
+      "icon": "Qss/icons/icons/font_awesome/solid/arrow-right-long.png"
+    },
+    {
+      "name": "minimize_window_button",
+      "icon": "Qss/icons/icons/feather/window_minimize.png"
+    },
+    {
+      "name": "Vertical_Preview",
+      "icon": "Qss/icons/icons/font_awesome/solid/ellipsis-vertical.png"
+    },
+    {
+      "name": "Horizontalpreview",
+      "icon": "Qss/icons/icons/font_awesome/solid/ellipsis.png"
+    },
+    {
+      "name": "pushButton",
+      "icon": "Qss/icons/icons/font_awesome/solid/arrow-left-long.png"
+    },
+    {
+      "name": "button_upload_video",
+      "icon": "D:\\CompanyApps\\Saas\\MediaCutsVersions\\MediaCutsStudioV3.0.0.0\\Control_Panel\\Media Cuts (dev)\\uisave\\icons\\icons8-adicionar-pasta-100.png"
+    },
+    {
+      "name": "button_UploadWatermark",
+      "icon": "D:\\CompanyApps\\Saas\\MediaCutsVersions\\MediaCutsStudioV3.0.0.0\\Control_Panel\\Media Cuts (dev)\\uisave\\icons\\icons8-adicionar-pasta-100.png"
+    },
+    {
+      "name": "upload_refresh",
+      "icon": "Qss/icons/icons/feather/refresh-ccw.png"
+    },
+    {
+      "name": "SelectallAndroidDevice",
+      "icon": "Qss/icons/icons/feather/check.png"
+    },
+    {
+      "name": "RemoeallAndroidDevice",
+      "icon": "Qss/icons/icons/material_design/leak_remove.png"
+    },
+    {
+      "name": "pushButton_7",
+      "icon": "Qss/icons/icons/mediacuts/icons8-android-24.png"
+    },
+    {
+      "name": "pushButton_8",
+      "icon": "Qss/icons/icons/font_awesome/regular/hourglass.png"
+    },
+    {
+      "name": "pushButton_6",
+      "icon": "Qss/icons/icons/material_design/supervisor_account.png"
+    },
+    {
+      "name": "start_upload",
+      "icon": "Qss/icons/icons/mediacuts/icons8-start-50.png"
+    },
+    {
+      "name": "pushButton_10",
+      "icon": "Qss/icons/icons/material_design/person_add.png"
+    },
+    {
+      "name": "pushButton_11",
+      "icon": "Qss/icons/icons/material_design/arrow_back.png"
+    },
+    {
+      "name": "Addacctoshortify_button",
+      "icon": "Qss/icons/icons/font_awesome/regular/address-card.png"
+    },
+    {
+      "name": "pushButton_9",
+      "icon": "Qss/icons/icons/feather/skip-back.png"
+    },
+    {
+      "name": "pushButton_2",
+      "icon": "Qss/icons/icons/mediacuts/icons8-legendas-64.png"
+    },
+    {
+      "name": "pushButton_3",
+      "icon": "Qss/icons/icons/mediacuts/icons8-legendas-32.png"
+    },
+    {
+      "name": "cc_font_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-escolha-a-fonte-48.png"
+    },
+    {
+      "name": "cc_Color_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-cor-de-preenchimento-48.png"
+    },
+    {
+      "name": "cc_Fontsize_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-altura-do-texto-96 (1).png"
+    },
+    {
+      "name": "CC_slignment_button",
+      "icon": "Qss/icons/icons/mediacuts/icons8-alinhar-\u00e0-direita-100.png"
+    },
+    {
+      "name": "cc_font_button_2",
+      "icon": "Qss/icons/icons/mediacuts/icons8-escolha-a-fonte-48.png"
+    },
+    {
+      "name": "cc_Color_button_2",
+      "icon": "Qss/icons/icons/mediacuts/icons8-cor-de-preenchimento-48.png"
+    },
+    {
+      "name": "pushButton_4",
+      "icon": "Qss/icons/icons/mediacuts/icons8-efeitos-visuais-48.png"
+    }
+  ],
+  "QLabel": [
+    {
+      "name": "label_119",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/Century Gothic.gif"
+    },
+    {
+      "name": "label_120",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/Comic Sans MS.gif"
+    },
+    {
+      "name": "label_121",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/Tahoma.gif"
+    },
+    {
+      "name": "label_122",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/fontname_Lucida Console.gif"
+    },
+    {
+      "name": "label_123",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/Calibri.gif"
+    },
+    {
+      "name": "label_124",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/Impact.gif"
+    },
+    {
+      "name": "label_125",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/Garamond.gif"
+    },
+    {
+      "name": "label_126",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/Trebuchet MS.gif"
+    },
+    {
+      "name": "label_127",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/fontname_Franklin Gothic.gif"
+    },
+    {
+      "name": "label_106",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_aquaA.gif"
+    },
+    {
+      "name": "label_292",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_dark blue.gif"
+    },
+    {
+      "name": "label_293",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_gray.gif"
+    },
+    {
+      "name": "label_309",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_sky blue.png"
+    },
+    {
+      "name": "label_294",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_navy blue.png"
+    },
+    {
+      "name": "label_295",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_purple.gif"
+    },
+    {
+      "name": "label_296",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_light blue.gif"
+    },
+    {
+      "name": "label_310",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_yellow.gif"
+    },
+    {
+      "name": "label_347",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_turquoise.gif"
+    },
+    {
+      "name": "label_356",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_white.gif"
+    },
+    {
+      "name": "label_358",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_violet.gif"
+    },
+    {
+      "name": "label_311",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_brown.gif"
+    },
+    {
+      "name": "label_312",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_cyan.gif"
+    },
+    {
+      "name": "label_313",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_dark green.png"
+    },
+    {
+      "name": "label_314",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_coral.gif"
+    },
+    {
+      "name": "label_321",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_forest green.gif"
+    },
+    {
+      "name": "label_322",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_dark red.gif"
+    },
+    {
+      "name": "label_328",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_gold.gif"
+    },
+    {
+      "name": "label_332",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_green.gif"
+    },
+    {
+      "name": "label_348",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_indigo.gif"
+    },
+    {
+      "name": "label_349",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_khaki.gif"
+    },
+    {
+      "name": "label_350",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_light pink.gif"
+    },
+    {
+      "name": "label_351",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_lavender.gif"
+    },
+    {
+      "name": "label_352",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_light gray.gif"
+    },
+    {
+      "name": "label_353",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_magenta.gif"
+    },
+    {
+      "name": "label_354",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_lime green.gif"
+    },
+    {
+      "name": "label_359",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_olive.gif"
+    },
+    {
+      "name": "label_360",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_orange.gif"
+    },
+    {
+      "name": "label_361",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_silver.gif"
+    },
+    {
+      "name": "label_362",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_pink.gif"
+    },
+    {
+      "name": "label_363",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_dark red.gif"
+    },
+    {
+      "name": "label_364",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_peach.gif"
+    },
+    {
+      "name": "label_365",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_teal.gif"
+    },
+    {
+      "name": "label_366",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_salmon.gif"
+    },
+    {
+      "name": "label_367",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_royal blue.gif"
+    },
+    {
+      "name": "label_315",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_blue.gif"
+    },
+    {
+      "name": "label_397",
+      "pixmap": "Qss/icons/icons/gifs/threadsimg/10.gif"
+    },
+    {
+      "name": "label_399",
+      "pixmap": "Qss/icons/icons/gifs/threadsimg/11.gif"
+    },
+    {
+      "name": "label_389",
+      "pixmap": "Qss/icons/icons/gifs/threadsimg/1.gif"
+    },
+    {
+      "name": "label_390",
+      "pixmap": "Qss/icons/icons/gifs/threadsimg/2.gif"
+    },
+    {
+      "name": "label_400",
+      "pixmap": "Qss/icons/icons/gifs/threadsimg/3c.gif"
+    },
+    {
+      "name": "label_392",
+      "pixmap": "Qss/icons/icons/gifs/threadsimg/4.gif"
+    },
+    {
+      "name": "label_398",
+      "pixmap": "Qss/icons/icons/gifs/threadsimg/6.gif"
+    },
+    {
+      "name": "label_393",
+      "pixmap": "Qss/icons/icons/gifs/threadsimg/5.gif"
+    },
+    {
+      "name": "label_394",
+      "pixmap": "Qss/icons/icons/gifs/threadsimg/7.gif"
+    },
+    {
+      "name": "label_395",
+      "pixmap": "Qss/icons/icons/gifs/threadsimg/8.gif"
+    },
+    {
+      "name": "label_396",
+      "pixmap": "Qss/icons/icons/gifs/threadsimg/9.gif"
+    },
+    {
+      "name": "label_391",
+      "pixmap": "Qss/icons/icons/gifs/Whisper/tiny.gif"
+    },
+    {
+      "name": "label_402",
+      "pixmap": "Qss/icons/icons/gifs/Whisper/small.gif"
+    },
+    {
+      "name": "label_401",
+      "pixmap": "Qss/icons/icons/gifs/Whisper/base.gif"
+    },
+    {
+      "name": "label_403",
+      "pixmap": "Qss/icons/icons/gifs/Whisper/medium.gif"
+    },
+    {
+      "name": "label_404",
+      "pixmap": "Qss/icons/icons/gifs/Whisper/large.gif"
+    },
+    {
+      "name": "label_409",
+      "pixmap": "Qss/icons/icons/gifs/cutsimg/260s.gif"
+    },
+    {
+      "name": "label_408",
+      "pixmap": "Qss/icons/icons/gifs/cutsimg/160s.gif"
+    },
+    {
+      "name": "label_405",
+      "pixmap": "Qss/icons/icons/gifs/cutsimg/120s.gif"
+    },
+    {
+      "name": "label_407",
+      "pixmap": "Qss/icons/icons/gifs/cutsimg/60ss.gif"
+    },
+    {
+      "name": "label_406",
+      "pixmap": "Qss/icons/icons/gifs/cutsimg/90s.gif"
+    },
+    {
+      "name": "label_415",
+      "pixmap": "Qss/icons/icons/mediacuts/icons8-gpu-64.png"
+    },
+    {
+      "name": "label_410",
+      "pixmap": "Qss/icons/icons/gifs/hardwareimg/Hwaccel CPU.gif"
+    },
+    {
+      "name": "label_411",
+      "pixmap": "Qss/icons/icons/gifs/hardwareimg/Vcodec libx264.gif"
+    },
+    {
+      "name": "label_416",
+      "pixmap": "Qss/icons/icons/gifs/hardwareimg/Vcodec h264_nvenc.gif"
+    },
+    {
+      "name": "label_105",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_aquaA.gif"
+    },
+    {
+      "name": "label_287",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_dark blue.gif"
+    },
+    {
+      "name": "label_302",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_sky blue.png"
+    },
+    {
+      "name": "label_288",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_gray.gif"
+    },
+    {
+      "name": "label_290",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_navy blue.png"
+    },
+    {
+      "name": "label_291",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_purple.gif"
+    },
+    {
+      "name": "label_303",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_yellow.gif"
+    },
+    {
+      "name": "label_289",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_light blue.gif"
+    },
+    {
+      "name": "label_346",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_turquoise.gif"
+    },
+    {
+      "name": "label_355",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_white.gif"
+    },
+    {
+      "name": "label_357",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_violet.gif"
+    },
+    {
+      "name": "label_307",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_cyan.gif"
+    },
+    {
+      "name": "label_305",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_brown.gif"
+    },
+    {
+      "name": "label_308",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_dark green.png"
+    },
+    {
+      "name": "label_306",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_coral.gif"
+    },
+    {
+      "name": "label_320",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_forest green.gif"
+    },
+    {
+      "name": "label_329",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_indigo.gif"
+    },
+    {
+      "name": "label_326",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_gold.gif"
+    },
+    {
+      "name": "label_327",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_green.gif"
+    },
+    {
+      "name": "label_319",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_dark red.gif"
+    },
+    {
+      "name": "label_334",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_light pink.gif"
+    },
+    {
+      "name": "label_331",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_lavender.gif"
+    },
+    {
+      "name": "label_330",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_khaki.gif"
+    },
+    {
+      "name": "label_333",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_light gray.gif"
+    },
+    {
+      "name": "label_335",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_magenta.gif"
+    },
+    {
+      "name": "label_336",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_lime green.gif"
+    },
+    {
+      "name": "label_338",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_orange.gif"
+    },
+    {
+      "name": "label_337",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_olive.gif"
+    },
+    {
+      "name": "label_343",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_silver.gif"
+    },
+    {
+      "name": "label_340",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_pink.gif"
+    },
+    {
+      "name": "label_339",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_peach.gif"
+    },
+    {
+      "name": "label_341",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_dark red.gif"
+    },
+    {
+      "name": "label_304",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_blue.gif"
+    },
+    {
+      "name": "label_344",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_salmon.gif"
+    },
+    {
+      "name": "label_342",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_royal blue.gif"
+    },
+    {
+      "name": "label_345",
+      "pixmap": "Qss/icons/icons/gifs/legendascc/legendas_teal.gif"
+    },
+    {
+      "name": "label_111",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/Century Gothic.gif"
+    },
+    {
+      "name": "label_112",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/Comic Sans MS.gif"
+    },
+    {
+      "name": "label_114",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/Tahoma.gif"
+    },
+    {
+      "name": "label_107",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/fontname_Lucida Console.gif"
+    },
+    {
+      "name": "label_110",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/Calibri.gif"
+    },
+    {
+      "name": "label_109",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/Impact.gif"
+    },
+    {
+      "name": "label_113",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/Garamond.gif"
+    },
+    {
+      "name": "label_115",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/Trebuchet MS.gif"
+    },
+    {
+      "name": "label_108",
+      "pixmap": "Qss/icons/icons/gifs/fontnamecc/fontname_Franklin Gothic.gif"
+    },
+    {
+      "name": "label_116",
+      "pixmap": "Qss/icons/icons/gifs/Alignmentcc/2.gif"
+    },
+    {
+      "name": "label_117",
+      "pixmap": "Qss/icons/icons/gifs/Alignmentcc/3.gif"
+    },
+    {
+      "name": "label_118",
+      "pixmap": "Qss/icons/icons/gifs/Alignmentcc/4.gif"
+    }
+  ],
+  "QCustomCheckBox": [
+    {
+      "name": "Scheduledupload",
+      "icon": "Qss/icons/icons/mediacuts/icons8-time-50.png"
+    }
+  ],
+  "QCustomQPushButton": [
+    {
+      "name": "ModesShortify",
+      "icon": "Qss/icons/icons/mediacuts/definicoes.png"
+    }
+  ],
+  "QCheckBox": [
+    {
+      "name": "Uploadyoutube_app",
+      "icon": "Qss/icons/icons/feather/youtube.png"
+    },
+    {
+      "name": "KwaiApp",
+      "icon": "Qss/icons/icons/mediacuts/icone-do-aplicativo-kwai-plataforma-de-video-curto-rede-social-chinesa_277909-632-removebg-preview.png"
+    },
+    {
+      "name": "TiktokApp",
+      "icon": "Qss/icons/icons/mediacuts/icons8-tiktok-50.png"
+    }
+  ]
+}
