@@ -6,7 +6,7 @@ from watchdog.events import FileSystemEventHandler
 
 
 
-# teste
+# teste 2
 def extract_preserved_block(lines, identifier):
     """
     Extrai o bloco preservado de 'lines' delimitado pelos marcadores
