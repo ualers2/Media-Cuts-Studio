@@ -42,7 +42,7 @@ from Uploaders.TiktokSemiOfficialUploader import upload_media_Tiktok
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "Keys", "keys.env"))
 cred = credentials.Certificate(os.getenv('DATABASEPATH'))
 app1 = initialize_app(cred, {
-    'databaseURL': os.getenv('DATABASEURL')
+    'databaseURL': os.getenv('DATABASEURLSHEDULER')
 }, name="app2")
 
 diretorio_script = os.path.dirname(os.path.abspath(__file__)) 
