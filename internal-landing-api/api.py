@@ -50,7 +50,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("_logger")
 
 
-load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), 'Keys', 'env.env'))
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), 'Keys', 'keys.env'))
 
 cred = credentials.Certificate(os.getenv('DATABASEPATH'))
 app_instance = initialize_app(cred, {

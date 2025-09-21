@@ -9,6 +9,8 @@ testers-functions/
 ProductionFiles/VPS/Certifi/
 internal-support-server/agent_dashboard/node_modules/
 .history/
+ProductionFiles/VPS/keys.env
+ProductionFiles/VPS/.env
 internal-landing-api/Keys/
 internal-landing-api/Logs/
 internal-sheduler-server/Internal-server/Keys/

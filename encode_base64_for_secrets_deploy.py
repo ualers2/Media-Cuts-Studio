@@ -111,16 +111,16 @@ if __name__ == "__main__":
         'yt.json'
         )
 
-    vps_compose = os.path.join(
+    keys_ = os.path.join(
         path_dir, 
         'ProductionFiles',
         'VPS',
-        'docker-compose.yml'
+        'keys.env'
         )
 
 
     arquivos = [
-        vps_compose,
+        keys_,
         # yt_json,
         # firebase_json,
         # client_secret_1,
