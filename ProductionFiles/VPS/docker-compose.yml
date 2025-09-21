@@ -139,11 +139,11 @@ services:
     restart: always
     working_dir: /app 
     ports:
-      - "3001:3001"
+      - "3008:3008"
     command: >
         sh -c "python webhook.py"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://127.0.0.1:3001/"] 
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:3008/"] 
       interval: 129s
       timeout: 2s
       retries: 5

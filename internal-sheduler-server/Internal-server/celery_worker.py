@@ -30,6 +30,8 @@ from google.auth.transport.requests import Request
 from google.auth.exceptions import RefreshError
 from firebase_admin import initialize_app, credentials, storage, get_app
 
+os.makedirs(os.path.join(os.path.dirname(__file__), "Logs"), exist_ok=True)
+
 from Modules.upload_ import upload_
 from Modules.download_ import download_
 
@@ -38,7 +40,6 @@ from Uploaders.TiktokSemiOfficialUploader import upload_media_Tiktok
 
 
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "Keys", "keys.env"))
-
 cred = credentials.Certificate(os.getenv('DATABASEPATH'))
 app1 = initialize_app(cred, {
     'databaseURL': os.getenv('DATABASEURL')
