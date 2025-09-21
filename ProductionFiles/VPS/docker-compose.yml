@@ -60,7 +60,7 @@ services:
       - videos_data:/app/tmp
       - tokens:/app/Tokens
     mem_limit: 800MB
-    cpus: "2.0"
+    cpus: "0.8"
 
   upload_media_bulk_api_1:
     build:
@@ -86,7 +86,7 @@ services:
     networks:
       - rede_externa
     mem_limit: 1200MB
-    cpus: "2.5"
+    cpus: "0.8"
 
   landingpage_1:
     build:
@@ -109,7 +109,7 @@ services:
     networks:
       - rede_externa
     mem_limit: 500MB
-    cpus: "1.5"
+    cpus: "0.8"
 
   landingpage_api_1:
     build:
@@ -127,7 +127,7 @@ services:
       timeout: 2s
       retries: 5
     mem_limit: 500MB
-    cpus: "1.5"
+    cpus: "0.8"
     networks:
       - rede_externa
 
@@ -148,7 +148,7 @@ services:
       timeout: 2s
       retries: 5
     mem_limit: 500MB
-    cpus: "1.5"
+    cpus: "0.8"
     networks:
       - rede_externa
 
@@ -170,7 +170,7 @@ services:
     networks:
       - rede_externa
     mem_limit: 500MB
-    cpus: "1.5"
+    cpus: "0.8"
 
 
 
