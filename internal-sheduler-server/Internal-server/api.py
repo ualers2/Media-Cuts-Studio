@@ -57,7 +57,7 @@ load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "Keys", "keys.en
 
 cred = credentials.Certificate(os.getenv('DATABASEPATH'))
 app1 = initialize_app(cred, {
-    'databaseURL': os.getenv('DATABASEURL')
+    'databaseURL': os.getenv('DATABASEURLSHEDULER')
 }, name="app1")
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
