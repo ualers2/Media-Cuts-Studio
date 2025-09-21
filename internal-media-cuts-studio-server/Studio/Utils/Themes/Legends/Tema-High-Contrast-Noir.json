@@ -1,0 +1,20 @@
+
+
+{"Tema-High-Contrast-Noir":{
+    "CaptionsAlignment": "2",
+    "CaptionsColor": "white",
+    "CaptionsFontName": "Impact",
+    "CaptionsFontsize": 28,
+    "CaptionsPrimaryColour": "&HFFFFFF",
+    "CaptionsSecondaryColour": "&HBBBBBB",
+    "CaptionsOutlineColour": "&H000000",
+    "CaptionsBackColour": "&H80000000",
+    "CaptionsBold": 1,
+    "CaptionsItalic": 0,
+    "CaptionsUnderline": 0,
+    "CaptionsOutline": 3,
+    "CaptionsShadow": 1,
+    "CaptionsRevealEffectInitialColor": "&H000000&",
+    "CaptionsRevealEffectFinalColor": "&HFFFFFF&"
+}
+}

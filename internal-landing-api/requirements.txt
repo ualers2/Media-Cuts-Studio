@@ -1,0 +1,15 @@
+Flask
+flask-cors 
+flask-limiter 
+python-dotenv 
+stripe 
+firebase-admin 
+requests 
+waitress
+yt_dlp
+pytz
+pytube
+beautifulsoup4
+openai-agents
+asyncio
+

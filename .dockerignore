@@ -1,0 +1,7 @@
+.history/
+*__pycache__/
+__pycache__/
+pipeline-server/
+testers-functions/
+Docs/
+internal-support-server/agent_dashboard/node_modules/

@@ -1,0 +1,25 @@
+
+{"dark theme":{
+    "SubtitleVerticalReference": "+20",
+    "SubtitleFontsize": "39",
+    "SubtitleColor": "white",
+    "SubtitleAnimation": "Slow Fade-Out",
+    "SubtitleEffects": "Glow Effect",
+    "SubtitleFontName": "Future",
+    "CaptionsAlignment": "2",
+    "CaptionsColor": "aqua",
+    "CaptionsFontName": "Future",
+    "CaptionsFontsize": 8,
+    "CaptionsPrimaryColour": "&HC0C0C0",
+    "CaptionsSecondaryColour": "&H8080",
+    "CaptionsOutlineColour": "&H0",
+    "CaptionsBackColour": "&H0",
+    "CaptionsBold": 1,
+    "CaptionsItalic": 0,
+    "CaptionsUnderline": 0,
+    "CaptionsOutline": 3,
+    "CaptionsShadow": 1,
+    "CaptionsRevealEffectInitialColor": "&HCCCC33&",
+    "CaptionsRevealEffectFinalColor": "&H0099FF&"
+}
+}

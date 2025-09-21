@@ -1,0 +1,26 @@
+
+
+{"Tema-Outono-Rústico":{
+    "SubtitleVerticalReference": "+18",
+    "SubtitleFontName": "Pacifico",
+    "SubtitleFontsize": "35",
+    "SubtitleColor": "orange",
+    "SubtitleAnimation": "Wave",
+    "SubtitleEffects": "Water Reflection",
+    "CaptionsAlignment": "2",
+    "CaptionsColor": "saddlebrown",
+    "CaptionsFontName": "Palatino Linotype",
+    "CaptionsFontsize": 21,
+    "CaptionsPrimaryColour": "&H445522",
+    "CaptionsSecondaryColour": "&HCC8844",
+    "CaptionsOutlineColour": "&H000000",
+    "CaptionsBackColour": "&H60004433",
+    "CaptionsBold": 0,
+    "CaptionsItalic": 1,
+    "CaptionsUnderline": 0,
+    "CaptionsOutline": 2,
+    "CaptionsShadow": 1,
+    "CaptionsRevealEffectInitialColor": "&H000000&",
+    "CaptionsRevealEffectFinalColor": "&HCC8844&"
+}
+}

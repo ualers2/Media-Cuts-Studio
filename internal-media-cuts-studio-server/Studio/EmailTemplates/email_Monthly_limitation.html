@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body { font-family: Arial, sans-serif; color: #333; margin:0; padding:0; background:#f9f9f9; }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 24px;
+      border-radius: 8px;
+      background-color: #ffe6e6;            /* vermelho claro */
+      border-left: 6px solid #e74c3c;       /* vermelho principal */
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    }
+    h2 { color: #e74c3c; margin: 0 0 8px 0; }
+    p { line-height: 1.5; margin: 10px 0; }
+    ul { padding-left: 18px; margin: 10px 0; }
+    li { margin-bottom: 8px; }
+    .highlight {
+      display: inline-block;
+      margin: 12px 0;
+      padding: 10px 14px;
+      background: #ffd3d3;
+      border-radius: 4px;
+      font-weight: bold;
+      color: #7a1c1c;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 14px;
+      padding: 12px 24px;
+      background-color: #e74c3c;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .btn-secondary {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 18px;
+      background-color: #ffffff;
+      color: #7a1c1c;
+      text-decoration: none;
+      border-radius: 4px;
+      border: 1px solid #e74c3c;
+      font-weight: bold;
+    }
+    .tip {
+      margin-top: 16px;
+      padding: 12px;
+      background: #fffafa;
+      border-radius: 6px;
+      border: 1px solid #f7b2b2;
+      font-size: 14px;
+      color: #7a1c1c;
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #777;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>⛔ Limite Mensal Atingido</h2>
+    <p>Olá <strong>{{username}}</strong>, você atingiu o limite mensal do seu plano <strong>{{plan_name}}</strong>.</p>
+
+    <div class="highlight">
+      Uso do mês: {{current_usage}} / {{plan_limit}}
+    </div>
+
+    <p>Para continuar usando o Media Cuts Studio sem interrupções, você pode:</p>
+    <ul>
+      <li>⏫ <strong>Fazer upgrade de plano</strong> para liberar mais capacidade imediatamente.</li>
+      <li>🗓️ Aguardar até <strong>{{reset_date}}</strong> (fuso horário de São Paulo) quando seu limite será reiniciado.</li>
+    </ul>
+
+    <a class="btn" href="https://mediacutsstudio.com/checkout" target="_blank">Fazer upgrade agora</a><br />
+    <a class="btn-secondary" href="https://mediacutsstudio.com/my-account" target="_blank">Gerenciar meu plano</a>
+
+    <div class="tip">
+      <strong>Dica:</strong> Se você tiver projetos em andamento, eles serão concluídos normalmente. Novas criações ficarão disponíveis após o reset ou com o upgrade.
+    </div>
+
+    <p style="margin-top:14px;">Precisa de ajuda? Fale com o suporte pelo painel ou responda este e-mail.</p>
+
+    <div class="footer">
+      Media Cuts Studio © 2025
+    </div>
+  </div>
+</body>
+</html>

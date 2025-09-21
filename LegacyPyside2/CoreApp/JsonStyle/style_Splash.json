@@ -1,0 +1,32 @@
+{
+    "QMainWindow": [
+        {
+            "tittle":"Splash Screen Software AI",
+            "frameless": true,
+            "transluscentBg": true
+        }
+    ],
+    "QSettings": [
+        {
+            "ThemeSettings": [
+                {
+                    "CustomTheme": [
+                        {
+                            "Background-color": "#00FFFFFF",
+                            "Text-color": "#fafafa",
+                            "Accent-color": "#1e0880",
+                            "Theme-name": "Dark-Night",
+                            "Default-Theme": true
+                        }
+                    ]
+                }
+            ],
+            "AppSettings": {
+                "OrginizationName": "SoftwareAICompany",
+                "ApplicationName": "Media Cuts Studio Splash Loading",
+                "OrginizationDormain": "https://softwareai-company.com"
+            }
+        }
+    ]
+
+}

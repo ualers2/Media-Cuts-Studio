@@ -1,0 +1,26 @@
+
+
+{"Tema-Cinema-Clássico":{
+    "SubtitleVerticalReference": "+15",
+    "SubtitleFontName": "Montserrat Bold",
+    "SubtitleFontsize": "40",
+    "SubtitleColor": "lime",
+    "SubtitleAnimation": "Pop-Up",
+    "SubtitleEffects": "Double Stroke",
+    "CaptionsAlignment": "2",
+    "CaptionsColor": "ivory",
+    "CaptionsFontName": "Georgia",
+    "CaptionsFontsize": 26,
+    "CaptionsPrimaryColour": "&HEEEEE0",
+    "CaptionsSecondaryColour": "&H777760",
+    "CaptionsOutlineColour": "&H000000",
+    "CaptionsBackColour": "&H40000000",
+    "CaptionsBold": 1,
+    "CaptionsItalic": 0,
+    "CaptionsUnderline": 0,
+    "CaptionsOutline": 3,
+    "CaptionsShadow": 1,
+    "CaptionsRevealEffectInitialColor": "&H000000&",
+    "CaptionsRevealEffectFinalColor": "&HEEEEE0&"
+}
+}

@@ -1,0 +1,27 @@
+
+
+{"Tema-Noturno-Minimalista":{
+    "SubtitleVerticalReference": "+20",
+    "SubtitleFontName": "Future",
+    "SubtitleFontsize": "39",
+    "SubtitleColor": "white",
+    "SubtitleAnimation": "Slow Fade-Out",
+    "SubtitleEffects": "Glow Effect",
+    "CaptionsAlignment": "2",
+    "CaptionsColor": "white",
+    "CaptionsFontName": "Arial",
+    "CaptionsFontsize": 24,
+    "CaptionsPrimaryColour": "&HFFFFFF",
+    "CaptionsSecondaryColour": "&H8888FF",
+    "CaptionsOutlineColour": "&H000000",
+    "CaptionsBackColour": "&H80000000",
+    "CaptionsBold": 0,
+    "CaptionsItalic": 1,
+    "CaptionsUnderline": 0,
+    "CaptionsOutline": 2,
+    "CaptionsShadow": 0,
+    "CaptionsRevealEffectInitialColor": "&H000000&",
+    "CaptionsRevealEffectFinalColor": "&HFFFFFF&"
+
+}
+}

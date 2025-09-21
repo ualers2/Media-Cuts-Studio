@@ -1,0 +1,17 @@
+white,white
+yellow,yellow
+red,red
+silver,silver
+blue,blue
+green,green
+orange,orange
+purple,purple
+pink,pink
+gray,gray
+brown,brown
+magenta,magenta
+navy,navy
+olive,olive
+maroon,maroon
+violet,violet
+gold,gold

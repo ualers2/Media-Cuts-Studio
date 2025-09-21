@@ -1,0 +1,26 @@
+
+
+{"Tema-Neon-Cyberpunk":{
+    "SubtitleVerticalReference": "+25",
+    "SubtitleFontName": "Helvetica Neue",
+    "SubtitleFontsize": "36",
+    "SubtitleColor": "lightgray",
+    "SubtitleAnimation": "Fade In",
+    "SubtitleEffects": "Subtle Shadow",
+    "CaptionsAlignment": "2",
+    "CaptionsColor": "cyan",
+    "CaptionsFontName": "Tahoma",
+    "CaptionsFontsize": 23,
+    "CaptionsPrimaryColour": "&H00FFFF",
+    "CaptionsSecondaryColour": "&HFF00FF",
+    "CaptionsOutlineColour": "&H000020",
+    "CaptionsBackColour": "&H60000000",
+    "CaptionsBold": 1,
+    "CaptionsItalic": 0,
+    "CaptionsUnderline": 0,
+    "CaptionsOutline": 4,
+    "CaptionsShadow": 1,
+    "CaptionsRevealEffectInitialColor": "&H000020&",
+    "CaptionsRevealEffectFinalColor": "&H00FFFF&"
+}
+}
