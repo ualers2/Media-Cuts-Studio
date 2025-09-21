@@ -1,0 +1,6 @@
+1
+00:00:01,000 --> 00:00:16,000
+Hello traveler.
+1
+00:00:19,000 --> 00:00:37,000
+the day was long, get some rest

@@ -1,0 +1,186 @@
+# in docker in docker it must be version 2.2
+# version: '2.2'
+# default version 
+version: '3.8'
+
+services:
+
+  redis:
+    image: redis:latest
+    container_name: redis_1
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - rede_externa
+    volumes:
+      - redis_data:/data 
+
+  api_scheduler:
+    build:
+      context: ./internal-sheduler-server/Internal-server
+      dockerfile: Dockerfile
+    container_name: api_scheduler
+    working_dir: /app  
+    restart: always
+    command: [
+      "uvicorn", "api:asgi_app",
+      "--host", "0.0.0.0",
+      "--port", "5729",
+      "--workers", "1",
+      "--timeout-keep-alive", "3600"
+    ]
+    ports:
+      - "5729:5729"
+    depends_on:
+      - redis 
+    networks: 
+      - rede_externa
+    volumes:
+      - videos_data:/app/tmp
+      - tokens:/app/Tokens
+    mem_limit: 500MB
+    cpus: "1.9"
+
+  celery_worker_scheduler:
+    build:
+      context: ./internal-sheduler-server/Internal-server
+      dockerfile: Dockerfile
+    container_name: celery_worker_scheduler
+    working_dir: /app  
+    restart: always
+    command: >
+      celery -A celery_worker.celery_app worker --loglevel=info --beat
+    depends_on:
+      - redis
+    networks:
+      - rede_externa
+    volumes:
+      - logger_data:/app/Logs
+      - videos_data:/app/tmp
+      - tokens:/app/Tokens
+    mem_limit: 800MB
+    cpus: "2.0"
+
+  upload_media_bulk_api_1:
+    build:
+      context: ./internal-sheduler-uploader-server
+      dockerfile: Dockerfile
+    container_name: upload_media_bulk_api_1
+    restart: always
+    working_dir: /app
+    ports:
+      - "4062:4062"
+    command: [
+      "uvicorn", "server:asgi_app",
+      "--host", "0.0.0.0",
+      "--port", "4062",
+      "--workers", "3",
+      "--timeout-keep-alive", "9600"
+    ]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:4062"] 
+      interval: 129s
+      timeout: 2s
+      retries: 5
+    networks:
+      - rede_externa
+    mem_limit: 1200MB
+    cpus: "2.5"
+
+  landingpage_1:
+    build:
+      context: ./Media-Cuts-Studio
+      dockerfile: Dockerfile 
+    working_dir: /app
+    ports:
+      - "4343:4343"
+    restart: always
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - CHOKIDAR_INTERVAL=100
+    command: >
+      sh -c "npm run dev -- --host 0.0.0.0 --port 4343"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:4343"] 
+      interval: 129s
+      timeout: 2s
+      retries: 5
+    networks:
+      - rede_externa
+    mem_limit: 500MB
+    cpus: "1.5"
+
+  landingpage_api_1:
+    build:
+      context: ./internal-landing-api
+      dockerfile: Dockerfile
+    container_name: landingpage_api_1
+    restart: always
+    working_dir: /app
+    ports:
+      - "4252:4252"
+    command: ["waitress-serve", "--host=0.0.0.0", "--port=4252", "api:app"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:4252"] 
+      interval: 129s
+      timeout: 2s
+      retries: 5
+    mem_limit: 500MB
+    cpus: "1.5"
+    networks:
+      - rede_externa
+
+  internal_webhook_1:
+    build:
+      context: ./internal-webhook-server
+      dockerfile: Dockerfile 
+    container_name: internal_webhook_1
+    restart: always
+    working_dir: /app 
+    ports:
+      - "3001:3001"
+    command: >
+        sh -c "python webhook.py"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:3001/"] 
+      interval: 129s
+      timeout: 2s
+      retries: 5
+    mem_limit: 500MB
+    cpus: "1.5"
+    networks:
+      - rede_externa
+
+  internal_api_1:
+    build:
+      context: ./internal-shortify-api
+      dockerfile: Dockerfile 
+    container_name: internal_api_1
+    restart: always
+    working_dir: /app   
+    ports:
+      - "5050:5050"
+    command: ["waitress-serve", "--host=0.0.0.0", "--port=5050", "api:app"]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:5050/"] 
+      interval: 129s
+      timeout: 2s
+      retries: 5
+    networks:
+      - rede_externa
+    mem_limit: 500MB
+    cpus: "1.5"
+
+
+
+networks:
+  rede_externa:
+    external: true
+
+volumes:
+  logger_data:
+  alfred_knowledge_data: 
+  redis_data:
+  tokens:
+  videos_data:

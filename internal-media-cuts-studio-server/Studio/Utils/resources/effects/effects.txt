@@ -1,0 +1,19 @@
+Shadow,shadowx=2:shadowy=2:shadowcolor=black:
+Outline,borderw=2:bordercolor=black:
+Glow Effect,box=1:boxcolor=black@0.5:boxborderw=10:
+Drop Shadow,shadowx=4:shadowy=4:shadowcolor=gray:
+Thick Outline,borderw=4:bordercolor=black:
+Double Outline,borderw=2:bordercolor=black:shadowx=2:shadowy=2:
+Blurred Shadow,shadowx=2:shadowy=2:shadowcolor=black@0.7:blur=1.5:
+Hard Glow,box=1:boxcolor=white@1.0:boxborderw=15:
+Soft Glow,box=1:boxcolor=white@0.3:boxborderw=8:
+Emboss,shadowx=1:shadowy=1:shadowcolor=gray@0.5:emboss=1:
+Transparent Outline,borderw=2:bordercolor=black@0.5:
+Soft Shadow,shadowx=3:shadowy=3:shadowcolor=gray@0.3:
+Neon Glow,box=1:boxcolor=cyan@0.7:boxborderw=12:
+Dotted Outline,borderw=2:bordercolor=black:dashed=1:
+Frosted Glow,box=1:boxcolor=white@0.2:boxborderw=20:blur=2:
+Bold Shadow,shadowx=5:shadowy=5:shadowcolor=black@0.8:
+Inner Glow,box=1:boxcolor=black@0.2:boxborderw=5:inset=1:
+Wavy Outline,borderw=2:bordercolor=black:wavy=1.5:
+None,box=1:boxcolor=black@0.5:

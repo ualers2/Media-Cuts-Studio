@@ -1,0 +1,26 @@
+
+
+{"Tema-Claro-Elegante":{
+    "SubtitleVerticalReference": "+20",
+    "SubtitleFontName": "Cyberpunk",
+    "SubtitleFontsize": "42",
+    "SubtitleColor": "#00FF00",
+    "SubtitleAnimation": "Typewriter",
+    "SubtitleEffects": "Neon Glow",
+    "CaptionsAlignment": "2",
+    "CaptionsColor": "black",
+    "CaptionsFontName": "Verdana",
+    "CaptionsFontsize": 18,
+    "CaptionsPrimaryColour": "&H000000",
+    "CaptionsSecondaryColour": "&HAAAAAA",
+    "CaptionsOutlineColour": "&HFFFFFF",
+    "CaptionsBackColour": "&H80FFFFFF",
+    "CaptionsBold": 0,
+    "CaptionsItalic": 0,
+    "CaptionsUnderline": 0,
+    "CaptionsOutline": 1,
+    "CaptionsShadow": 1,
+    "CaptionsRevealEffectInitialColor": "&HFFFFFF&",
+    "CaptionsRevealEffectFinalColor": "&H000000&"
+}
+}

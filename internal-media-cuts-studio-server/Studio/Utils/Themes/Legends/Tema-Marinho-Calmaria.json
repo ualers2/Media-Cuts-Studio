@@ -1,0 +1,26 @@
+
+
+{"Tema-Marinho-Calmaria":{
+    "SubtitleVerticalReference": "+10",
+    "SubtitleFontName": "Orbitron",
+    "SubtitleFontsize": "44",
+    "SubtitleColor": "purple",
+    "SubtitleAnimation": "Star Burst",
+    "SubtitleEffects": "Cosmic Dust",
+    "CaptionsAlignment": "2",
+    "CaptionsColor": "navy",
+    "CaptionsFontName": "Tahoma",
+    "CaptionsFontsize": 20,
+    "CaptionsPrimaryColour": "&H001144",
+    "CaptionsSecondaryColour": "&H88CCFF",
+    "CaptionsOutlineColour": "&H000000",
+    "CaptionsBackColour": "&H40001122",
+    "CaptionsBold": 0,
+    "CaptionsItalic": 0,
+    "CaptionsUnderline": 0,
+    "CaptionsOutline": 1,
+    "CaptionsShadow": 1,
+    "CaptionsRevealEffectInitialColor": "&H001144&",
+    "CaptionsRevealEffectFinalColor": "&H88CCFF&"
+}
+}

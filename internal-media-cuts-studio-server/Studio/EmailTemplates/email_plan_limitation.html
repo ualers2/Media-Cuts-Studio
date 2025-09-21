@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: Arial, sans-serif; color: #333; margin:0; padding:0; }
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #fff3cd;
+      border-left: 6px solid #f1c40f;
+      box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    }
+    h2 { color: #f1c40f; margin-top: 0; }
+    p { line-height: 1.5; }
+    ul { padding-left: 18px; }
+    li { margin-bottom: 8px; }
+    .highlight {
+      display: inline-block;
+      margin: 10px 0;
+      padding: 10px 14px;
+      background: #ffe8a1;
+      border-radius: 4px;
+      font-weight: bold;
+      color: #7a5a00;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 24px;
+      background-color: #f1c40f;
+      color: #333;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .btn-secondary {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 18px;
+      background-color: #ffffff;
+      color: #7a5a00;
+      text-decoration: none;
+      border-radius: 4px;
+      border: 1px solid #f1c40f;
+      font-weight: bold;
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #777;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>⚠️ Limitação do Plano</h2>
+    <p>Olá <strong>{{username}}</strong>, detectamos que você atingiu o limite do seu plano <strong>{{plan_name}}</strong> </p>
+
+    <div class="highlight">
+      Uso atual: {{current_usage}} / {{plan_limit}}
+    </div>
+
+    <p>Para continuar utilizando o Media Cuts Studio sem interrupções, você pode:</p>
+    <ul>
+      <li>⏫ <strong>Fazer upgrade de plano</strong> para liberar mais limites.</li>
+      <li>⏳ Aguardar até o horario {{reset_date}} <strong> Onde seu projetos em execucao ja terão finalizados </strong>  </li>
+    </ul>
+
+    <a class="btn" href="{{upgrade_url}}" target="_blank">Atualizar plano</a><br/>
+    <a class="btn-secondary" href="https://mediacutsstudio.com/billing" target="_blank">Gerenciar meu plano</a>
+
+    <p style="margin-top:16px;">Dúvidas? Fale conosco no suporte pelo painel.</p>
+
+    <div class="footer">
+      Media Cuts Studio © 2025
+    </div>
+  </div>
+</body>
+</html>

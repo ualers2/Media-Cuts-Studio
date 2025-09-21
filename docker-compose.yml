@@ -1,0 +1,267 @@
+# in docker in docker it must be version 2.2
+version: '2.2'
+# default version version: '3.8'
+
+services:
+
+  nginx_proxy_server:
+    build:
+      context: ./internalnginxserver
+      dockerfile: Dockerfile
+    container_name: nginx_proxy_server
+    ports:
+      - "80:80"
+      - "443:443"
+    # depends_on:
+    #   - internal_api_1
+    #   - landingpage_1
+    #   - landingpage_api_1
+    #   - internal_webhook_1
+    restart: "no"
+    networks:
+      - rede_externa
+
+
+  redis:
+    image: redis:latest
+    container_name: redis_1
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - rede_externa
+    volumes:
+      - redis_data:/data 
+
+  landingpage_sheduler:
+    build:
+      context: ./internalsheduleserver/Frontend
+      dockerfile: Dockerfile
+    container_name: landingpage_scheduler
+    working_dir: /app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - CHOKIDAR_INTERVAL=100
+    ports:
+      - "4348:4348"
+    restart: always
+    command: >
+      sh -c "npm run dev"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:4348"] 
+      interval: 129s
+      timeout: 2s
+      retries: 5
+    mem_limit: 900MB
+    cpus: "3.5"
+    networks:
+      - rede_externa
+
+  api_scheduler:
+    build:
+      context: ./internalsheduleserver/Internal-server
+      dockerfile: Dockerfile
+    container_name: api_scheduler
+    working_dir: /app  
+    
+
+    command: flask --app api:app run --host=0.0.0.0 --port=5729
+    ports:
+      - "5729:5729"
+    depends_on:
+      - redis
+    networks:
+      - rede_externa
+
+  celery_worker_scheduler:
+    build:
+      context: ./internalsheduleserver/Internal-server
+      dockerfile: Dockerfile
+    container_name: celery_worker_scheduler
+    working_dir: /app  
+    command: >
+      celery -A celery_worker.celery_app worker --beat --loglevel=info
+    depends_on:
+      - redis
+    networks:
+      - rede_externa
+
+  landingpage_1:
+    build:
+      context: ./webproject
+      dockerfile: Dockerfile
+    container_name: landingpage_1
+    volumes:
+      - ./webproject:/app
+    working_dir: /app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - CHOKIDAR_INTERVAL=100
+    ports:
+      - "4343:4343"
+    restart: always
+    command: >
+      sh -c "npm run dev -- --host 0.0.0.0 --port 4343"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:4343"] 
+      interval: 129s
+      timeout: 2s
+      retries: 5
+    networks:
+      - rede_externa
+    mem_limit: 500MB
+    cpus: "1.5"
+
+  videomanager_api_1:
+    build:
+      context: ./internaluploaderserver
+      dockerfile: Dockerfile
+    container_name: videomanager_api_1
+    restart: always
+    working_dir: /app
+    ports:
+      - "4152:4152"
+    command: flask --app uploaderserver:app run --host=0.0.0.0 --port=4152
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:4152"] 
+      interval: 129s
+      timeout: 2s
+      retries: 5
+    mem_limit: 500MB
+    cpus: "1.5"
+    networks:
+      - rede_externa
+
+  internaluptime_1:
+    build:
+      context: ./internaluptime
+      dockerfile: Dockerfile
+    container_name: internaluptime_1
+    restart: always
+    working_dir: /app
+    # volumes:
+    #   - ./internaluptime:/app  
+    command: >
+        sh -c "python uptime.py"
+    mem_limit: 500MB
+    cpus: "1.5"
+    networks:
+      - rede_externa
+
+  landingpage_api_1:
+    build:
+      context: ./internallandingapi
+      dockerfile: Dockerfile
+    container_name: landingpage_api_1
+    restart: always
+    working_dir: /app
+    # volumes:
+    #   - ./internallandingapi:/app  
+    ports:
+      - "4252:4252"
+    command: flask --app landingpage_api:app run --host=0.0.0.0 --port=4252
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:4252"] 
+      interval: 129s
+      timeout: 2s
+      retries: 5
+    mem_limit: 500MB
+    cpus: "1.5"
+    networks:
+      - rede_externa
+
+  internal_webhook_1:
+    build:
+      context: ./internalwebhook
+      dockerfile: Dockerfile 
+    container_name: internal_webhook_1
+    # volumes:
+    #   - ./internalwebhook:/app  
+    restart: always
+    working_dir: /app
+    ports:
+      - "3001:3001"
+    command: >
+        sh -c "python internal_webhook.py"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:3001/"] 
+      interval: 129s
+      timeout: 2s
+      retries: 5
+    mem_limit: 500MB
+    cpus: "1.5"
+    networks:
+      - rede_externa
+
+  internal_api_1:
+    image: mediacutsstudio/internal_api:latest
+    build:
+      context: ./internal_api
+      dockerfile: Dockerfile 
+    container_name: internal_api_1
+    # volumes:
+    #   - ./internal_api:/app  
+    restart: always
+    working_dir: /app
+    ports:
+      - "5050:5050"
+    command: flask --app api:app run --host=0.0.0.0 --port=5050
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:5050/"] 
+      interval: 129s
+      timeout: 2s
+      retries: 5
+    networks:
+      - rede_externa
+
+  internal_celery_worker_1:
+    image: mediacutsstudio/celery_worker:latest
+    build:
+      context: ./internalserver
+      dockerfile: Dockerfile 
+    container_name: internal_celery_worker_1
+    # volumes:
+    #   - ./internalserver:/app  
+    restart: always
+    working_dir: /app
+    command: supervisord -c /app/supervisord.conf
+    depends_on:
+      - redis
+      # - internal_api_1
+    networks:
+      - rede_externa
+    # environment:
+    #   - CUDA_VISIBLE_DEVICES=0  
+    # Limitation memory ? 
+    # mem_limit: 4G 
+
+    # not suported in docker in docker  
+    # runtime: nvidia
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+    
+    # for suport in docker in docker
+    # devices:
+    #   - /dev/nvidia0:/dev/nvidia0
+    #   - /dev/nvidiactl:/dev/nvidiactl
+    #   - /dev/nvidia-modeset:/dev/nvidia-modeset
+    #   - /dev/nvidia-uvm:/dev/nvidia-uvm
+    #   - /dev/nvidia-uvm-tools:/dev/nvidia-uvm-tools
+
+
+
+
+networks:
+  rede_externa:
+    driver: bridge
+
+    
+volumes:
+  redis_data:
+  uploads:
+  videos_data:

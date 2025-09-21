@@ -1,0 +1,53 @@
+QTreeView {
+    background-color: #1e1e1e;  /* Cor de fundo escura */
+    color: #dcdcdc;  /* Cor do texto */
+    border: 1px solid #333;  /* Borda sutil ao redor do widget */
+    alternate-background-color: #2c2c2c;  /* Cor alternada das linhas */
+    selection-background-color: #4b6eaf;  /* Cor de fundo para o item selecionado */
+    selection-color: #ffffff;  /* Cor do texto do item selecionado */
+    show-decoration-selected: 1;  /* Mostrar o estilo de seleção completo */
+    outline: none;  /* Remove a borda do foco */
+}
+
+QTreeView::item {
+    height: 25px;  /* Define a altura dos itens */
+    padding: 5px;  /* Espaçamento dentro de cada item */
+}
+
+QTreeView::item:hover {
+    background-color: #3c3f41;  /* Cor de fundo ao passar o mouse */
+}
+
+QTreeView::item:selected {
+    background-color: #4b6eaf;  /* Cor de fundo do item selecionado */
+    color: #ffffff;  /* Cor do texto do item selecionado */
+}
+
+QTreeView::branch:open:has-children {
+    image: url(':/icons/branch_open.png');  /* Ícone de ramo aberto (substitua pelo caminho do seu ícone) */
+}
+
+QTreeView::branch:closed:has-children {
+    image: url(':/icons/branch_closed.png');  /* Ícone de ramo fechado (substitua pelo caminho do seu ícone) */
+}
+
+QHeaderView::section {
+    background-color: #3c3f41;  /* Cor de fundo do cabeçalho */
+    color: #dcdcdc;  /* Cor do texto do cabeçalho */
+    padding: 4px;
+    border: 1px solid #333;  /* Borda do cabeçalho */
+}
+
+QScrollBar:vertical {
+    background-color: #2c2c2c;
+    width: 12px;
+}
+
+QScrollBar::handle:vertical {
+    background-color: #4b6eaf;
+    min-height: 20px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    background: none;
+}

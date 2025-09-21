@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis_scheduler
+    ports:
+      - "6389:6389"
+    volumes:
+      - redis_data:/data 
+
+  landingpage_sheduler:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    container_name: landingpage_scheduler
+    # volumes:
+    #   - ./Frontend:/app
+    working_dir: /app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - CHOKIDAR_INTERVAL=100
+    ports:
+      - "4348:4348"
+    restart: always
+    command: >
+      sh -c "npm run dev"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:4348"] 
+      interval: 129s
+      timeout: 2s
+      retries: 5
+    mem_limit: 900MB
+    cpus: "3.5"
+
+  app_scheduler:
+    build:
+      context: ./Internal-server
+      dockerfile: Dockerfile
+    volumes:
+      - ./Internal-server:/app
+    container_name: app_scheduler
+    working_dir: /app  
+    command: >
+      sh -c "
+        python api.py
+      "
+    ports:
+      - "5029:5029"
+    depends_on:
+      - redis
+
+  celery_worker:
+    build:
+      context: ./Internal-server
+      dockerfile: Dockerfile
+    volumes:
+      - ./Internal-server:/app
+    container_name: celery_worker_scheduler
+    working_dir: /app  
+    command: >
+      celery -A celery_worker.celery_app worker --beat --loglevel=info
+    depends_on:
+      - redis
+
+volumes:
+  redis_data:
+  uploads:

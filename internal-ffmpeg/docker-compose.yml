@@ -1,0 +1,13 @@
+# in docker in docker it must be version 2.2
+version: '2.2'
+# default version version: '3.8'
+
+services:
+
+  ffmpeg:
+    image: mediacutstudio/ffmpeg-gpu:v1.0
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: "no"
+    command: "ffmpeg -hide_banner -filters | grep xfade"

@@ -1,0 +1,36 @@
+red,&H0000FF&
+aqua,&H00FFFF&
+blue,&HFF0000&
+green,&H00FF00&
+yellow,&H00FFFF&
+lime green,&H32CD32&
+white,&HFFFFFF&
+orange,&H007FFF&
+navy blue,&HFFFF00&
+purple,&H800080&
+pink,&HFFC0CB&
+cyan,&HFFFF00&
+magenta,&HFF00FF&
+brown,&H8B4513&
+gray,&H808080&
+dark green,&H006400&
+gold,&HFFD700&
+silver,&HC0C0C0&
+violet,&HEE82EE&
+turquoise,&H40E0D0&
+peach,&HFFDAB9&
+indigo,&H4B0082&
+dark red,&H8B0000&
+light blue,&HADD8E6&
+olive,&H808000&
+coral,&HFF7F50&
+salmon,&HFA8072&
+khaki,&HF0E68C&
+light gray,&HD3D3D3&
+dark blue,&H00008B&
+light pink,&HFFB6C1&
+forest green,&H228B22&
+royal blue,&H4169E1&
+teal,&H008080&
+lavender,&HE6E6FA&
+sky blue,&H87CEEB&
