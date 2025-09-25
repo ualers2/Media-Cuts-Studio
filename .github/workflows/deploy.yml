@@ -83,6 +83,7 @@ jobs:
           echo '${{ secrets.SECRET_JSON_FIREBASE }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-media-cuts-studio-server/Keys/Firebase.json
           echo '${{ secrets.SECRET_JSON_FIREBASE_SHEDULER }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-sheduler-server/Internal-server/Keys/Firebase.json
           echo '${{ secrets.SECRET_JSON_FIREBASE_SHEDULER }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-sheduler-uploader-server/Keys/Firebase.json
+          echo '${{ secrets.SECRET_JSON_FIREBASE_DOCS }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-shortify-api/Keys/FirebaseDocs.json
           echo '${{ secrets.SECRET_JSON_FIREBASE }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-shortify-api/Keys/Firebase.json
           echo '${{ secrets.SECRET_JSON_FIREBASE }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-uptime-server/Keys/Firebase.json
 
