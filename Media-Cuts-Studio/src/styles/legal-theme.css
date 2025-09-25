@@ -1,0 +1,75 @@
+/* src/styles/legal-theme.css */
+.legal-theme {
+  --primary: 262 83% 58%;            /* roxo */
+  --primary-foreground: 0 0% 100%;   /* branco */
+  --primary-glow: 262 83% 70%;       /* roxo mais claro */
+
+  --secondary: 240 4.8% 95.9%;       /* cinza claro */
+  --secondary-foreground: 240 5.9% 10%;
+
+  --legal-heading: 262 83% 58%;      /* roxo */
+  --legal-text: 240 10% 20%;         /* cinza escuro */
+  --legal-section: 240 4.8% 95.9%;   /* cinza bem claro */
+  /* Figma Styles of your File */
+  /* Colors */
+  /* Fonts */
+  --h1-font-family: DmSans-Bold, sans-serif;
+  --h1-font-size: 90px;
+  --h1-line-height: 90px;
+  --h1-font-weight: 700;
+  --h1-font-style: normal;
+  --body-large-font-family: Inter-Regular, sans-serif;
+  --body-large-font-size: 22px;
+  --body-large-line-height: 31px;
+  --body-large-font-weight: 400;
+  --body-large-font-style: normal;
+  --h2-font-family: DmSans-Bold, sans-serif;
+  --h2-font-size: 54px;
+  --h2-line-height: 60px;
+  --h2-font-weight: 700;
+  --h2-font-style: normal;
+  --body-small-tag-font-family: DmSans-Regular, sans-serif;
+  --body-small-tag-font-size: 14px;
+  --body-small-tag-line-height: normal;
+  --body-small-tag-font-weight: 400;
+  --body-small-tag-font-style: normal;
+  --h5-font-family: DmSans-Bold, sans-serif;
+  --h5-font-size: 18px;
+  --h5-line-height: normal;
+  --h5-font-weight: 700;
+  --h5-font-style: normal;
+  --body-medium-font-family: Inter-Regular, sans-serif;
+  --body-medium-font-size: 16px;
+  --body-medium-line-height: 23px;
+  --body-medium-font-weight: 400;
+  --body-medium-font-style: normal;
+  --body-s-font-family: Inter-Regular, sans-serif;
+  --body-s-font-size: 14px;
+  --body-s-line-height: normal;
+  --body-s-font-weight: 400;
+  --body-s-font-style: normal;
+  --h4-font-family: DmSans-Bold, sans-serif;
+  --h4-font-size: 26px;
+  --h4-line-height: 60px;
+  --h4-font-weight: 700;
+  --h4-font-style: normal;
+  --body-bold-font-family: Inter-Medium, sans-serif;
+  --body-bold-font-size: 16px;
+  --body-bold-line-height: normal;
+  --body-bold-font-weight: 500;
+  --body-bold-font-style: normal;
+  --body-s-bold-font-family: Inter-Bold, sans-serif;
+  --body-s-bold-font-size: 14px;
+  --body-s-bold-line-height: normal;
+  --body-s-bold-font-weight: 700;
+  --body-s-bold-font-style: normal;
+  --tag-font-family: Inter-Medium, sans-serif;
+  --tag-font-size: 13px;
+  --tag-line-height: 31px;
+  --tag-font-weight: 500;
+  --tag-font-style: normal;
+
+  /* Effects */
+  --shadow-box-shadow:  0px 4px 104px 0px rgba(125, 94, 156, 1.00);
+
+}
