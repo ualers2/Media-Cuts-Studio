@@ -38,7 +38,7 @@ logger.addHandler(console_handler)
 
 @app.route('/')
 def index():
-    return jsonify({"message": "#1 Upload múltiplos arquivos funcionando!"})
+    return jsonify({"message": "#1 Upload multiplos arquivos funcionando!"})
 
 @app.route('/api/upload-media-bulk', methods=['POST'])
 def upload_media_bulk():

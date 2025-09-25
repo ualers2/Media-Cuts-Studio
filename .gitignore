@@ -22,6 +22,7 @@ internal-uptime-server/Keys/
 Media-Cuts-Studio/.env
 internal-shortify-api/Keys/
 internal-media-cuts-studio-server/Studio/Cookies/
+internal-media-cuts-studio-server/Keys/
 internal-shortify-api/Cookies/
 internal-sheduler-server/Internal-server/tmp/
 internal-sheduler-server/Internal-server/Uploaders/celerybeat-schedule

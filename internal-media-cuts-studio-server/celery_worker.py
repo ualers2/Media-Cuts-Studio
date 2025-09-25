@@ -29,7 +29,7 @@ import time
 from firebase_admin import credentials, initialize_app, storage, db, delete_app
 
 
-load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "Studio", "Keys", "env.env"))
+load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "Keys", "keys.env"))
 
 ########################################################################
 # IMPORT FirebaseKeys
