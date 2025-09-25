@@ -17,7 +17,7 @@ socketio = SocketIO(
     app, 
     async_mode="threading", 
     cors_allowed_origins=[
-        "https://dev.mediacutsstudio.com",
+        "https://mediacutsstudio.com",
         "http://localhost:3001",
         "http://localhost:4343",
         "*"

@@ -41,7 +41,7 @@ jobs:
       run: |
         ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "
           mkdir -p /home/administrator/deploys/mediacutsstudio/internal-landing-api/Keys && \
-          mkdir -p /home/administrator/deploys/mediacutsstudio/internal-media-cuts-studio-server/Studio/Keys && \
+          mkdir -p /home/administrator/deploys/mediacutsstudio/internal-media-cuts-studio-server/Keys && \
           mkdir -p /home/administrator/deploys/mediacutsstudio/internal-media-cuts-studio-server/Studio/Cookies && \
           mkdir -p /home/administrator/deploys/mediacutsstudio/internal-media-cuts-studio-server/Studio/Models && \
           mkdir -p /home/administrator/deploys/mediacutsstudio/internal-media-cuts-studio-server/Studio/Models/Yollo && \
@@ -60,7 +60,7 @@ jobs:
       run: |
         ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "
           printf '%s' '${{ secrets.SECRET_KEYS_ENV }}' > /home/administrator/deploys/mediacutsstudio/internal-landing-api/Keys/keys.env && \
-          printf '%s' '${{ secrets.SECRET_KEYS_ENV }}' > /home/administrator/deploys/mediacutsstudio/internal-media-cuts-studio-server/Studio/Keys/keys.env && \
+          printf '%s' '${{ secrets.SECRET_KEYS_ENV }}' > /home/administrator/deploys/mediacutsstudio/internal-media-cuts-studio-server/Keys/keys.env && \
           printf '%s' '${{ secrets.SECRET_YT_COOKIES }}' > /home/administrator/deploys/mediacutsstudio/internal-media-cuts-studio-server/Studio/Cookies/yt.json && \
           printf '%s' '${{ secrets.SECRET_KEYS_ENV }}' > /home/administrator/deploys/mediacutsstudio/internal-sheduler-server/Internal-server/Keys/keys.env && \
           printf '%s' '${{ secrets.SECRET_KEYS_ENV }}' > /home/administrator/deploys/mediacutsstudio/internal-sheduler-uploader-server/Keys/keys.env && \
@@ -80,7 +80,7 @@ jobs:
       run: |
         ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "
           echo '${{ secrets.SECRET_JSON_FIREBASE }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-landing-api/Keys/Firebase.json
-          echo '${{ secrets.SECRET_JSON_FIREBASE }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-media-cuts-studio-server/Studio/Keys/Firebase.json
+          echo '${{ secrets.SECRET_JSON_FIREBASE }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-media-cuts-studio-server/Keys/Firebase.json
           echo '${{ secrets.SECRET_JSON_FIREBASE_SHEDULER }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-sheduler-server/Internal-server/Keys/Firebase.json
           echo '${{ secrets.SECRET_JSON_FIREBASE_SHEDULER }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-sheduler-uploader-server/Keys/Firebase.json
           echo '${{ secrets.SECRET_JSON_FIREBASE }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-shortify-api/Keys/Firebase.json
