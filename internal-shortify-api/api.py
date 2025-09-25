@@ -20,6 +20,13 @@ appfb = initialize_app(cred, {
     'databaseURL': os.getenv('DATABASEURL')
 }, name="appfb")
 
+
+
+cred = credentials.Certificate(os.getenv('DATABASEPATHDOCS'))
+appdocs = initialize_app(cred, {
+    'databaseURL': os.getenv('DATABASEURLDOCS')
+}, name="appdocs")
+
 WEBHOOK_URL = os.getenv("WEBHOOK_URL")
 
 key_openai = os.getenv("OPENAI_API_KEY")
@@ -221,7 +228,7 @@ def api_Media_Cuts_Studio_Shortify_Mode_Create():
     tz_str = data.get('timezone', 'America/Sao_Paulo')
 
     ref_queue = db.reference('shortify_queue', app=appfb)
-    ref_projects = db.reference(f'projects/{user_email_filter}', app=appfb)
+    ref_projects = db.reference(f'projects/{user_email_filter}', app=appdocs)
     user_tasks_ref = db.reference(f'user_tasks/{user_email_filter}', app=appfb)
 
     try:
