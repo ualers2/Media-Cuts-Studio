@@ -89,6 +89,7 @@ class ShortifyAlgo:
                 includeHorizontal,
                 includeVertical,
                 app1,
+                appdocs,
                 user_email,
                 TiktokAccount,
                 TiktokAccountCookies,
@@ -177,7 +178,9 @@ class ShortifyAlgo:
         self.lastlongvideo = lastlongvideo
         self.lastlongvideotitle = lastlongvideotitle
         self.app1 = app1
+        self.appdocs = appdocs
         self.user_email = user_email.replace(".", "_")
+        self.user_email_origin = user_email
         self.TiktokAccount = TiktokAccount
         self.TiktokAccountCookies = TiktokAccountCookies
         self.api_key = api_key
@@ -351,9 +354,11 @@ class ShortifyAlgo:
                 TiktokAccount=self.TiktokAccount,
                 TiktokAccountCookies=self.TiktokAccountCookies,
                 user_email=self.user_email,
+                user_email_origin=self.user_email_origin,
                 canal_do_yt=canal_do_yt_replace, 
                 lastlongvideotitle=self.title_origin,
                 app_instance=self.app1,
+                appdocs=self.appdocs,
                 task_id=self.task_id,
                 title_origin=self.title_origin,
                 pastedUrl=self.pastedUrl,

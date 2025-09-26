@@ -96,10 +96,10 @@ elif PRODUCTION_ENV == "False":
     Audio_Transcriber_webhook=False
     Audio_Transcriber_api_key=None
     Audio_Transcriber_WEBHOOK_URL=None
-    ########################################################################
-    # IMPORT FirebaseKeys
-    from Keys.FirebaseAppKeys import *
-    app_teste = init_firebase()
+    # ########################################################################
+    # # IMPORT FirebaseKeys
+    # from Keys.FirebaseAppKeys import *
+    # app_teste = init_firebase()
     ########################################################################
     path_keys_ = os.path.join(diretorio_script, 'Keys', 'keys.env')
     load_dotenv(dotenv_path=path_keys_)
@@ -158,9 +158,11 @@ class AI_Curation:
         TiktokAccount='',
         TiktokAccountCookies='',
         user_email='',
+        user_email_origin='',
         canal_do_yt='',  
         lastlongvideotitle='',
         app_instance='',
+        appdocs='',
         task_id='',
         title_origin='',
         pastedUrl='',
@@ -202,6 +204,7 @@ class AI_Curation:
         self.editiontheme = editiontheme
         self.title_origin = title_origin
         self.app_instance = app_instance
+        self.appdocs = appdocs
         self.canal_do_yt = canal_do_yt
         self.lastlongvideotitle = lastlongvideotitle
         self.pastedUrl = pastedUrl
@@ -211,6 +214,9 @@ class AI_Curation:
         self.UPLOAD_URL_VIDEOMANAGER = os.getenv("UPLOAD_URL_VIDEOMANAGER")
         logger.info(f"UPLOAD_URL {self.UPLOAD_URL}")
         self.user_email = user_email
+        self.user_email_origin = user_email_origin
+        logger.info(f"user_email {self.user_email}")
+        logger.info(f"user_email_origin {self.user_email_origin}")
         self.downloadToPanelEnabled = downloadToPanelEnabled
         self.legendstheme = legendstheme
         self.linux_env = linux_env
@@ -270,7 +276,8 @@ class AI_Curation:
             "yolov11n-face.pt"#"yolov12n-face.pt"
         ) 
         self.task_id_db_str = f"{task_id}"
-        self.ref_projects = db.reference(f'projects/{self.user_email}', app=self.app_instance)
+        logger.info("?????")
+        self.ref_projects = db.reference(f'projects/{self.user_email}', app=self.appdocs)
 
         
         self.model = "gpt-4.1-nano"
@@ -1014,7 +1021,7 @@ Sugestao De Titulo Curto: {sugestao_de_titulo_curto}
             filename = os.path.basename(output_video_subtittle_watermask).replace(".mp4", "")
             safe_project_name = secure_filename(self.title_origin).replace("-", "")
             safe_project_name_filter = re.sub(r'[^0-9A-Za-z_-]', '', safe_project_name)
-            ref_projects_metadata = db.reference(f'projects/{self.user_email}/{safe_project_name_filter}/metadata/{filename}', app=self.app_instance)
+            ref_projects_metadata = db.reference(f'projects/{self.user_email}/{safe_project_name_filter}/metadata/{filename}', app=self.appdocs)
             video_metadata_sheduler = {
                 "filename": os.path.basename(output_video_subtittle_watermask),
                 "title": sugestao_de_titulo_curto,
@@ -1124,7 +1131,8 @@ Sugestao De Titulo Curto: {sugestao_de_titulo_curto}
     async def Autonomous_Analysis(self, 
                                 resposta_ia, 
                                 thumbnail_url, 
-                                nome_rename_final
+                                nome_rename_final,
+                                output_miniatura
                                 ):
 
         logger.info("Inicializando a análise com o Agent...")
@@ -1352,10 +1360,11 @@ Sugestao De Titulo Curto: {sugestao_de_titulo_curto}
             if self.downloadToPanelEnabled == True or self.downloadToPanelEnabled == "True" or self.downloadToPanelEnabled == "true":
      
                 VIDEO_FILE_PATH = output_video_subtittle_final
-                USER_ID_FOR_TEST = self.user_email
+                USER_ID_FOR_TEST = self.user_email_origin
 
                 video_metadata = {
                     "projectName": name_project,
+                    "type_project": "video",
                     "title": sugestao_de_titulo_curto,
                     "description": desc,
                     "hashtags": hashtags_origin,
@@ -1651,7 +1660,6 @@ Sugestao De Titulo Curto: {sugestao_de_titulo_curto}
                 project_key
                 )
         print(f"lista_de_videos_horizontais {lista_de_videos_horizontais}")
-
 
     async def Analyse_Vertical(self, 
                       nome_rename_final,
@@ -1978,7 +1986,7 @@ Sugestao De Titulo Curto: {sugestao_de_titulo_curto}
             filename = os.path.basename(output_video_subtittle_watermask).replace(".mp4", "")
             safe_project_name = secure_filename(self.title_origin).replace("-", "")
             safe_project_name_filter = re.sub(r'[^0-9A-Za-z_-]', '', safe_project_name)
-            ref_projects_metadata = db.reference(f'projects/{self.user_email}/{safe_project_name_filter}/metadata/{filename}', app=self.app_instance)
+            ref_projects_metadata = db.reference(f'projects/{self.user_email}/{safe_project_name_filter}/metadata/{filename}', app=self.appdocs)
             # 
             video_metadata_sheduler = {
                 "filename": os.path.basename(output_video_subtittle_watermask),
@@ -3272,41 +3280,41 @@ Transcrição:
             )
             self.update_status_progress(100, project_key)
 
-if __name__ == "__main__":
-    api_key = "apikey-startup-YEubhuzU8iasgxbExFMAJrWbf8NFd_sq4okm9b-OEDw"
-    user_email = "freitasalexandre810@gmail_com"
-    canal_do_yt = "cortesdoflow"
+# if __name__ == "__main__":
+#     api_key = "apikey-startup-YEubhuzU8iasgxbExFMAJrWbf8NFd_sq4okm9b-OEDw"
+#     user_email = "freitasalexandre810@gmail_com"
+#     canal_do_yt = "cortesdoflow"
     
-    lastlongvideotitle = "O que NÃO TE CONTAM sobre LULA: Brasil deveria ROMPER RELAÇÕES com Israel?"
-    project_key = secure_filename(lastlongvideotitle).replace("-", "").replace("....", "").replace("...", "").replace("..", "").replace(".", "").replace("... - ", "").replace('"????????"', '').replace("...__", "_") 
-    new_video_ids = "CO3LC8ub2_g"
-    output_miniatura = r"C:\Users\Media Cuts DeV\Downloads\HomeServer\HomeServer\internalserver\Studio\WorkEnvironment\Process\MediaBase\cortesdoflow\CO3LC8ub2_g.jpg"
-    nome_rename_final = r"C:\Users\Media Cuts DeV\Downloads\HomeServer\HomeServer\internalserver\Studio\WorkEnvironment\Process\MediaBase\cortesdoflow\O_que_NAO_TE_CONTAM_sobre_LULA_Brasil_deveria_ROMPER_RELACOES_com_Israel.mp4"
-    srt_file_path = r"C:\Users\Media Cuts DeV\Downloads\HomeServer\HomeServer\internalserver\Studio\WorkEnvironment\Process\AICuration\Transcript\audio_video_vertical.srt"
-    video_id = "CO3LC8ub2_g"
-    thumbnail_url = ""
-    AI_Curation_instance = AI_Curation(
-        linux_env=False, 
-        downloadToPanelEnabled=True,
-        secondsScheduleTiktokVideo="",
-        TiktokAccount="",
-        TiktokAccountCookies="",
-        user_email=user_email,
-        app_instance=app_teste,
-        canal_do_yt=canal_do_yt,
-        api_key=api_key,
-        CaptionsAlignment="2"
-        )
-    asyncio.run(AI_Curation_instance.main_Horizontal_TEST(
-            nome_rename_final,
-            srt_file_path,
-            video_id,
-            thumbnail_url,
-            project_key
+#     lastlongvideotitle = "O que NÃO TE CONTAM sobre LULA: Brasil deveria ROMPER RELAÇÕES com Israel?"
+#     project_key = secure_filename(lastlongvideotitle).replace("-", "").replace("....", "").replace("...", "").replace("..", "").replace(".", "").replace("... - ", "").replace('"????????"', '').replace("...__", "_") 
+#     new_video_ids = "CO3LC8ub2_g"
+#     output_miniatura = r"C:\Users\Media Cuts DeV\Downloads\HomeServer\HomeServer\internalserver\Studio\WorkEnvironment\Process\MediaBase\cortesdoflow\CO3LC8ub2_g.jpg"
+#     nome_rename_final = r"C:\Users\Media Cuts DeV\Downloads\HomeServer\HomeServer\internalserver\Studio\WorkEnvironment\Process\MediaBase\cortesdoflow\O_que_NAO_TE_CONTAM_sobre_LULA_Brasil_deveria_ROMPER_RELACOES_com_Israel.mp4"
+#     srt_file_path = r"C:\Users\Media Cuts DeV\Downloads\HomeServer\HomeServer\internalserver\Studio\WorkEnvironment\Process\AICuration\Transcript\audio_video_vertical.srt"
+#     video_id = "CO3LC8ub2_g"
+#     thumbnail_url = ""
+#     AI_Curation_instance = AI_Curation(
+#         linux_env=False, 
+#         downloadToPanelEnabled=True,
+#         secondsScheduleTiktokVideo="",
+#         TiktokAccount="",
+#         TiktokAccountCookies="",
+#         user_email=user_email,
+#         app_instance=app_teste,
+#         canal_do_yt=canal_do_yt,
+#         api_key=api_key,
+#         CaptionsAlignment="2"
+#         )
+#     asyncio.run(AI_Curation_instance.main_Horizontal_TEST(
+#             nome_rename_final,
+#             srt_file_path,
+#             video_id,
+#             thumbnail_url,
+#             project_key
             
             
             
-        ))
+#         ))
 
     # asyncio.run(AI_Curation_instance.main_TEST(
     #         canal_do_yt, 

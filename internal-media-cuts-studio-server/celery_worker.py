@@ -38,6 +38,12 @@ cred = credentials.Certificate(os.getenv('DATABASEPATH'))
 app1 = initialize_app(cred, {
     'databaseURL': os.getenv('DATABASEURL')
 }, name="app1")
+
+cred = credentials.Certificate(os.getenv('DATABASEPATHDOCS'))
+appdocs = initialize_app(cred, {
+    'databaseURL': os.getenv('DATABASEURLDOCS')
+}, name="appdocs")
+
 ########################################################################
 # IMPORT CoreApp
 from Studio.Modules.utils import *
@@ -554,7 +560,7 @@ def run_shortify_task(task_params):
     ref_user_tasks = db.reference(f'user_tasks/{filtrer_user_email}/{id_task_sheduled}', app=app1)
     ref_shortify = db.reference(f'shortify_queue/{id_task_sheduled}', app=app1)
     title_origin_for_project = secure_filename(title_origin).replace("-", "").replace("....", "").replace("...", "").replace("..", "").replace(".", "").replace("... - ", "").replace('"????????"', '').replace("...__", "_")
-    ref_projects = db.reference(f'projects/{filtrer_user_email}/{title_origin_for_project}', app=app1)
+    ref_projects = db.reference(f'projects/{filtrer_user_email}/{title_origin_for_project}', app=appdocs)
     
     if task_params is None:
         raise ValueError("Parametros ausentes.")
@@ -592,6 +598,7 @@ def run_shortify_task(task_params):
             includeHorizontal=includeHorizontal,
             includeVertical=includeVertical,
             app1=app1,
+            appdocs=appdocs,
             user_email=user_email_origin,
             TiktokAccount=TiktokAccount,
             TiktokAccountCookies=TiktokAccountCookies,

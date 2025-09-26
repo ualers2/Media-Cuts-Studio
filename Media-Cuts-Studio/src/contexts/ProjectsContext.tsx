@@ -88,6 +88,7 @@ export const ProjectsProvider: React.FC<{ children: ReactNode }> = ({ children }
   const [loadingProjects, setLoadingProjects] = useState<boolean>(true);
   const [errorProjects, setErrorProjects] = useState<string | null>(null);
   const videomanager_URL = import.meta.env.VITE_VIDEO_MANAGER_URL;  
+  const userId = localStorage.getItem('user_email')
 
   // atualizar estado local ao marcar usado / deletar
   const toggleProjectUsed = (projectName: string, used: boolean) => {
@@ -96,8 +97,6 @@ export const ProjectsProvider: React.FC<{ children: ReactNode }> = ({ children }
         p.name === projectName ? { ...p, used } : p
       )
     );
-    // também atualiza cache
-    const userId = localStorage.getItem('user_email') || 'anonymous';
     const key = `${CACHE_KEY_PREFIX}:${userId}`;
     const cache = getStorage(key);
     if (cache && Array.isArray(cache.projects)) {
@@ -110,8 +109,6 @@ export const ProjectsProvider: React.FC<{ children: ReactNode }> = ({ children }
     setProjects(prevProjects =>
       prevProjects.filter(p => p.name !== projectName)
     );
-    // também remove do cache
-    const userId = localStorage.getItem('user_email') || 'anonymous';
     const key = `${CACHE_KEY_PREFIX}:${userId}`;
     const cache = getStorage(key);
     if (cache && Array.isArray(cache.projects)) {
@@ -141,16 +138,15 @@ export const ProjectsProvider: React.FC<{ children: ReactNode }> = ({ children }
   }
 
 
-  const fetchUserProjects = useCallback(async (userId: string) => {
+  const fetchUserProjects = useCallback(async () => {
     setLoadingProjects(true);
     setErrorProjects(null);
     try {
-      const response = await fetch(`${videomanager_URL}/api/projects/${userId}`, {
+      const response = await fetch(`${videomanager_URL}/api/projects`, {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('api_key')}`,
           'Content-Type': 'application/json',
-          'X-User-Id': localStorage.getItem('user_email'), // Para o mock de backend, remova em produção
+          'X-User-Id': userId,
         },
       });
 
@@ -203,15 +199,14 @@ export const ProjectsProvider: React.FC<{ children: ReactNode }> = ({ children }
 
 
   // loadProjects usa cache primeiro, a menos que force=true
-  const loadProjects = useCallback(async (userId: string | null, options?: LoadOptions) => {
-    const uid = userId || localStorage.getItem('user_email');
-    if (!uid) {
+  const loadProjects = useCallback(async (options?: LoadOptions) => {
+    if (!userId) {
       setProjects([]);
       setLoadingProjects(false);
       return;
     }
 
-    const key = `${CACHE_KEY_PREFIX}:${uid}`;
+    const key = `${CACHE_KEY_PREFIX}:${userId}`;
     const ttlMinutes = DEFAULT_TTL_MINUTES;
     const cache = getStorage(key);
 
@@ -227,7 +222,7 @@ export const ProjectsProvider: React.FC<{ children: ReactNode }> = ({ children }
     }
 
     // caso contrário -> buscar servidor e atualizar cache
-    await fetchUserProjects(uid);
+    await fetchUserProjects();
   }, [fetchUserProjects]);
 
   // // Carregar projetos quando o componente for montado ou o usuário mudar
