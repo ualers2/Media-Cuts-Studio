@@ -1413,7 +1413,7 @@ Sugestao De Titulo Curto: {sugestao_de_titulo_curto}
                         response = requests.post(self.UPLOAD_URL, files=files, data=data, headers=headers)
 
                         # --- Tratamento da Resposta ---
-                        if response.status_code == 201:
+                        if response.status_code == 200:
                             logger.info("\nUpload bem-sucedido!")
                             logger.info("Resposta do servidor:")
                             logger.info(json.dumps(response.json(), indent=2))

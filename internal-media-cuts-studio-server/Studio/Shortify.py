@@ -325,22 +325,6 @@ class ShortifyAlgo:
             self.send_to_webhook(self.api_key, "info", "🚀 Shortify Algo V1 - Algorithm starting checking for new videos...", "blue")
             self.send_to_webhook(self.api_key, "progress", 0, "yellow")
 
-        try:
-            user_control_data = self.user_Control_Panel_ref.get()
-            if not user_control_data or 'project_simultaneo' not in user_control_data:
-                logger.error(f"Dados de controle de usuário ou 'project_simultaneo' não encontrados para a api_key. Pulando...")
-            
-            limite_simultaneo = user_control_data['project_simultaneo']
-            projects_videos_base_completed_count = user_control_data.get('projects_videos_base_completed', 0) # Novo campo para controle
-            projects_running_count = user_control_data.get('projects_running', 0) # Novo campo para controle
-        except Exception as e:
-            logger.error(f"Erro ao buscar dados de controle para  {e}")
-            
-        novo_valor = min(limite_simultaneo, projects_running_count + 1)
-        self.user_Control_Panel_ref.update({
-            'projects_running': novo_valor,
-            'projects_videos_base_completed': projects_videos_base_completed_count + 1
-            })
         if str(self.editiontheme) == "AI Vertical Fusion":
 
             AI_Curation_instance = AI_Curation(

@@ -80,7 +80,7 @@ const Projects = () => {
   useEffect(() => {
     const userId = localStorage.getItem('user_email');
     if (userId) {
-      loadProjects(userId).catch(err => {
+      loadProjects().catch(err => {
         console.error('Erro ao carregar projetos no mount:', err);
       });
     } 
@@ -148,7 +148,7 @@ const Projects = () => {
               onClick={() => {
                 const userId = localStorage.getItem('user_email');
                 if (userId) {
-                  loadProjects(userId, { force: true }).then(() => {
+                  loadProjects({ force: true }).then(() => {
                     console.log("Projetos atualizados!");
                     // window.location.reload();
                   })

@@ -380,6 +380,25 @@ def process_queue():
                     "status": "SCHEDULED",
                     "task_id": task.id
                 })
+
+                try:
+                    user_control_data = user_Control_Panel_ref.get()
+                    if not user_control_data or 'project_simultaneo' not in user_control_data:
+                        logger.error(f"Dados de controle de usuário ou 'project_simultaneo' não encontrados para a api_key. Pulando...")
+                    
+                    limite_simultaneo = user_control_data['project_simultaneo']
+                    projects_videos_base_completed_count = user_control_data.get('projects_videos_base_completed', 0) # Novo campo para controle
+                    projects_running_count = user_control_data.get('projects_running', 0) # Novo campo para controle
+                except Exception as e:
+                    logger.error(f"Erro ao buscar dados de controle para  {e}")
+                    
+                novo_valor = min(limite_simultaneo, projects_running_count + 1)
+                user_Control_Panel_ref.update({
+                    'projects_running': novo_valor,
+                    'projects_videos_base_completed': projects_videos_base_completed_count + 1
+                    })
+
+
                 running_count += 1
           
                 payload = item['payload']
@@ -559,6 +578,20 @@ def run_shortify_task(task_params):
     id_task_sheduled = date_time.replace(".", "_").replace(":", "_").replace(" ", "_")
     ref_user_tasks = db.reference(f'user_tasks/{filtrer_user_email}/{id_task_sheduled}', app=app1)
     ref_shortify = db.reference(f'shortify_queue/{id_task_sheduled}', app=app1)
+    data = ref_shortify.get()
+    status_task = data['status']
+    if status_task == 'SCHEDULED':
+        return f"uma tarefa com status SCHEDULED por algum motivo esta tentando rodar de novo"
+    
+
+    # lock_file_path = os.path.join(os.path.dirname(__file__), "tmp", "uploads")
+    # lock_file = os.path.join(lock_file_path, f"upload_{post_id}.lock")
+    # if os.path.exists(lock_file):
+    #     logger.warning(f"Tarefa para {post_id} já agendada. Ignorando duplicata.")
+    #     return "Já agendado"
+    # open(lock_file, 'w').close()
+
+
     title_origin_for_project = secure_filename(title_origin).replace("-", "").replace("....", "").replace("...", "").replace("..", "").replace(".", "").replace("... - ", "").replace('"????????"', '').replace("...__", "_")
     ref_projects = db.reference(f'projects/{filtrer_user_email}/{title_origin_for_project}', app=appdocs)
     
