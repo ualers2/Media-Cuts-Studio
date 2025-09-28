@@ -87,7 +87,7 @@ jobs:
           echo '${{ secrets.SECRET_JSON_FIREBASE }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-shortify-api/Keys/Firebase.json
           echo '${{ secrets.SECRET_JSON_FIREBASE }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-uptime-server/Keys/Firebase.json
 
-          echo '${{ secrets.CLIENTE_SECRET }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-sheduler-server/Keys/client_secret_1.json
+          echo '${{ secrets.CLIENTE_SECRET }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-sheduler-server/Internal-server/Keys/client_secret_1.json
 
 
         "
