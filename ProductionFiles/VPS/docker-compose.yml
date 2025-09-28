@@ -75,8 +75,9 @@ services:
       "uvicorn", "server:asgi_app",
       "--host", "0.0.0.0",
       "--port", "4062",
-      "--workers", "3",
-      "--timeout-keep-alive", "9600"
+      "--workers", "1",
+      "--timeout-keep-alive", "9600",
+      "--lifespan", "off"
     ]
     healthcheck:
       test: ["CMD", "curl", "-f", "http://127.0.0.1:4062"] 

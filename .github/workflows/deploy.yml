@@ -105,7 +105,93 @@ jobs:
 
           docker rmi $(docker images -f "dangling=true" -q) && \
 
-          docker rm -f api_scheduler celery_worker_scheduler upload_media_bulk_api_1 landingpage_1 landingpage_api_1 internal_webhook_1 internal_api_1 || true && \
+          docker rm -f api_scheduler celery_worker_scheduler landingpage_1 landingpage_api_1 internal_webhook_1 internal_api_1 || true && \
           docker container prune && \
-          docker compose up --build -d api_scheduler celery_worker_scheduler upload_media_bulk_api_1 landingpage_1 landingpage_api_1 internal_webhook_1 internal_api_1 
+          docker compose up --build -d api_scheduler celery_worker_scheduler landingpage_1 landingpage_api_1 internal_webhook_1 internal_api_1 
         "
+
+
+
+
+    - name: Setup SSH 2
+      uses: webfactory/ssh-agent@v0.9.1
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY2 }}
+
+    - name: Add remote host to known_hosts 2
+      run: |
+        mkdir -p ~/.ssh
+        chmod 700 ~/.ssh
+        ssh-keyscan -H ${{ secrets.DEPLOY_HOST2 }} >> ~/.ssh/known_hosts
+        chmod 644 ~/.ssh/known_hosts
+        echo "known_hosts:"
+        cat ~/.ssh/known_hosts 
+
+    - name: Copy entire project to VPS 2
+      run: |
+        rsync -avz --delete ./ ${{ secrets.DEPLOY_USER2 }}@${{ secrets.DEPLOY_HOST2 }}:/home/administrator/deploys/mediacutsstudio \
+          --exclude node_modules \
+          --exclude .git \
+
+    - name: Make dir on VPS 2
+      run: |
+        ssh ${{ secrets.DEPLOY_USER2 }}@${{ secrets.DEPLOY_HOST2 }} "
+          mkdir -p /home/administrator/deploys/mediacutsstudio/internal-sheduler-uploader-server/Keys
+       
+       
+        "
+
+
+    - name: Create keys.env on VPS 2
+      run: |
+        ssh ${{ secrets.DEPLOY_USER2 }}@${{ secrets.DEPLOY_HOST2 }} "
+          printf '%s' '${{ secrets.SECRET_KEYS_ENV }}' > /home/administrator/deploys/mediacutsstudio/internal-sheduler-uploader-server/Keys/keys.env 
+        
+        "
+
+    - name: Create .env on VPS 2
+      run: |
+        ssh ${{ secrets.DEPLOY_USER2 }}@${{ secrets.DEPLOY_HOST2 }} "
+          printf '%s' '${{ secrets.FRONT_END_ENV }}' > /home/administrator/deploys/mediacutsstudio/Media-Cuts-Studio/.env
+        "
+
+    - name: Create .json on VPS 2
+      run: |
+        ssh ${{ secrets.DEPLOY_USER2 }}@${{ secrets.DEPLOY_HOST2 }} "
+          echo '${{ secrets.SECRET_JSON_FIREBASE_SHEDULER }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-sheduler-uploader-server/Keys/Firebase.json
+
+
+        "
+
+    - name: Create COMPOSE on VPS 2
+      run: |
+        ssh ${{ secrets.DEPLOY_USER2 }}@${{ secrets.DEPLOY_HOST2 }} "
+          echo '${{ secrets.COMPOSE }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/docker-compose.yml
+
+        "
+    - name: Deploy Docker Compose 2 
+      run: |
+        ssh ${{ secrets.DEPLOY_USER2 }}@${{ secrets.DEPLOY_HOST2 }} "
+          cd /home/administrator/deploys/mediacutsstudio && \
+
+          docker rmi $(docker images -f "dangling=true" -q) && \
+
+          docker rm -f upload_media_bulk_api_1 || true && \
+          docker container prune && \
+          docker compose up --build -d upload_media_bulk_api_1
+        "
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
