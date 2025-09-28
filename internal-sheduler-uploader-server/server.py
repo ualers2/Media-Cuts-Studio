@@ -15,6 +15,13 @@ from werkzeug.utils import secure_filename
 import re
 import shutil
 from asgiref.wsgi import WsgiToAsgi
+from asgiref.typing import ASGI3Scope
+
+class SafeWsgiToAsgi(WsgiToAsgi):
+    async def __call__(self, scope: ASGI3Scope, receive, send):
+        if scope['type'] != 'http':
+            return  # ignora mensagens não HTTP
+        return await super().__call__(scope, receive, send)
 
 import hashlib, time, requests
 
@@ -22,7 +29,8 @@ import hashlib, time, requests
 from Modules.upload_ import upload_
 
 app = Flask(__name__)
-asgi_app = WsgiToAsgi(app)
+
+asgi_app = SafeWsgiToAsgi(app)
 app.secret_key = 'sua_chave_secreta'  
 app.permanent_session_lifetime = timedelta(minutes=60)  
 
