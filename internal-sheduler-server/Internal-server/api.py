@@ -617,7 +617,7 @@ def oauth2callback():
         with open(token_file, "wb") as f:
             pickle.dump(credentials, f)
 
-        TOKEN_ID = upload_(canal_id_replace, token_file, "freitasalexandre810@gmail_com")
+        TOKEN_ID = upload_(canal_id_replace, token_file, "freitasalexandre810@gmail.com")
         logger.info(f"TOKEN_ID {TOKEN_ID}")
 
         # 5) Atualiza apenas o token_path no Firebase
@@ -670,7 +670,7 @@ def create_canal():
         canal_id_str = f"{nome}"
         canal_id_replace = canal_id_str.replace(".", "_").replace(" ", "-")
 
-        TOKEN_ID = upload_(canal_id_replace, token_path, "freitasalexandre810@gmail_com")
+        TOKEN_ID = upload_(canal_id_replace, token_path, "freitasalexandre810@gmail.com")
         logger.info(f"TOKEN_ID {TOKEN_ID}")
         if not all([nome, token_path]):
             return jsonify({"error": "Todos os campos (nome,  token_path, scopes) são obrigatórios."}), 400
@@ -704,7 +704,7 @@ def create_canal():
         with open(token_file, "w", encoding="utf-8") as f:
             json.dump(token_content, f, ensure_ascii=False, indent=2)
 
-        TOKEN_ID = upload_(canal_id_replace, token_file, "freitasalexandre810@gmail_com")
+        TOKEN_ID = upload_(canal_id_replace, token_file, "freitasalexandre810@gmail.com")
         logger.info(f"TOKEN_ID {TOKEN_ID}")
 
         canal_data_to_save = {

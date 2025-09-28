@@ -18,7 +18,7 @@ logger.addHandler(file_handler)
 logger.addHandler(console_handler)
 
 def upload_(name_project, VIDEO_FILE_PATH, USER_ID_FOR_TEST):
-    UPLOAD_URL = os.getenv("UPLOAD_URL", "https://videomanager.api.mediacutsstudio.com")
+    UPLOAD_URL = "https://videomanager.api.mediacutsstudio.com"
     
     video_metadata = {
         "projectName": name_project,
