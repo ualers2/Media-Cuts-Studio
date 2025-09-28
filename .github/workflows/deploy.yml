@@ -129,7 +129,7 @@ jobs:
 
     - name: Make dir on VPS
       run: |
-        ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "
+        ssh ${{ secrets.DEPLOY_USER2 }}@${{ secrets.DEPLOY_HOST2 }} "
           mkdir -p /home/administrator/deploys/mediacutsstudio
         "
     - name: Copy entire project to VPS 2
