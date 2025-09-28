@@ -13,6 +13,7 @@ from flask_limiter.util import get_remote_address
 from werkzeug.formparser import parse_form_data
 from werkzeug.utils import secure_filename 
 import re
+import shutil
 from asgiref.wsgi import WsgiToAsgi
 
 from Modules.upload_ import upload_
@@ -48,7 +49,6 @@ def upload_media_bulk():
     batch_id = hashlib.sha256(str(time.time()).encode()).hexdigest()[:16].replace(".", "")
 
     try:
-        # Parse form data diretamente do stream - SEM carregar na memória
         stream, form, files = parse_form_data(request.environ)
         
         if not files or 'files[]' not in files:
@@ -59,9 +59,11 @@ def upload_media_bulk():
             return jsonify({"error": "Nenhum arquivo válido na requisição."}), 400
         
         temp_files_info = []
-        files_response = []  # lista de dicts: { filename, token_id, mimetype }
+        files_response = []
         logger.info(f"(ID: {batch_id})")
         local_path = os.path.join(diretorio_script, "tmp", "uploads")
+        if os.path.exists(local_path):
+            shutil.rmtree(local_path)
         os.makedirs(local_path, exist_ok=True)
         contador = 0
         for i, file_storage in enumerate(files_list):
@@ -70,7 +72,6 @@ def upload_media_bulk():
                 temp_path = os.path.join(local_path, safe_name)
                 logger.info(f"processamento {contador}/{len(files_list)} arquivos")
 
-                # Salva em chunks pequenos - RÁPIDO
                 with open(temp_path, 'wb') as temp_file:
                     while True:
                         chunk = file_storage.stream.read(2024 * 1024)  # 2mb chunks
@@ -78,9 +79,15 @@ def upload_media_bulk():
                             break
                         temp_file.write(chunk)
 
-                # envia para servidor de arquivos (sua função existente)
                 TOKEN_ID = upload_(batch_id, temp_path, "freitasalexandre810@gmail_com")
                 logger.info(f"TOKEN_ID {TOKEN_ID}")
+
+                try:
+                    os.remove(temp_path)
+                    logger.info(f"Arquivo temporário removido: {temp_path}")
+                except Exception as e:
+                    logger.warning(f"Falha ao remover arquivo temporário {temp_path}: {e}")
+
 
                 files_response.append({
                     "original_filename": file_storage.filename,
