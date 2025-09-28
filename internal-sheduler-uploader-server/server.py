@@ -1,4 +1,4 @@
-# uploadmediabulk.py
+# server.py
 from flask import Flask, render_template, Response, request, jsonify, session, redirect,send_from_directory,  url_for
 from flask_cors import CORS  
 import time
@@ -15,6 +15,9 @@ from werkzeug.utils import secure_filename
 import re
 import shutil
 from asgiref.wsgi import WsgiToAsgi
+
+import hashlib, time, requests
+
 
 from Modules.upload_ import upload_
 
@@ -44,7 +47,7 @@ def index():
 @app.route('/api/upload-media-bulk', methods=['POST'])
 def upload_media_bulk():
     """Upload múltiplos arquivos sem carregar na memória e retorna tokens/ids para cada arquivo"""
-    import hashlib, time, requests
+    logger.info("Upload media_bulk iniciado")
 
     batch_id = hashlib.sha256(str(time.time()).encode()).hexdigest()[:16].replace(".", "")
 
@@ -79,7 +82,7 @@ def upload_media_bulk():
                             break
                         temp_file.write(chunk)
 
-                TOKEN_ID = upload_(batch_id, temp_path, "freitasalexandre810@gmail_com")
+                TOKEN_ID = upload_(batch_id, temp_path, "freitasalexandre810@gmail.com")
                 logger.info(f"TOKEN_ID {TOKEN_ID}")
 
                 try:

@@ -57,7 +57,10 @@ interface Channel {
 }
 
 export default function BulkSchedule() {
-  const apiUrl = import.meta.env.VITE_BACKEND_URL as string
+
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+  const VITE_BULK_BACKEND_URL = import.meta.env.VITE_BULK_BACKEND_URL
+
 
   const [step, setStep] = useState(1)
   const [files, setFiles] = useState<File[]>([])
@@ -75,8 +78,6 @@ export default function BulkSchedule() {
   const [channels, setChannels] = useState<Channel[]>([])
   const [loadingChannels, setLoadingChannels] = useState(true)
 
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
-  const VITE_BULK_BACKEND_URL = import.meta.env.VITE_BULK_BACKEND_URL
 
   const youtubeChannels = channels.filter(c => c.socialNetwork === 'youtube')
   const tikTokChannels = channels.filter(c => c.socialNetwork === 'tiktok')
@@ -254,7 +255,7 @@ export default function BulkSchedule() {
     })
 
     try {
-      await axios.post(`${apiUrl}/api/process-bulk-posts`, payload)
+      await axios.post(`${BACKEND_URL}/api/process-bulk-posts`, payload)
 
       const updated = bulkPosts.map(p => ({ ...p, status: 'success' }))
       setBulkPosts(updated)

@@ -41,10 +41,12 @@ internal-sheduler-server/Internal-server/Uploaders/TiktokAutoUploader/tiktok_upl
 Media-Cuts-Studio/videos/
 encoded_files/
 Ideas/
+ProductionFiles/VPS/bulksheduler.conf
 ProductionFiles/VPS/Firebase.json
 ProductionFiles/VPS/FirebaseDocs.json
 *.env
 Portifolio/
+ProductionFiles/VPS/client_secret_1.json
 server-docs/
 pipeline-server/
 testers-functions/
