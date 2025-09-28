@@ -76,7 +76,7 @@ jobs:
           printf '%s' '${{ secrets.FRONT_END_ENV }}' > /home/administrator/deploys/mediacutsstudio/Media-Cuts-Studio/.env
         "
 
-    - name: Create Firebase.json on VPS
+    - name: Create .json on VPS
       run: |
         ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "
           echo '${{ secrets.SECRET_JSON_FIREBASE }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-landing-api/Keys/Firebase.json
@@ -86,6 +86,9 @@ jobs:
           echo '${{ secrets.SECRET_JSON_FIREBASE_DOCS }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-shortify-api/Keys/FirebaseDocs.json
           echo '${{ secrets.SECRET_JSON_FIREBASE }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-shortify-api/Keys/Firebase.json
           echo '${{ secrets.SECRET_JSON_FIREBASE }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-uptime-server/Keys/Firebase.json
+
+          echo '${{ secrets.CLIENTE_SECRET }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-sheduler-server/Keys/client_secret_1.json
+
 
         "
 

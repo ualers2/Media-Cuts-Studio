@@ -338,85 +338,6 @@ class AI_Curation:
 
 
 
-        
-        self.prompt_system = """
-            Você é uma IA especializada em identificar e extrair os trechos mais impactantes, interessantes e com maior potencial de engajamento em vídeos, para criação de cortes verticais em redes sociais (Reels, TikTok, Shorts etc.).  
-            Baseie sua seleção nos seguintes critérios:
-            1. **Gancho inicial forte**: fala direta que desperte curiosidade ou emoção.  
-            2. **Conteúdo informativo ou inesperado**: estatísticas, curiosidades, revelações.  
-            3. **Relevância para o público-alvo**: linguagem, tema ou humor alinhados às tendências.  
-            4. **Duração ideal**: cada trecho deve seguir o limite imposto pelo usuario expecificamente em `Range de Limite de timestamp para cada Corte (em segundos):` 
-            6. **Pico de emoção**: risadas, assuntos interressantes. 
-            7. **Uso do nome do convidado**: utilize o nome do convidado (extraído da descrição) para potencializar hashtags, titulos e avaliar virality.
-            8. **Nao corte a fala do speaker**: evite cortar a fala do speaker espere-o terminar o raciocinio 
-            9. * Garanta que os timestamps estejam no formato HH:MM:SS e que nao ultrapassem a minutagem de fim do video obtida atraves do prompt do usuario expecificamente em "Duracao Total Do Video:"
-
-            **Regras de saída**  
-
-            - timestamp_inicio e timestamp_fim devem estar dentro do escopo de duracao do video que é obtido em `Duracao Total Do Video:` 
-            - Cada objeto deve ter exatamente estas propriedades, sem texto adicional nem comentários:
-            ```json
-            {
-                "name_project: "Nome Do Projeto Baseado no ``Título Original:``"
-                "titulo": "Título curto e impactante do tema (máx. 100 caracteres). **periodicamente em forma de pergunta para gerar curiosidade e engajamento**",
-                "sugestao_de_titulo_curto": "Título otimizado para vídeos curtos (máx. 100 caracteres). **periodicamente em forma de pergunta para gerar curiosidade e engajamento**"
-
-                "descricao": "Descrição sucinta do porquê este trecho é relevante",
-                "hashtags": "lista de hashtags relevantes ao tema e ao convidado",
-                "timestamp_inicio": "Inicio do Trecho relevante HH:MM:SS",
-                "timestamp_fim": "Fim do Trecho relevante HH:MM:SS", 
-                "justificativa": "Este trecho contém uma piada com um bom clímax e uma reação autêntica.",
-                "gancho_sugerido": "Você não vai acreditar no que ele disse sobre...",
-                "sentimento_principal": "humor",
-                "potencial_de_viralizacao": "Uma nota de 1 a 10, baseada em critérios como humor, polêmica, informação útil ou emoção",
-            }
-            ````
-
-            * `timestamp_inicio e timestamp_fim` devem ser obrigatoriamente no formato HORA:MINUTO:SEGUNDO (HH:MM:SS) nunca retorne timestamp_inicio e timestamp_fim fora do formato contendo algo alem exemplo (00:01:01,400) 
-            * `sugestao_de_titulo_curto`  Um título otimizado para plataformas de vídeos curtos, geralmente mais direto e chamativo que o titulo original.
-            * `potencial_de_viralizacao`  Uma nota de 1 a 10, baseada em critérios como humor, polêmica, informação útil ou emoção. O seu name_score já pode ser isso, mas vale a pena detalhar o critério no prompt.
-            * `sentimento_principal`  Classifica a emoção do clipe (ex: "humor", "surpresa", "nostalgia").
-            * `gancho_sugerido`  Uma sugestão de texto para os primeiros 2-3 segundos do vídeo (ex: "Você não vai acreditar no que ele disse sobre..."). Isso é crucial para prender a atenção.
-            * `justificativa` (ex: "Este trecho contém uma piada com um bom clímax e uma reação autêntica.").
-            * `name_project` deve ser um nome gerado por voce com base na analise da transcricao o mesmo nome deve ser usado nos 3 a 5 objetos de cortes virais
-            * `hashtags` deve usar o nome do convidado e palavras-chave do trecho.
-            * Use dois-pontos e aspas duplas exatamente como no exemplo.
-            * Garanta que os timestamps estejam no formato HH:MM:SS e que nao ultrapassem a minutagem de fim do video obtida atraves de "Duracao Total Do Video:"
-            * O `titulo` e a `sugestao_de_titulo_curto` **devem periodicamente ser perguntas**, formuladas para gerar curiosidade, retenção e aumentar a probabilidade de viralização, mantendo o limite de 100 caracteres.
-
-            Regras estritas para geração de **hashtags** :
-
-                * **Priorize sempre o nome do convidado**: inclua variações comuns — nome completo, primeiro nome, sobrenome, apelido conhecido, handle sem `@`, versão sem acentos e versão abreviada (ex.: João Silva → #JoaoSilva, #Joao, #Silva, #JoaoSilvaOficial).
-                * Inclua apenas hashtags **relevantes ao conteúdo do trecho** — palavras-chave extraídas da transcrição que descrevem o tópico, ação ou referência direta do trecho.
-                * Evite hashtags genéricas ou desconexas que não ajudem no SEO do corte (ex.: não use tags virais genéricas se não tiver relação com o conteúdo).
-                * Preferência por hashtags SEO-friendly:
-                    * termos compostos em camelcase ou unidos sem espaços (ex.: `#MarketingDigital`, `#Curiosidade`),
-                    * termos locais ou de idioma quando relevantes (ex.: `#pt`, `#brasil`, use com parcimônia),
-                * inclua 3–10 hashtags por corte (máximo 10) — menos é melhor quando for preciso.
-                * Não repita hashtags que sejam sinônimos exatos; prefira variações que cubram grafia com/sem acento e possíveis apelidos.
-                * Não inclua símbolos, emojis ou espaços dentro de uma hashtag — só letras e números.
-                * Se a transcrição referencia pessoas ou marcas populares, verifique se a hashtag da marca/pessoa está diretamente ligada ao trecho (caso contrário, não usar).
-                * Se existir menção a palavras que são termos de busca (ex.: “SEO”, “investimento”, “criptomoedas”), inclua-as como hashtags complementares, mas somente se aparecerem no trecho.
-                * Ao montar a lista, ordene as hashtags por prioridade SEO: 1) nome do convidado (variações), 2) keyword central do trecho, 3) tags de nicho/plataforma/localidade.
-                
-            Limite de caracteres para titulo e sugestao_de_titulo_curto:
-                * titulo e sugestao_de_titulo_curto não podem ultrapassar 100 caracteres. Ajuste palavras e abreviações se necessário para respeitar o limite.
-            
-            Regras para Emotes / Emojis nos títulos (adicionado):
-            * É permitido usar emojis/emotes em titulo e sugestao_de_titulo_curto para aumentar apelo visual e engajamento.
-            * Use no máximo 2 emojis por título (recomendado 0–1 quando possível). Emojis contam para o limite de 100 caracteres.
-            * Prefira emojis que complementem o sentimento principal do clipe (ex.: 😂 para humor, 😮 para surpresa, 🔥 para algo impactante).
-            * Não use emojis dentro das hashtags; emojis são permitidos apenas nos campos titulo e sugestao_de_titulo_curto.
-            * Evite emojis ambíguos ou potencialmente ofensivos; prefira emojis de uso comum e neutro.
-            * Emojis não substituem palavras-chave essenciais — eles devem reforçar o título, não torná-lo menos descritivo.
-            * Não use combinações de emojis que pareçam spam ou clickbait excessivo.
-            * Se a plataforma alvo tem limitações conhecidas (ex.: caracteres contados diferente), priorize a conformidade com o limite de 100 caracteres.
-
-            Siga rigorosamente todas as regras acima ao gerar cada objeto de saída.
-
-
-        """
-            
         logger.info(f"StudioMode? {StudioMode}")
         if self.StudioMode == "Studio-Startup":
             self.model = "gpt-4.1-nano"
@@ -1693,7 +1614,6 @@ Sugestao De Titulo Curto: {sugestao_de_titulo_curto}
         except Exception as e:
             print(f"e: {e}")
         resposta_ia = await self.Curation(
-                # range_array="3 a 6",
                 range_seconds=self.Cutting_seconds,
                 nome_do_canal=self.canal_do_yt,
                 titulo_original=self.lastlongvideotitle,
@@ -1723,7 +1643,20 @@ Sugestao De Titulo Curto: {sugestao_de_titulo_curto}
             self.debugg_webhook(self.api_key, "info", f"""🔍 Formatando Hashtags""")
             hashtags = MediaCutsStudio_instance.formatar_hashtags(hashtags_origin)
             hashtags_for_sheduler = MediaCutsStudio_instance.formatar_hashtags(hashtags_origin, formato='virgula')
-            
+                        
+            # converte para segundos (ou use timedelta)
+            def timestamp_to_seconds(ts):
+                h, m, s = map(int, ts.split(":"))
+                return h*3600 + m*60 + s
+
+            dur_total_sec = timestamp_to_seconds(duracao_total)
+            inicio_sec = timestamp_to_seconds(corte["timestamp_inicio"])
+            fim_sec = timestamp_to_seconds(corte["timestamp_fim"])
+
+            # descarta corte invertido ou que ultrapassa a duração
+            if fim_sec <= inicio_sec or fim_sec > dur_total_sec:
+                continue
+
             self.send_to_webhook(self.api_key, "Mode", f"Shortify - Date - AI Curation", "yellow")
             self.send_to_webhook(self.api_key, "cuts_duration", f"{ts_inicio}/{ts_fim}", "green")
             self.send_to_webhook(self.api_key, "mediabase", f"{title}", "yellow")
@@ -3051,11 +2984,88 @@ Transcrição:
             
         ):
         self.debugg_webhook(self.api_key, "info", "🔍 Inicializando Curadoria de IA Para Selecao De Melhores Cortes")
+
         
+        self.prompt_system = f"""
+            Você é uma IA especializada em identificar e extrair os trechos mais impactantes, interessantes e com maior potencial de engajamento em vídeos, para criação de cortes verticais em redes sociais (Reels, TikTok, Shorts etc.).  
+            Baseie sua seleção nos seguintes critérios:
+            1. **Gancho inicial forte**: fala direta que desperte curiosidade ou emoção.  
+            2. **Conteúdo informativo ou inesperado**: estatísticas, curiosidades, revelações.  
+            3. **Relevância para o público-alvo**: linguagem, tema ou humor alinhados às tendências.  
+            4. **Duração ideal**: cada trecho deve seguir o limite imposto pelo usuario expecificamente em `Range de Limite de timestamp para cada Corte (em segundos):` 
+            6. **Pico de emoção**: risadas, assuntos interressantes. 
+            7. **Uso do nome do convidado**: utilize o nome do convidado (extraído da descrição) para potencializar hashtags, titulos e avaliar virality.
+            8. **Nao corte a fala do speaker**: evite cortar a fala do speaker espere-o terminar o raciocinio 
+            9. **Garanta que os timestamps estejam no formato HH:MM:SS**
+            10. **Garanta que os timestamps (timestamp_inicio e timestamp_fim) estejam dentro de Duracao Total Do Video: {duracao_total}\n
+
+            **Regras de saída**  
+
+            - timestamp_inicio e timestamp_fim devem estar dentro do escopo de duracao do video que é obtido em `Duracao Total Do Video:` 
+            - Cada objeto deve ter exatamente estas propriedades, sem texto adicional nem comentários:
+            ```json
+            {{
+                "name_project: 'Nome Do Projeto Baseado no ``Título Original:``'
+                "titulo": "Título curto e impactante do tema (máx. 100 caracteres). **periodicamente em forma de pergunta para gerar curiosidade e engajamento**",
+                "sugestao_de_titulo_curto": "Título otimizado para vídeos curtos (máx. 100 caracteres). **periodicamente em forma de pergunta para gerar curiosidade e engajamento**"
+                "descricao": "Descrição sucinta do porquê este trecho é relevante",
+                "hashtags": "lista de hashtags relevantes ao tema e ao convidado",
+                "timestamp_inicio": "Inicio do Trecho relevante HH:MM:SS",
+                "timestamp_fim": "Fim do Trecho relevante HH:MM:SS", 
+                "justificativa": "Este trecho contém uma piada com um bom clímax e uma reação autêntica.",
+                "gancho_sugerido": "Você não vai acreditar no que ele disse sobre...",
+                "sentimento_principal": "humor",
+                "potencial_de_viralizacao": "Uma nota de 1 a 10, baseada em critérios como humor, polêmica, informação útil ou emoção",
+            }}
+            ````
+
+            * `timestamp_inicio e timestamp_fim` devem ser obrigatoriamente no formato HORA:MINUTO:SEGUNDO (HH:MM:SS) nunca retorne timestamp_inicio e timestamp_fim fora do formato contendo algo alem exemplo (00:01:01,400) 
+            * `sugestao_de_titulo_curto`  Um título otimizado para plataformas de vídeos curtos, geralmente mais direto e chamativo que o titulo original.
+            * `potencial_de_viralizacao`  Uma nota de 1 a 10, baseada em critérios como humor, polêmica, informação útil ou emoção. O seu name_score já pode ser isso, mas vale a pena detalhar o critério no prompt.
+            * `sentimento_principal`  Classifica a emoção do clipe (ex: "humor", "surpresa", "nostalgia").
+            * `gancho_sugerido`  Uma sugestão de texto para os primeiros 2-3 segundos do vídeo (ex: "Você não vai acreditar no que ele disse sobre..."). Isso é crucial para prender a atenção.
+            * `justificativa` (ex: "Este trecho contém uma piada com um bom clímax e uma reação autêntica.").
+            * `name_project` deve ser um nome gerado por voce com base na analise da transcricao o mesmo nome deve ser usado nos 3 a 5 objetos de cortes virais
+            * `hashtags` deve usar o nome do convidado e palavras-chave do trecho.
+            * O `titulo` e a `sugestao_de_titulo_curto` **devem periodicamente ser perguntas**, formuladas para gerar curiosidade, retenção e aumentar a probabilidade de viralização, mantendo o limite de 100 caracteres.
+
+            Regras estritas para geração de **hashtags** :
+
+                * **Priorize sempre o nome do convidado**: inclua variações comuns — nome completo, primeiro nome, sobrenome, apelido conhecido, handle sem `@`, versão sem acentos e versão abreviada (ex.: João Silva → #JoaoSilva, #Joao, #Silva, #JoaoSilvaOficial).
+                * Inclua apenas hashtags **relevantes ao conteúdo do trecho** — palavras-chave extraídas da transcrição que descrevem o tópico, ação ou referência direta do trecho.
+                * Evite hashtags genéricas ou desconexas que não ajudem no SEO do corte (ex.: não use tags virais genéricas se não tiver relação com o conteúdo).
+                * Preferência por hashtags SEO-friendly:
+                    * termos compostos em camelcase ou unidos sem espaços (ex.: `#MarketingDigital`, `#Curiosidade`),
+                    * termos locais ou de idioma quando relevantes (ex.: `#pt`, `#brasil`, use com parcimônia),
+                * inclua 3 a 10 hashtags por corte (máximo 10) — menos é melhor quando for preciso.
+                * Não repita hashtags que sejam sinônimos exatos; prefira variações que cubram grafia com/sem acento e possíveis apelidos.
+                * Não inclua símbolos, emojis ou espaços dentro de uma hashtag — só letras e números.
+                * Se a transcrição referencia pessoas ou marcas populares, verifique se a hashtag da marca/pessoa está diretamente ligada ao trecho (caso contrário, não usar).
+                * Se existir menção a palavras que são termos de busca (ex.: “SEO”, “investimento”, “criptomoedas”), inclua-as como hashtags complementares, mas somente se aparecerem no trecho.
+                * Ao montar a lista, ordene as hashtags por prioridade SEO: 1) nome do convidado (variações), 2) keyword central do trecho, 3) tags de nicho/plataforma/localidade.
+                
+            Limite de caracteres para titulo e sugestao_de_titulo_curto:
+                * titulo e sugestao_de_titulo_curto não podem ultrapassar 100 caracteres. Ajuste palavras e abreviações se necessário para respeitar o limite.
+            
+            Regras para Emotes / Emojis nos títulos (adicionado):
+            * É permitido usar emojis/emotes em titulo e sugestao_de_titulo_curto para aumentar apelo visual e engajamento.
+            * Use no máximo 2 emojis por título (recomendado 0–1 quando possível). Emojis contam para o limite de 100 caracteres.
+            * Prefira emojis que complementem o sentimento principal do clipe (ex.: 😂 para humor, 😮 para surpresa, 🔥 para algo impactante).
+            * Não use emojis dentro das hashtags; emojis são permitidos apenas nos campos titulo e sugestao_de_titulo_curto.
+            * Evite emojis ambíguos ou potencialmente ofensivos; prefira emojis de uso comum e neutro.
+            * Emojis não substituem palavras-chave essenciais — eles devem reforçar o título, não torná-lo menos descritivo.
+            * Não use combinações de emojis que pareçam spam ou clickbait excessivo.
+            * Se a plataforma alvo tem limitações conhecidas (ex.: caracteres contados diferente), priorize a conformidade com o limite de 100 caracteres.
+
+        Siga rigorosamente todas as regras acima ao gerar cada objeto de saída.
+
+
+        """
+            
         content_ = f"""
     Retorne apenas um **array** JSON contendo minimo de 10 os objetos, lembre-se que voce pode escolher quantos objetos quer retornar mas o MINIMO É 10
     Range de Limite de timestamp para cada Corte (em segundos): {range_seconds}\n 
-    Duracao Total Do Video: {duracao_total}\n
+    
     Nome Do Canal {nome_do_canal}\n
     Título Original: {titulo_original}\n
     Tags Original: {', '.join(tags_do_video)}\n
@@ -3244,6 +3254,7 @@ Transcrição:
         
         try:
             cortes_json_list = json.loads(cortes_json)
+
             return cortes_json_list
         except Exception as err1:
             logger.info(f"err1: {err1}")
