@@ -127,6 +127,11 @@ jobs:
         echo "known_hosts:"
         cat ~/.ssh/known_hosts 
 
+    - name: Make dir on VPS
+      run: |
+        ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "
+          mkdir -p /home/administrator/deploys/mediacutsstudio
+        "
     - name: Copy entire project to VPS 2
       run: |
         rsync -avz --delete ./ ${{ secrets.DEPLOY_USER2 }}@${{ secrets.DEPLOY_HOST2 }}:/home/administrator/deploys/mediacutsstudio \
