@@ -398,13 +398,14 @@ def upload_media_bulk():
             safe_name = secure_filename(file_storage.filename)
             logger.info(f"processamento {i+1}/{len(files_list)} arquivos: {safe_name}")
 
-            # em vez de salvar em disco, passamos o stream diretamente para upload_()
+            # PASSA O STREAM DIRETO (sem tornar seekable, sem .read() inteiro)
             token_id = upload_(
                 name_project=batch_id,
                 VIDEO_FILE_PATH={"fileobj": file_storage.stream, "filename": safe_name},
                 USER_ID_FOR_TEST="freitasalexandre810@gmail.com",
                 type_project="files"
             )
+
 
             files_response.append({
                 "original_filename": file_storage.filename,

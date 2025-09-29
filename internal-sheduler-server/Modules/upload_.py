@@ -1,4 +1,4 @@
-# Substituir /app/Modules/upload_.py -> função upload_ (versão robusta)
+# Substituir /app/Modules/upload_.py 
 import os
 import json
 import requests
@@ -8,6 +8,8 @@ import shutil
 from typing import IO
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+
+CHUNK_SIZE = 1024 * 1024  # 1MB por chunk para streaming
 
 diretorio_script = os.path.dirname(__file__)
 os.makedirs(os.path.join(diretorio_script, '../', 'Logs'), exist_ok=True)
@@ -69,14 +71,14 @@ def upload_(name_project, VIDEO_FILE_PATH, USER_ID_FOR_TEST,
             sentimento_principal='',
             potencial_de_viralizacao=''):
     """
-    Versão robusta do upload:
-      - para path (string) -> multipart upload (compatibilidade antiga)
-      - para fileobj seekable -> multipart usando fileobj (evita raw stream)
-      - para fileobj não-seekable -> grava em tmpfile e faz multipart
+    Versão streaming-first do upload:
+      - path (string) -> multipart
+      - fileobj seekable -> multipart (fileobj)
+      - fileobj não-seekable -> STREAM RAW direto para /api/upload-video (X-Filename + X-Metadata)
+      - fallback: temp file (apenas em caso extremo)
     """
     UPLOAD_URL = "https://videomanager.api.mediacutsstudio.com"
     session = _create_session(max_retries=5, backoff_factor=1)
-
 
     if type_project == "files":
         video_metadata = {
@@ -162,8 +164,7 @@ def upload_(name_project, VIDEO_FILE_PATH, USER_ID_FOR_TEST,
     except Exception:
         seekable = False
 
-    headers = {'X-User-Id': USER_ID_FOR_TEST}
-    data = {'metadata': json.dumps(video_metadata)}
+    headers_base = {'X-User-Id': USER_ID_FOR_TEST}
 
     # Se fileobj tem tamanho/seekable, faça multipart usando fileobj (não raw stream)
     if content_length is not None and seekable:
@@ -174,7 +175,9 @@ def upload_(name_project, VIDEO_FILE_PATH, USER_ID_FOR_TEST,
             logger.info(f"Tentando enviar stream '{filename}' via multipart (fileobj seekable) para {UPLOAD_URL} ...")
             logger.info(f"Com metadados: {json.dumps(video_metadata, indent=2)}, Content-Length: {content_length}")
             response = session.post(f"{UPLOAD_URL}/api/upload-video",
-                                    files=files, data=data, headers=headers,
+                                    files=files,
+                                    data={'metadata': json.dumps(video_metadata)},
+                                    headers=headers_base,
                                     timeout=3600)
             if response.status_code in (200, 201):
                 logger.info("Upload bem-sucedido (multipart, fileobj).")
@@ -194,33 +197,78 @@ def upload_(name_project, VIDEO_FILE_PATH, USER_ID_FOR_TEST,
             logger.exception(f"Erro no upload multipart (fileobj): {e}")
             return None
 
-    # Se não é seekable (p.ex. stream vindo de pipe), gravar em temp file e enviar multipart
+    # -------------------- NOVO: stream RAW direto (sem gravar tmp) --------------------
+    # Quando não-seekable, fazemos POST streaming puro para o servidor que aceita X-Filename + X-Metadata
+    try:
+        def chunk_generator(f):
+            while True:
+                chunk = f.read(CHUNK_SIZE)
+                if not chunk:
+                    break
+                # requests aceita bytes generator como corpo
+                yield chunk
+
+        headers = headers_base.copy()
+        headers.update({
+            'X-Filename': filename,
+            'X-Metadata': json.dumps(video_metadata),
+            'Content-Type': 'application/octet-stream',
+            # Forçar chunked transfer para evitar Content-Length
+            'Transfer-Encoding': 'chunked'
+        })
+
+        logger.info(f"Tentando enviar stream não-seekable '{filename}' via RAW streaming para {UPLOAD_URL} ...")
+        logger.info(f"Com metadados: {json.dumps(video_metadata, indent=2)}")
+        # nota: data=generator -> requests usará streaming e não carrega tudo na memória.
+        response = session.post(f"{UPLOAD_URL}/api/upload-video",
+                                data=chunk_generator(fileobj),
+                                headers=headers,
+                                timeout=3600)
+        if response.status_code in (200, 201):
+            logger.info("Upload bem-sucedido (streaming RAW).")
+            try:
+                payload = response.json()
+            except Exception:
+                payload = {}
+            return payload.get('video_id') or payload.get('item_id') or None
+        else:
+            logger.warning(f"Erro no upload (streaming RAW): Código {response.status_code}")
+            try:
+                logger.warning(json.dumps(response.json(), indent=2))
+            except Exception:
+                logger.warning(response.text)
+            # não retorna ainda, tenta fallback abaixo
+    except requests.exceptions.SSLError as e:
+        logger.exception("SSLError durante upload streaming RAW: %s", e)
+    except Exception as e:
+        logger.exception(f"Erro no upload streaming RAW: {e}")
+
+    # -------------------- Fallback (opcional) -> gravar em temp file e enviar (último recurso) --------------------
     tmp_path = None
     try:
         tmp_fd, tmp_path = tempfile.mkstemp(suffix='.upload', prefix='upload_tmp_')
         os.close(tmp_fd)
-        logger.info(f"Gravando stream não-seekable em arquivo temporário {tmp_path} antes do upload...")
+        logger.info(f"[FALLBACK] Gravando stream em arquivo temporário {tmp_path} antes do upload...")
         with open(tmp_path, 'wb') as out_f:
-            # leitura em blocos grandes para eficiência
             while True:
-                chunk = fileobj.read(1024 * 1024)
+                chunk = fileobj.read(CHUNK_SIZE)
                 if not chunk:
                     break
                 out_f.write(chunk)
         # agora reusar a lógica de multipart com path
         with open(tmp_path, 'rb') as video_file:
             files = {'file': (filename, video_file, 'video/mp4')}
-            logger.info(f"Tentando enviar '{filename}' (via temp file) para {UPLOAD_URL} (multipart)...")
+            logger.info(f"[FALLBACK] Tentando enviar '{filename}' (via temp file) para {UPLOAD_URL} (multipart)...")
             logger.info(f"Com metadados: {json.dumps(video_metadata, indent=2)}")
             response = session.post(f"{UPLOAD_URL}/api/upload-video",
-                                    files=files, data=data, headers=headers,
+                                    files=files, data={'metadata': json.dumps(video_metadata)}, headers=headers_base,
                                     timeout=3600)
             if response.status_code in (200, 201):
-                logger.info("Upload bem-sucedido (multipart via temp file).")
+                logger.info("[FALLBACK] Upload bem-sucedido (multipart via temp file).")
                 payload = response.json()
                 return payload.get('video_id') or payload.get('item_id') or None
             else:
-                logger.warning(f"Erro no upload (multipart via temp file): Código {response.status_code}")
+                logger.warning(f"[FALLBACK] Erro no upload (multipart via temp file): Código {response.status_code}")
                 try:
                     logger.warning(json.dumps(response.json(), indent=2))
                 except Exception:
