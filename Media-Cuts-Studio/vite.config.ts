@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => ({
     port: 4343,
     allowedHosts: ["localhost", '904d7cc79a14.ngrok-free.app', "mediacutsstudio.com", "www.mediacutsstudio.com"],
     hmr: {
-      protocol: 'ws',
+      protocol: 'wss',
       host: 'mediacutsstudio.com',  
     },
     // watch: {
