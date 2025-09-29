@@ -67,12 +67,6 @@ logger.addHandler(console_handler)
 
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "Keys", "keys.env"))
 
-cred = credentials.Certificate(os.getenv('DATABASEPATH'))
-app1 = initialize_app(cred, {
-    'databaseURL': os.getenv('DATABASEURL')
-}, name="app1")
-
-
 cred = credentials.Certificate(os.getenv('DATABASEPATHSHEDULER'))
 appsheduler = initialize_app(cred, {
     'databaseURL': os.getenv('DATABASEURLSHEDULER')

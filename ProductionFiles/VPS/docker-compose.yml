@@ -18,7 +18,7 @@ services:
 
   api_scheduler:
     build:
-      context: ./internal-sheduler-server/Internal-server
+      context: ./internal-sheduler-server
       dockerfile: Dockerfile
     container_name: api_scheduler
     working_dir: /app  
@@ -44,7 +44,7 @@ services:
 
   celery_worker_scheduler:
     build:
-      context: ./internal-sheduler-server/Internal-server
+      context: ./internal-sheduler-server
       dockerfile: Dockerfile
     container_name: celery_worker_scheduler
     working_dir: /app  
