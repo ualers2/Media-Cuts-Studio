@@ -421,7 +421,10 @@ def upload_media_bulk():
             "message": f"{len(files_response)} arquivos recebidos e processados via stream!",
             "status": "processing",
             "check_status_url": f"/api/upload-status/{batch_id}",
-            "files": files_response
+            "files": files_response,
+            "batch_id": batch_id,
+            "token_id": token_id,
+            "filename": file_storage.filename
         }
         
         return jsonify(response_data), 202
@@ -449,7 +452,6 @@ def process_bulk_posts():
     if not bulk_posts_data:
         return jsonify({"message": "Nenhum post para processar."}), 200
 
-    batch_id = str(uuid.uuid4())
     posts_processed_count = 0
     errors = []
 

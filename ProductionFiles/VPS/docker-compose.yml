@@ -37,6 +37,7 @@ services:
     networks: 
       - rede_externa
     volumes:
+      - logger_data:/app/Logs
       - videos_data:/app/tmp
       - tokens:/app/Tokens
     mem_limit: 2GB
