@@ -24,7 +24,7 @@ export default defineConfig(({ mode }) => ({
     allowedHosts: ["localhost", '904d7cc79a14.ngrok-free.app', "mediacutsstudio.com", "www.mediacutsstudio.com"],
     hmr: {
       protocol: 'ws',
-      host: 'localhost',  
+      host: 'mediacutsstudio.com',  
     },
     // watch: {
     //   ignored: ['**/node_modules/**'],
