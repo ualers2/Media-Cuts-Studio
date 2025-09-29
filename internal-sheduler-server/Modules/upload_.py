@@ -78,6 +78,10 @@ def upload_(name_project, VIDEO_FILE_PATH, USER_ID_FOR_TEST,
       - fallback: temp file (apenas em caso extremo)
     """
     UPLOAD_URL = "https://videomanager.api.mediacutsstudio.com"
+
+    if os.getenv("PRODUCTION_ENV") == "False":
+        UPLOAD_URL = "https://dev.videomanager.api.mediacutsstudio.com"
+
     session = _create_session(max_retries=5, backoff_factor=1)
 
     if type_project == "files":

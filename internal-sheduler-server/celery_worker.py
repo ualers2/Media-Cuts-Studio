@@ -296,6 +296,7 @@ def upload_tiktok_and_shorts_task(task_params):
 
 
     lock_file_path = os.path.join(os.path.dirname(__file__), "tmp", "uploads")
+    os.makedirs(lock_file_path, exist_ok=True)
     lock_file = os.path.join(lock_file_path, f"upload_{post_id}.lock")
     if os.path.exists(lock_file):
         logger.warning(f"Tarefa para {post_id} já agendada. Ignorando duplicata.")
@@ -518,6 +519,7 @@ def upload_short_task(task_params):
     short_id = task_params.get('short_id')
     logger.info(f"🔥 Iniciando upload_shorts_task para post {short_id}")
     lock_file_path = os.path.join(os.path.dirname(__file__), "tmp", "uploads")
+    os.makedirs(lock_file_path, exist_ok=True)
     lock_file = os.path.join(lock_file_path, f"upload_{short_id}.lock")
     if os.path.exists(lock_file):
         logger.warning(f"Tarefa para {short_id} já agendada. Ignorando duplicata.")
@@ -643,6 +645,7 @@ def upload_tiktok_task(task_params):
 
 
     lock_file_path = os.path.join(os.path.dirname(__file__), "tmp", "uploads")
+    os.makedirs(lock_file_path, exist_ok=True)
     lock_file = os.path.join(lock_file_path, f"upload_{tiktok_id}.lock")
     if os.path.exists(lock_file):
         logger.warning(f"Tarefa para {tiktok_id} já agendada. Ignorando duplicata.")

@@ -31,9 +31,12 @@ def download_(UPLOAD_URL, save_path, PROJECT_NAME, VIDEO_ID, USER_ID_FOR_TEST, m
     Returns:
         str: Caminho local do arquivo baixado
     """
-    UPLOAD_URL_BASE = "https://videomanager.api.mediacutsstudio.com" 
-    
-    url = f"{UPLOAD_URL_BASE}/api/projects/{PROJECT_NAME}/videos/{VIDEO_ID}/download"
+    UPLOAD_URL = "https://videomanager.api.mediacutsstudio.com"
+
+    if os.getenv("PRODUCTION_ENV") == "False":
+        UPLOAD_URL = "https://dev.videomanager.api.mediacutsstudio.com"
+
+    url = f"{UPLOAD_URL}/api/projects/{PROJECT_NAME}/videos/{VIDEO_ID}/download"
     headers = {
         "X-User-Id": USER_ID_FOR_TEST,
     }
