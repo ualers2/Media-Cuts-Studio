@@ -14,7 +14,7 @@ export default function SignupCheckout(): JSX.Element {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const VITE_LANDING_API = (import.meta.env.VITE_LANDING_API as string) || "";
+  const VITE_API_URL = (import.meta.env.VITE_API_URL as string) || "";
 
   // preços fixos (pode extrair para env se quiser)
   const PRICES = {
@@ -42,14 +42,14 @@ export default function SignupCheckout(): JSX.Element {
       setError("Senha precisa ter 4 caracteres ou mais.");
       return;
     }
-    if (!VITE_LANDING_API) {
+    if (!VITE_API_URL) {
       setError("Configuração de API ausente. Contate o time.");
       return;
     }
 
     setLoading(true);
     try {
-      const resp = await fetch(`${VITE_LANDING_API}/proxy-checkout`, {
+      const resp = await fetch(`${VITE_API_URL}/proxy-checkout`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

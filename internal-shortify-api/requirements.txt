@@ -9,3 +9,14 @@ yt-dlp
 python-dotenv
 waitress
 beautifulsoup4
+python-dotenv 
+stripe 
+pytz
+pytube
+openai-agents
+waitress
+asyncio
+gunicorn
+uvicorn
+asgiref
+

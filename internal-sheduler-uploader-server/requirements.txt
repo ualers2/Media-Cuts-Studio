@@ -1,9 +1,0 @@
-Flask
-flask-cors 
-flask-limiter 
-python-dotenv 
-firebase-admin 
-requests 
-waitress
-uvicorn
-asgiref

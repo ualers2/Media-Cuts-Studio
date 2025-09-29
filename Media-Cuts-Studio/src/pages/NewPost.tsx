@@ -32,7 +32,7 @@ import { BsTiktok } from 'react-icons/bs';
 import Layout from '@/components/Layout';
 
 // Define a URL base do backend a partir das variáveis de ambiente do Vite
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+const BACKEND_URL = import.meta.env.VITE_SHEDULER_URL;
 
 const socialNetworks = [
   { 

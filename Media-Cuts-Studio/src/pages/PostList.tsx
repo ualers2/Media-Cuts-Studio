@@ -116,7 +116,7 @@ export default function PostList() {
   const [sortBy, setSortBy] = useState<string>('scheduledAt');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
   const [loading, setLoading] = useState(false);
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  const BACKEND_URL = import.meta.env.VITE_SHEDULER_URL;
 
   useEffect(() => {
     const fetchPosts = async () => {

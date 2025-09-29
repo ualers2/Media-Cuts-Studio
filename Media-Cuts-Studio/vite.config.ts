@@ -21,10 +21,10 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "0.0.0.0",    // ou "::", para aceitar conexões externas
     port: 4343,
-    allowedHosts: ["localhost", "mediacutsstudio.com", "www.mediacutsstudio.com"],
+    allowedHosts: ["localhost", '904d7cc79a14.ngrok-free.app', "mediacutsstudio.com", "www.mediacutsstudio.com"],
     hmr: {
-      protocol: 'wss',
-      host: 'mediacutsstudio.com',  // ou seu domínio
+      protocol: 'ws',
+      host: 'localhost',  
     },
     // watch: {
     //   ignored: ['**/node_modules/**'],

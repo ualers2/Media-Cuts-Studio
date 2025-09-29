@@ -14,7 +14,7 @@ export default function AuthenticateAccount() {
   const [tiktokCookies, setTiktokCookies] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000/api';
+  const API_BASE_URL = import.meta.env.VITE_SHEDULER_URL || 'http://localhost:5000/api';
 
   const handleAuthenticateYouTube = () => {
     if (!channelName.trim()) {
