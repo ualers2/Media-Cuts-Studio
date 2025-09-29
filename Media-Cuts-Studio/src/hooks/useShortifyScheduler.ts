@@ -36,8 +36,7 @@ export const useShortifyScheduler = () => {
     setError(null);
     let AccountCookies: string | null = null;
       
-    const apiUrl = import.meta.env.VITE_API_URL;
-    const VITE_LANDING_API = import.meta.env.VITE_LANDING_API;
+    const VITE_API_URL = import.meta.env.VITE_API_URL;
 
     try {
 
@@ -84,8 +83,9 @@ export const useShortifyScheduler = () => {
       console.log('payload?', payload);
       console.log('api_key?', localStorage.getItem('api_key'));
       
-      console.log(`${apiUrl}/api/Media_Cuts_Studio/Shortify/Mode/Create`);
-      const resp = await fetch(`${apiUrl}/api/Media_Cuts_Studio/Shortify/Mode/Create`, {
+      console.log(`${VITE_API_URL}/api/Media_Cuts_Studio/Shortify/Mode/Create`);
+      
+      const resp = await fetch(`${VITE_API_URL}/api/Media_Cuts_Studio/Shortify/Mode/Create`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

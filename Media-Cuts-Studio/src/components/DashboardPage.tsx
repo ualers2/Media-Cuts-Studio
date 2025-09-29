@@ -22,7 +22,7 @@ const DashboardPage = () => {
     );
   }, [accountData]);
 
-  const API_URL = import.meta.env.VITE_LANDING_API;
+  const API_URL = import.meta.env.VITE_API_URL;
   const apiKey = localStorage.getItem('api_key');
   const userEmail = localStorage.getItem('user_email');
 

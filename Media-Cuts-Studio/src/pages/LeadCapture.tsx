@@ -9,7 +9,7 @@ import { User, Mail, Phone } from "lucide-react";
 export default function LeadCapture() {
     const [form, setForm] = useState({ name: "", email: "", whatsapp: "" });
 
-    const API_BASE_URL = import.meta.env.VITE_LANDING_API || 'http://localhost:5000';
+    const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setForm({ ...form, [e.target.name]: e.target.value });

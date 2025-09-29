@@ -58,9 +58,7 @@ interface Channel {
 
 export default function BulkSchedule() {
 
-  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
-  const VITE_BULK_BACKEND_URL = import.meta.env.VITE_BULK_BACKEND_URL
-
+  const VITE_SHEDULER_URL = import.meta.env.VITE_SHEDULER_URL
 
   const [step, setStep] = useState(1)
   const [files, setFiles] = useState<File[]>([])
@@ -85,16 +83,46 @@ export default function BulkSchedule() {
   useEffect(() => {
     const fetchChannels = async () => {
       try {
-        const response = await fetch(`${BACKEND_URL}/api/canais`)
+        const response = await fetch(`${VITE_SHEDULER_URL}/api/canais`)
         if (!response.ok) {
-          throw new Error(`Erro ao carregar canais: ${response.statusText}`)
+          throw new Error(`Erro ao carregar canais: ${response.status} ${response.statusText}`)
         }
-        const data = await response.json()
-        setChannels(data)
+        const raw = await response.json()
+
+        // Normaliza para array de Channel, aceitando:
+        // - um array já pronto
+        // - um objeto tipo { id1: { ... }, id2: { ... } }
+        // - qualquer outra entrada -> fallback para []
+        let channelsArray: Channel[] = []
+        if (Array.isArray(raw)) {
+          channelsArray = raw
+        } else if (raw && typeof raw === 'object') {
+          // Quando vem do Firebase geralmente é um objeto com chaves
+          channelsArray = Object.entries(raw).map(([key, val]: [string, any]) => {
+            const item = val || {}
+            // tenta normalizar campos comuns
+            const social = (item.socialNetwork || item.social_network || item.SocialNetwork || '').toString().toLowerCase()
+            const socialNormalized: 'youtube' | 'tiktok' = social.includes('tiktok') ? 'tiktok' : 'youtube'
+            return {
+              id: item.id || item.key || key,
+              nome: item.nome || item.name || item.title || '',
+              socialNetwork: socialNormalized
+            } as Channel
+          })
+        } else {
+          console.warn('fetchChannels: resposta inesperada do backend', raw)
+        }
+
+        // Se ainda for vazio, garante array vazio
+        channelsArray = channelsArray || []
+
+        setChannels(channelsArray)
+
+        // Usa channelsArray (não raw) ao buscar defaults
         setFormData(prev => ({
           ...prev,
-          canalId: data.find((c: Channel) => c.socialNetwork === 'youtube')?.id || '',
-          canalTikTokId: data.find((c: Channel) => c.socialNetwork === 'tiktok')?.id || ''
+          canalId: channelsArray.find((c) => c.socialNetwork === 'youtube')?.id || '',
+          canalTikTokId: channelsArray.find((c) => c.socialNetwork === 'tiktok')?.id || ''
         }))
       } catch (error) {
         console.error("Falha ao carregar canais:", error)
@@ -109,7 +137,6 @@ export default function BulkSchedule() {
     }
     fetchChannels()
   }, [])
-
   const handleFilesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFiles(Array.from(e.target.files || []))
   }
@@ -123,7 +150,7 @@ export default function BulkSchedule() {
     const form = new FormData()
     files.forEach(f => form.append('files[]', f))
     try {
-      const res = await axios.post(`${VITE_BULK_BACKEND_URL}/api/upload-media-bulk`, form, {
+      const res = await axios.post(`${VITE_SHEDULER_URL}/api/upload-media-bulk`, form, {
         headers: { 'Content-Type': 'multipart/form-data' },
         timeout: 3600 * 1000
       })
@@ -255,7 +282,7 @@ export default function BulkSchedule() {
     })
 
     try {
-      await axios.post(`${BACKEND_URL}/api/process-bulk-posts`, payload)
+      await axios.post(`${VITE_SHEDULER_URL}/api/process-bulk-posts`, payload)
 
       const updated = bulkPosts.map(p => ({ ...p, status: 'success' }))
       setBulkPosts(updated)

@@ -51,7 +51,7 @@ export const usePost = () => {
 export const PostProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [posts, setPosts] = useState<Post[]>([]);
 
-  const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000/api'; // Certifique-se de que esta variável de ambiente está configurada
+  const API_BASE_URL = import.meta.env.VITE_SHEDULER_URL || 'http://localhost:5000/api'; // Certifique-se de que esta variável de ambiente está configurada
 
   const fetchPosts = useCallback(async (filters: { status?: string; socialNetwork?: string; searchQuery?: string; sortBy?: string; sortOrder?: string; page?: number; limit?: number } = {}) => {
     try {

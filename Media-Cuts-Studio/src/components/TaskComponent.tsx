@@ -91,8 +91,7 @@ const TaskComponent: React.FC<TaskSchedulerProps> = ({
   const [typing, setTyping] = useState(true);
   const [hasTypedChannel, setHasTypedChannel] = useState(false);
   const user_email = localStorage.getItem('user_email');
-  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-  const VITE_LANDING_API = import.meta.env.VITE_LANDING_API || 'http://localhost:3001';
+  const VITE_API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
   const {
     handleThemeChange,
@@ -110,7 +109,7 @@ const TaskComponent: React.FC<TaskSchedulerProps> = ({
     getMinDate,
     getMaxDate,
   } = useTaskHandlers(
-    VITE_LANDING_API,
+    VITE_API_URL,
     thumbnailurl,
     includeHorizontal,
     includeVertical,
@@ -134,7 +133,6 @@ const TaskComponent: React.FC<TaskSchedulerProps> = ({
     hashtagsForTiktokCuts,
     selectedMode,
     ytChannel,
-    apiUrl,
     expandedSections,
     loadedVideoIds,
     startShortify,
@@ -251,14 +249,14 @@ const TaskComponent: React.FC<TaskSchedulerProps> = ({
   } = useQuery<Account[], Error>({
     queryKey: ['activeAccounts', 'tiktok'],  // opcionalmente inclua o filtro na key
     queryFn: async () => {
-      if (!VITE_LANDING_API) {
-        console.warn('VITE_LANDING_API not defined. Using mock accounts data.');
+      if (!VITE_API_URL) {
+        console.warn('VITE_API_URL not defined. Using mock accounts data.');
         return [
           { id: '2', platform: 'Tiktok', username: '@user2_mock', status: 'active' },
         ];
       }
 
-      const res = await fetch(`${VITE_LANDING_API}/api/proxy/accounts/active`, {
+      const res = await fetch(`${VITE_API_URL}/api/proxy/accounts/active`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ api_key: localStorage.getItem('api_key') }),

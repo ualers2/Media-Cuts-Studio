@@ -11,7 +11,7 @@ import { useProjectsContext } from '@/contexts/ProjectsContext';
 
 export const useTaskHandlers = (
 
-    VITE_LANDING_API: string,
+    VITE_API_URL: string,
     thumbnailurl: string,
     includeHorizontal: boolean,
     includeVertical: boolean,
@@ -35,7 +35,6 @@ export const useTaskHandlers = (
     hashtagsForTiktokCuts: string,
     selectedMode: string,
     ytChannel: string,
-    apiUrl: string,
     expandedSections: ExpandedSections,
     loadedVideoIds: string[],
 
@@ -90,7 +89,7 @@ export const useTaskHandlers = (
       setApiKey(localStorage.getItem('api_key') || ''); // Garante que a API key esteja atualizada
     
 
-      if (user_email && VITE_LANDING_API) { // Adicionado verificação para VITE_LANDING_API
+      if (user_email && VITE_API_URL) { // Adicionado verificação para VITE_API_URL
         const configPayload = {
           // scheduleMode,
           // dayWeekly,
@@ -102,7 +101,7 @@ export const useTaskHandlers = (
           cuttingSeconds,
         };
 
-        await fetch(`${VITE_LANDING_API}/api/user-config/${user_email}`, {
+        await fetch(`${VITE_API_URL}/api/user-config/${user_email}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(configPayload),
@@ -110,7 +109,7 @@ export const useTaskHandlers = (
       } else if (!user_email) {
         console.warn('user_email not found in localStorage. Config not saved.');
       } else {
-        console.warn('VITE_LANDING_API not defined. Config not saved.');
+        console.warn('VITE_API_URL not defined. Config not saved.');
       }
 
       console.log(`selectedAccount? ${selectedAccount}`);
@@ -187,14 +186,14 @@ export const useTaskHandlers = (
     setIsPasteDialogOpen(false);
   };
   const handleFetchLatest = async () => {
-    if (!apiUrl || !ytChannel.trim()) {
+    if (!VITE_API_URL || !ytChannel.trim()) {
       toast({
         title: 'Error',
         description: 'YouTube Channel and API URL are required to fetch latest video.',
         variant: 'destructive',
         duration: 3000,
       });
-      console.warn('Cannot fetch latest video: apiUrl or ytChannel missing.');
+      console.warn('Cannot fetch latest video: VITE_API_URL or ytChannel missing.');
       setIsLinkConfirmed(false); // limpa botão verde
       setPastedUrl(''); // limpa link colado
       setCustomTitleEnabled(false);
@@ -210,7 +209,7 @@ export const useTaskHandlers = (
     setLoadingLatest(true);
     try {
       const res = await fetch(
-        `${VITE_LANDING_API}/metrics/channel/youtube?channel=${ytChannel}&limit=1`
+        `${VITE_API_URL}/metrics/channel/youtube?channel=${ytChannel}&limit=1`
       );
       if (!res.ok) throw new Error('Error fetching latest video');
       const json = (await res.json()) as ChannelVideosResponse;
@@ -294,7 +293,7 @@ export const useTaskHandlers = (
         // passe os ids já carregados para a API ignorar
         exclude: excludeIds.join(',')
       });
-      const res = await fetch(`${VITE_LANDING_API}/metrics/channel/youtube?${params}`);
+      const res = await fetch(`${VITE_API_URL}/metrics/channel/youtube?${params}`);
       if (!res.ok) throw new Error('Falha ao buscar vídeos');
       const json = await res.json() as ChannelVideosResponse;
       return json.videos;

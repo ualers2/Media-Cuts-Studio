@@ -45,6 +45,14 @@ ProductionFiles/VPS/bulksheduler.conf
 ProductionFiles/VPS/Firebase.json
 ProductionFiles/VPS/FirebaseDocs.json
 *.env
+ProductionFiles/VPS/Firebasesheduler.json
+Save/
+internal-sheduler-server/Keys/
+internal-sheduler-server/flask_session/
+internal-sheduler-server/Logs/
+internal-sheduler-server/Tokens/
+internal-sheduler-server/tmp/
+internal-shortify-api/Logs/
 Portifolio/
 ProductionFiles/VPS/client_secret_1.json
 server-docs/

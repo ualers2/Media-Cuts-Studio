@@ -40,10 +40,10 @@ const LoginForm: React.FC = () => {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    const LANDING_APIURL = import.meta.env.VITE_LANDING_API;
+    const VITE_API_URL = import.meta.env.VITE_API_URL;
     if (email && password) {
       try {
-        const response = await fetch(`${LANDING_APIURL}/login`, {
+        const response = await fetch(`${VITE_API_URL}/login`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ username: email, password }),
@@ -72,8 +72,8 @@ const LoginForm: React.FC = () => {
         localStorage.setItem('login_time', formattedTime);
         // Busca configs e dados da conta
         const [configRes, accountRes] = await Promise.all([
-          fetch(`${LANDING_APIURL}/api/user-config/${email}`),
-          fetch(`${LANDING_APIURL}/api/account/${email}`),
+          fetch(`${VITE_API_URL}/api/user-config/${email}`),
+          fetch(`${VITE_API_URL}/api/account/${email}`),
         ]);
         const config = await configRes.json();
         const account = await accountRes.json();
@@ -97,7 +97,7 @@ const LoginForm: React.FC = () => {
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    const LANDING_APIURL = import.meta.env.VITE_LANDING_API;
+    const VITE_API_URL = import.meta.env.VITE_API_URL;
     if (!email || !password || !confirmPassword) {
       alert('Preencha todos os campos.');
       return;
@@ -107,7 +107,7 @@ const LoginForm: React.FC = () => {
       return;
     }
     try {
-      const response = await fetch(`${LANDING_APIURL}/proxy-create-login`, {
+      const response = await fetch(`${VITE_API_URL}/proxy-create-login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email, password: password,subscription_plan: 'startup', expiration: 'None' }),
