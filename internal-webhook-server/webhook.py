@@ -5,14 +5,8 @@ import logging
 import base64
 import os
 import io
-
-# import eventlet
-# eventlet.monkey_patch()
-
-
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'minha_chave_secreta'
-
 socketio = SocketIO(
     app, 
     async_mode="threading", 
@@ -23,13 +17,10 @@ socketio = SocketIO(
         "*"
     ]
 )
-app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024  # 50 MB, adjust as needed
-app.logger.info("???????")
-
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024 
 logger = logging.getLogger('webhook_logger')
 logger.setLevel(logging.INFO)
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-
 console_handler = logging.StreamHandler()
 console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
@@ -56,17 +47,11 @@ def webhook_video_zip():
     user = data['api_key']
     filename = data['filename']
     zip_base64 = data['arquivo_zip']
-
     try:
-        # Decodifica o ZIP e armazena em memória
         zip_bytes = base64.b64decode(zip_base64)
         zip_buffer = io.BytesIO(zip_bytes)
-
-        # Enviar via SocketIO para o cliente
         socketio.emit('webhook_data', {str(user): {"type": "zip", "filename": filename, "message": zip_base64}})
-
         return jsonify({"status": "sucesso"}), 200
-
     except Exception as e:
         logger.error(f"Erro ao processar ZIP: {e}")
         return jsonify({"error": "Erro ao processar ZIP"}), 500
