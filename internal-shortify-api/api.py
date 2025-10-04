@@ -1,8 +1,9 @@
 # internal_api.py
-from Modules.utils import *
+from Modules.utils import create_task,send_to_webhook , get_tasks_weekly
 from Modules.send_email import SendEmail
-
+from firebase_admin import db, App
 import os
+import base64
 import re
 import json
 import time
@@ -1821,26 +1822,6 @@ def dynamic_rate_limit(appfb):
             return user_data.get("limit", "10 per minute")  # Retorna o limite configurado para o usuário
     # Limite para usuários sem autenticação ou com API Key inválida
     return "10 per minute"
-
-def autenticar_usuario(appfb):
-    """
-    Função para validar a API Key.
-    Retorna os dados do usuário caso a API Key seja válida,
-    ou uma resposta de erro caso contrário.
-    """
-    api_key = get_api_key()
-    if not api_key:
-        response = jsonify({"error": "API Key inválida ou não fornecida."})
-        response.status_code = 401  # Unauthorized
-        return None, response
-
-    user_data = get_user_data_from_firebase(api_key, appfb)
-    if not user_data:
-        response = jsonify({"error": "Usuário não encontrado."})
-        response.status_code = 401  # Unauthorized
-        return None, response
-
-    return user_data, None
 
 
 def count_tiktok_accounts(api_key):
