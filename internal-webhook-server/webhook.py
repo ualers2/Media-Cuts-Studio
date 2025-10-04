@@ -39,11 +39,9 @@ def webhook():
 @app.route('/webhook_video_zip', methods=['POST'])
 def webhook_video_zip():
     data = request.get_json()
-
     if 'arquivo_zip' not in data or 'api_key' not in data or 'filename' not in data:
         logger.error("Campos 'arquivo_zip', 'api_key' ou 'filename' ausentes no JSON")
         return jsonify({"error": "Parâmetros inválidos"}), 400
-
     user = data['api_key']
     filename = data['filename']
     zip_base64 = data['arquivo_zip']
