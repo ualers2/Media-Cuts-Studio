@@ -145,7 +145,7 @@ def get_user_data_from_firebase(api_key, appfb):
     a partir da chave da API, na referência 'Users_Control_Panel'.
     """
     ref = db.reference(f'Users_Control_Panel/{api_key}', app=appfb)
-    user_data = ref.get()  # Obtém os dados do usuário com a chave especificada
+    user_data = ref.get() 
     return user_data
 
 def dynamic_rate_limit(appfb: App):
@@ -158,8 +158,7 @@ def dynamic_rate_limit(appfb: App):
     if api_key:
         user_data = get_user_data_from_firebase(api_key, appfb)
         if user_data:
-            return user_data.get("limit", "10 per minute")  # Retorna o limite configurado para o usuário
-    # Limite para usuários sem autenticação ou com API Key inválida
+            return user_data.get("limit", "10 per minute") 
     return "10 per minute"
 
 def autenticar_usuario():
@@ -171,13 +170,13 @@ def autenticar_usuario():
     api_key = get_api_key()
     if not api_key:
         response = jsonify({"error": "API Key inválida ou não fornecida."})
-        response.status_code = 401  # Unauthorized
+        response.status_code = 401 
         return None, response
 
     user_data = get_user_data_from_firebase(api_key, appfb)
     if not user_data:
         response = jsonify({"error": "Usuário não encontrado."})
-        response.status_code = 401  # Unauthorized
+        response.status_code = 401 
         return None, response
 
     return user_data, None
@@ -187,7 +186,6 @@ def index():
     return jsonify({"message": "#1 API Media Cuts Studio funcionando!"})
 
 def extract_youtube_id(url):
-    # tenta extrair o ID de 11 chars do vídeo
     m = re.search(r'(?:v=|\/)([0-9A-Za-z_-]{11})', url)
     return m.group(1) if m else None
 
