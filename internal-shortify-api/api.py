@@ -258,7 +258,6 @@ def api_Media_Cuts_Studio_Shortify_Mode_Create():
                 except Exception as e_scrape_youtube_metadata:
                     raise Exception(f"e_scrape_youtube_metadata {e_scrape_youtube_metadata}")
 
-
     else:
         lastlongvideotitle = data.get('videoTitleForLatestVideo', '')
         videoTitle = data.get('videoTitle', '')
@@ -272,9 +271,7 @@ def api_Media_Cuts_Studio_Shortify_Mode_Create():
     logger.info(f"title_origin ? {title_origin}")
     logger.info(f"thumbnail_url ? {thumbnail_url}")
 
-    mode = data.get('mode', 'date').lower()
     tz_str = data.get('timezone', 'America/Sao_Paulo')
-
     ref_queue = db.reference('shortify_queue', app=appfb)
     ref_projects = db.reference(f'projects/{user_email_filter}', app=appdocs)
     user_tasks_ref = db.reference(f'user_tasks/{user_email_filter}', app=appfb)
@@ -285,26 +282,23 @@ def api_Media_Cuts_Studio_Shortify_Mode_Create():
         return jsonify({'error': f'Timezone inválido: {str(e)}'}), 400
 
     scheduled_time_str = datetime.now(tz).strftime('%Y-%m-%d %H:%M:%S')
-    
     hash_obj = hashlib.sha256(scheduled_time_str.encode())
     hash_id = hash_obj.hexdigest()
     safe_project_name = secure_filename(title_origin).replace("-", "").replace("....", "").replace("...", "").replace("..", "").replace(".", "").replace("... - ", "").replace('"????????"', '').replace("...__", "_")
     safe_project_name_filter = re.sub(r'[^0-9A-Za-z_-]', '', safe_project_name)
-
     project_ref = ref_projects.child(safe_project_name_filter) 
     if not project_ref.get():
-        # Se o projeto não existe, cria-o com um ID
         project_ref.set({
             "name": title_origin,
             "model_ai": model,
             "status": "Created",
             "url_original": pasted_url,
-            "progress_percent": "0", # Inicia com 0%
+            "progress_percent": "0",
             "used": False,
             "thumbnail_url": thumbnail_url,
             "createdAt": datetime.now(tz).isoformat(),
             "delete_after": (datetime.now(tz) + timedelta(days=3)).isoformat(),  # data 3 dias à frente
-            "videos": {} # Inicializa a subcoleção de vídeos
+            "videos": {}
         })
     user_tasks_ = {
         "payload": {**data, "title_origin": title_origin, "date_time": scheduled_time_str},
@@ -335,18 +329,14 @@ def api_Media_Cuts_Studio_Shortify_Mode_Create():
     id_task = scheduled_time_str.replace(".", "_").replace(":", "_").replace(" ", "_")
     ref_queue.child(id_task).set(queue_item)
     user_tasks_ref.child(id_task).set(user_tasks_)
-
     send_to_webhook(data['api_key'], "finish_timer_loader_shortify", "None", "yellow")
-
-        
     return jsonify({
         "message": "✅ Task received and archived for availability check. Video placeholder created.",
         "id_task": id_task,
         'scheduled_time': scheduled_time_str,
         "user_email": user_email,
-        "project_name": title_origin # Retorna o nome do projeto
+        "project_name": title_origin 
     }), 202
-
 
 
 @app.route("/api/Media_Cuts_Studio/Process/Mode/generate_subclip_ai_curation", methods=["POST"])
