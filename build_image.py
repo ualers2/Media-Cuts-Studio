@@ -12,4 +12,4 @@ def executar_comando(comando):
     """Executa um comando sem abrir um novo terminal (funciona dentro do contêiner)."""
     subprocess.run(comando, shell=True)
 
-executar_comando("docker-compose up --build -d api_scheduler")
+executar_comando("docker-compose up --build -d ")
