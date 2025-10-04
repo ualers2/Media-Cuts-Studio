@@ -222,7 +222,6 @@ def api_Media_Cuts_Studio_Shortify_Mode_Create():
     pasted_url = data.get("pastedUrl", "None")
     model = data.get("ShortifyMode", "")
     if pasted_url and pasted_url != "None":
-        # 1) tenta yt_dlp com opções mais permissivas
         try:
             ydl_opts = {
                 'cookiefile': COOKIES_FILE,
@@ -239,19 +238,16 @@ def api_Media_Cuts_Studio_Shortify_Mode_Create():
                     title_origin = info.get("title") or "VideoSemTitulo"
                     thumbnail_url = info.get("thumbnail")
                 else:
-                    # alguns extractors retornam lists/str; trate como falha
                     raise Exception("yt_dlp retornou formato inesperado")
         except Exception as e_yt:
             logger.warning(f"yt_dlp falhou para {pasted_url}: {e_yt}. Tentando fallback...")
 
-            # 2) tenta oEmbed (não precisa de chave)
             try:
                 oembed_url = f"https://www.youtube.com/oembed?url={requests.utils.requote_uri(pasted_url)}&format=json"
                 r = requests.get(oembed_url, timeout=6)
                 if r.status_code == 200:
                     j = r.json()
                     title_origin = j.get("title", "VideoSemTitulo")
-                    # oEmbed fornece thumbnail_url em "thumbnail_url"
                     thumbnail_url = j.get("thumbnail_url")
                 else:
                     raise Exception(f"oEmbed status {r.status_code}")
@@ -262,17 +258,6 @@ def api_Media_Cuts_Studio_Shortify_Mode_Create():
                 except Exception as e_scrape_youtube_metadata:
                     raise Exception(f"e_scrape_youtube_metadata {e_scrape_youtube_metadata}")
 
-        # try:
-        #     with yt_dlp.YoutubeDL({'quiet': True,'skip_download': True}) as ydl:
-        #         info = ydl.extract_info(pasted_url, download=False)
-        #         title_origin = info.get("title", "VideoSemTitulo")
-        #         thumbnail_url = info.get("thumbnail", "Thumbnail não encontrada")
-        # except Exception as e:
-        #     logger.warning(f"Erro ao extrair título da URL {pasted_url}: {str(e)}")
-        #     # fallback: usar apenas o ID do vídeo como título
-        #     video_id = pasted_url.split("v=")[-1]
-        #     title_origin = f"Video_{video_id}"
-        #     thumbnail_url = None
 
     else:
         lastlongvideotitle = data.get('videoTitleForLatestVideo', '')
