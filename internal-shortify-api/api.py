@@ -1322,7 +1322,6 @@ def get_user_config(user_id):
         config = ref.get()
         if config is None:
             return jsonify({'error': 'Configurações não encontradas'}), 404
-
         return jsonify({
             'status': 'success',
             'action': 'get',
@@ -1340,7 +1339,6 @@ def tarefas_config(user_id):
         tasks = ref.get()
         if tasks is None:
             return jsonify({'error': 'tasks não encontradas'}), 404
-
         return jsonify({
             'status': 'success',
             'action': 'get',
@@ -1357,7 +1355,6 @@ def user_account_instagram():
     raw_username = config.get('ig_username', '')
     username_busca = raw_username.strip().replace("  ", "").replace(" ", "").replace("\n", "").lower()
     logger.info(f"Buscando cookies para usuário normalizado: {username_busca}")
-
     def extrair_info(data):
         """
         Retorna tupla (ig_username, ig_password) se encontrar,
@@ -1409,8 +1406,6 @@ def user_account():
     config = request.get_json()
     api_key = config.get('api_key')
     raw_username = config.get('username_account', '')
-
-    # Normaliza o username de busca
     username_busca = raw_username.strip().replace("  ", "").replace(" ", "").replace("\n", "").lower()
     logger.info(f"Buscando cookies para usuário normalizado: {username_busca}")
 
@@ -1420,14 +1415,12 @@ def user_account():
         ou (None, None) se não conseguir extrair.
         """
         if isinstance(data, dict):
-            # 1) Estrutura aninhada
             primeiro_valor = next(iter(data.values()), {})
             if isinstance(primeiro_valor, dict):
                 return (
                     primeiro_valor.get('username', '').strip().lower(),
                     primeiro_valor.get('AccountCookies', '')
                 )
-            # 2) Estrutura plana
             return (
                 data.get('username', '').strip().lower(),
                 data.get('AccountCookies', '')
@@ -1439,16 +1432,12 @@ def user_account():
         Remove espaços nas pontas, colapsa múltiplos
         espaços internos em um só e normaliza Unicode.
         """
-        # strip + colapsar espaços
         collapsed = " ".join(s.split())
-        # normalização NFC
         return unicodedata.normalize("NFC", collapsed).casefold()
 
-    # Faz até 4 tentativas completas de busca antes de retornar erro
     for tentativa in range(4):
         logger.info(f"Tentativa {tentativa + 1} de 2 para localizar usuário")
         snapshot = db.reference(f'users_account_cookies/{api_key}', app=appfb).get() or {}
-        # logger.info(f"Snapshot bruto: {snapshot!r}")
         if list(snapshot.keys()) == [api_key]:
             snapshot = snapshot[api_key]
             logger.info("Camada extra de api_key detectada — ajustando snapshot")
@@ -1463,9 +1452,7 @@ def user_account():
                     return jsonify({'AccountCookies': cookies}), 200
             except Exception as err:
                 logger.info(f"Erro ao processar user_id={user_id}: {err}")
-                # continua para o próximo registro
 
-    # Se não achou após 4 tentativas
     logger.info(f"Nenhuma conta encontrada após 4 tentativas: {username_busca}")
     return jsonify({'error': "None Account"}), 500
 
@@ -1478,7 +1465,6 @@ def upsert_user_config(user_id):
             return jsonify({'error': 'Payload inválido'}), 400
 
         ref = db.reference(f'user_configs/{fixx_email}', app=appfb)
-        # update() faz merge: cria ou atualiza
         ref.update(config)
 
         return jsonify({
@@ -1513,12 +1499,10 @@ def login():
         username = data.get("username")
         password = data.get("password")
         
-        # Busca todos os usuários cadastrados
         users = users_ref.get()
         if not users:
             return jsonify({'error': 'No user registered with this email'}), 404
 
-        # Verifica se existe algum usuário com as credenciais informadas
         for key, user_data in users.items():
             if user_data.get('login') == username and user_data.get('password') == password:
                 session.permanent = True
