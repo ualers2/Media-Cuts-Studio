@@ -1,4 +1,4 @@
-# internal_api.py
+# api.py
 from Modules.utils import create_task,send_to_webhook , get_tasks_weekly
 from Modules.send_email import SendEmail
 from firebase_admin import db, App
@@ -16,7 +16,6 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from datetime import datetime, timedelta
-
 import pytz
 import requests
 from bs4 import BeautifulSoup
