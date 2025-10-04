@@ -1498,11 +1498,9 @@ def login():
         data = request.get_json()
         username = data.get("username")
         password = data.get("password")
-        
         users = users_ref.get()
         if not users:
             return jsonify({'error': 'No user registered with this email'}), 404
-
         for key, user_data in users.items():
             if user_data.get('login') == username and user_data.get('password') == password:
                 session.permanent = True
@@ -1511,7 +1509,6 @@ def login():
                 api_key = user_data.get('api_key')
                 return jsonify({'message': 'Login successfully', 'user': username, 'expire_time_license': expire_time, 'api_key': api_key}), 200
 
-        # Caso não encontre, retorna erro
         return jsonify({"success": False, "message": "Invalid credentials."}), 401
 
     except Exception as e:
@@ -1538,7 +1535,6 @@ def proxy_login():
 def create_checkout():
     data = request.get_json()
     try:
-        # Calcula a data de expiração: data atual + 31 dias
         expiration_time = datetime.now() + timedelta(days=31)
         plan = data["plano"]
         if plan == "studio":
@@ -1548,13 +1544,13 @@ def create_checkout():
 
         session = stripe.checkout.Session.create(
             line_items=[{
-                "price": SUBSCRIPTION_PRICE_ID,  # Usando o ID do preço definido no .env
+                "price": SUBSCRIPTION_PRICE_ID, 
                 "quantity": 1
             }],
-            mode="subscription",  # Modo de assinatura
+            mode="subscription",  
             payment_method_types=["card"],
-            success_url="https://mediacutsstudio.com/checkout/sucess",  # 
-            cancel_url="https://mediacutsstudio.com/checkout/cancel",  # Caso o usuário cancele o pagamento
+            success_url="https://mediacutsstudio.com/checkout/sucess",  
+            cancel_url="https://mediacutsstudio.com/checkout/cancel",  
             metadata={"email": data["email"],
                       "password": data["password"],
                       "SUBSCRIPTION_PLAN": data["plano"],
@@ -1581,8 +1577,6 @@ def proxy_checkout():
     except Exception as e:
         return jsonify({"error": f"Erro no servidor {e}"}), 500
 
-# -------------------------------------------------------------------
-# Endpoint Webhook Stripe
 @app.route("/webhook", methods=["POST"])
 def stripe_webhook():
     """
