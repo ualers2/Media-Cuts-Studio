@@ -1596,7 +1596,6 @@ def stripe_webhook():
         logger.info("Assinatura inválida")
         return jsonify({"message": "Invalid signature"}), 400
 
-    # Processa o evento conforme o seu tipo
     if event["type"] == "checkout.session.completed":
         session = event["data"]["object"]
         if session.get("payment_status") == "paid":
@@ -1604,10 +1603,7 @@ def stripe_webhook():
             password_metadata = session["metadata"].get("password")
             SUBSCRIPTION_PLAN = session["metadata"].get("SUBSCRIPTION_PLAN")
             TIMESTAMP = session["metadata"].get("TIMESTAMP")
-
             logger.info(f"Pagamento por cartão com sucesso: {SUBSCRIPTION_PLAN} {email_metadata}" )
-
-
             data = {
                 "email": email_metadata,
                 "password": password_metadata,
@@ -1623,7 +1619,6 @@ def stripe_webhook():
             if response.status_code == 200:
                 response_data = response.json()
                 
-                # Obtém cada argumento retornado pelo endpoint
                 message = response_data.get("message")
                 user_id = response_data.get("user_id")
                 login = response_data.get("login")
@@ -1631,7 +1626,6 @@ def stripe_webhook():
                 expiration = response_data.get("expiration")
                 subscription_plan = response_data.get("subscription_plan")
                 
-                # Exibe os valores obtidos
                 logger.info(f"Mensagem: {message}")
                 logger.info(f"User ID: {user_id}")
                 logger.info(f"Login: {login}")
@@ -1652,14 +1646,8 @@ def stripe_webhook():
                     title_origin="",
                     new_scheduled_time=""
                 )
-
-
-
-
             else:
                 logger.info(f"Erro na requisição: {response.status_code}{response.text}")
-
-
 
         elif session.get("payment_status") == "unpaid" and session.get("payment_intent"):
             payment_intent = stripe.PaymentIntent.retrieve(session["payment_intent"])
@@ -1694,7 +1682,6 @@ def stripe_webhook():
         print("Cliente cancelou o plano")
     
     return jsonify({"result": event, "ok": True})
-
 
 def validate_api_key():
     api_key = get_api_key()
@@ -1735,7 +1722,7 @@ def get_user_data_from_firebase(api_key, appfb):
     a partir da chave da API, na referência 'Users_Control_Panel'.
     """
     ref = db.reference(f'Users_Control_Panel/{api_key}', app=appfb)
-    user_data = ref.get()  # Obtém os dados do usuário com a chave especificada
+    user_data = ref.get() 
     return user_data
 
 def dynamic_rate_limit(appfb):
@@ -1748,8 +1735,7 @@ def dynamic_rate_limit(appfb):
     if api_key:
         user_data = get_user_data_from_firebase(api_key, appfb)
         if user_data:
-            return user_data.get("limit", "10 per minute")  # Retorna o limite configurado para o usuário
-    # Limite para usuários sem autenticação ou com API Key inválida
+            return user_data.get("limit", "10 per minute")
     return "10 per minute"
 
 
@@ -1823,17 +1809,9 @@ def get_user_plan(api_key):
         logger.error(f"Erro ao buscar plano do usuário {api_key}: {e}")
     return None
 
-# Exemplo de rota protegida (você precisará de uma lógica de autenticação real)
 def authenticate_user(req):
-    # Lógica REAL de autenticação:
-    # 1. Obter token do cabeçalho Authorization
-    # 2. Validar token (JWT de Firebase Auth, por exemplo)
-    # 3. Retornar o UID do usuário ou None se falhar
-    # Por enquanto, um mock:
-    mock_user_id = req.headers.get('X-User-Id') # Apenas para teste, NÃO USE EM PRODUÇÃO
+    mock_user_id = req.headers.get('X-User-Id') 
     return mock_user_id
-
-
 
 def get_video_title_scrape(video_id):
     url = f"https://www.youtube.com/watch?v={video_id}"
@@ -1852,19 +1830,6 @@ def get_video_title_scrape(video_id):
         return tag['content']
 
     return "Desconhecido"
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # if __name__ == '__main__':
 #     app.run(host="0.0.0.0", port=5000)
