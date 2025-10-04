@@ -49,8 +49,6 @@ appfb = initialize_app(cred, {
     'databaseURL': os.getenv('DATABASEURL')
 }, name="appfb")
 
-
-
 cred = credentials.Certificate(os.getenv('DATABASEPATHDOCS'))
 appdocs = initialize_app(cred, {
     'databaseURL': os.getenv('DATABASEURLDOCS')
