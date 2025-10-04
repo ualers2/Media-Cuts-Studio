@@ -189,9 +189,6 @@ def scrape_youtube_metadata(url):
     thumbnail = soup.find("meta", property="og:image")
     return title["content"] if title else "VideoSemTitulo", thumbnail["content"] if thumbnail else None
 
-
-
-
 @app.route("/api/Media_Cuts_Studio/Shortify/Mode/Create", methods=["POST"])
 @limiter.limit(lambda: dynamic_rate_limit(appfb))
 def api_Media_Cuts_Studio_Shortify_Mode_Create():
@@ -1218,7 +1215,6 @@ def new_account_instagram():
     ig_password = config['ig_password']
     ref_tasks = db.reference(f'users_account_instagram/{api_key}', app=appfb)
 
-    # 1) Recupera plano do usuário
     plano = get_user_plan(api_key)
     if not plano:
         return jsonify({'error': 'Plano do usuário não encontrado.'}), 404
@@ -1253,7 +1249,6 @@ def new_account_instagram():
 @app.route('/api/proxy/accounts/active', methods=['POST'])
 def proxy_get_active_accounts():
     try:
-        # Dados da requisição do frontend
         frontend_data = request.get_json()
 
         app.logger.info(f"{urlbase}/api/accounts/active")
@@ -1275,11 +1270,8 @@ def get_active_accounts():
         snapshot1 = ref1.get() or {}
         ref2 = db.reference(f'users_account_instagram/{api_key}', app=appfb)
         snapshot2 = ref2.get() or {}
-
-        # snapshot é um dict { account_id: {platform, username, status, ...}, ... }
         active_accounts = []
         for key, data in snapshot1.items():
-            # app.logger.info(f"data? {data}")
             if isinstance(data, dict) and data.get('status') == 'active':
                 active_accounts.append({
                     'id': key,
@@ -1307,11 +1299,8 @@ def get_user_account(email):
     try:
         all_users_ref = db.reference('Users_Control_Panel', app=appfb)
         all_users = all_users_ref.get()
-
         if not all_users:
             return jsonify({'error': 'Nenhum usuário encontrado'}), 404
-
-        # Varre os nós e busca pelo e-mail no campo `email`
         for user_id, data in all_users.items():
             if data.get('email') == email:
                 return jsonify({
