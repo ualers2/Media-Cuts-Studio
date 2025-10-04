@@ -22,15 +22,12 @@ import requests
 from bs4 import BeautifulSoup
 import yt_dlp
 import stripe
-
 from flask import Flask, render_template, request, jsonify, session, redirect, send_from_directory, url_for
 from flask_cors import CORS
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-from werkzeug.utils import secure_filename  # Para sanitizar nomes de arquivos
-
+from werkzeug.utils import secure_filename  
 from firebase_admin import db, initialize_app, credentials, storage, get_app
-
 import asyncio
 from typing import Dict, Any, Optional
 from asgiref.wsgi import WsgiToAsgi
@@ -40,7 +37,6 @@ from dotenv import load_dotenv
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("_logger")
-
 
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "Keys", "keys.env"))
 
@@ -63,19 +59,15 @@ if os.getenv("PRODUCTION_ENV") == "False":
         "https://www.mediacutsstudio.com",
         "https://dev.mediacutsstudio.com",
         "https://2ba9c7d26547.ngrok-free.app",
-        "https://4e799f508794.ngrok-free.app",  # novo domínio ngrok
+        "https://4e799f508794.ngrok-free.app", 
         "http://localhost:3001",
         "http://localhost:4343",
     ])
 
 asgi_app = WsgiToAsgi(app)
-app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024 # 50 MB
-
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024 
 WEBHOOK_URL = os.getenv("WEBHOOK_URL")
-
 BR = pytz.timezone('America/Sao_Paulo')
-key_openai = os.getenv("OPENAI_API_KEY")
-# client = OpenAI(api_key=key_openai)
 discord_token = os.getenv("discord_token")
 ClientID = os.getenv("ClientID")
 ClientSecret = os.getenv("ClientSecret")
@@ -108,7 +100,6 @@ PRICE_ID = os.getenv("STRIPE_PRICE_ID")
 WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
 UPLOAD_URL = os.getenv("UPLOAD_URL")
 UPLOAD_URL_VIDEOMANAGER = os.getenv("UPLOAD_URL_VIDEOMANAGER")
-
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 users_ref = db.reference("Users_Control_Panel", app=appfb)
 schedules_ref_root = db.reference("user_schedules", app=appfb)
