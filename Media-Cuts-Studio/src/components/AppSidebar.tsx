@@ -37,7 +37,7 @@ const sidebarItems = [
   { title: 'Studio', url: '/shortify', icon: CheckSquare, category: 'main' },
   { title: 'Projetos', url: '/projects', icon: Folder, category: 'main' },
   { title: "Novo Post", url: "/new-post", icon: Plus, category: 'content' },
-  { title: "Agendamento em Massa", url: "/bulk-schedule", icon: Upload, category: 'content' },
+  // { title: "Agendamento em Massa", url: "/bulk-schedule", icon: Upload, category: 'content' },
   { title: "Calendário", url: "/calendar", icon: Calendar, category: 'content' },
   { title: "Lista de Posts", url: "/posts", icon: List, category: 'content' },
   { title: "Autenticar Conta", url: "/authenticate-account", icon: KeyIcon, category: 'settings' },

@@ -4,10 +4,9 @@
 version: '3.8'
 
 services:
-
   redis:
     image: redis:latest
-    container_name: redis_1
+    container_name: redis
     restart: always
     ports:
       - "6379:6379"
@@ -16,181 +15,35 @@ services:
     volumes:
       - redis_data:/data 
 
-  api_scheduler:
+  internal_celery_worker_1:
+    image: mediacutsstudio/celery_worker:latest
     build:
-      context: ./internal-sheduler-server
-      dockerfile: Dockerfile
-    container_name: api_scheduler
-    working_dir: /app  
-    restart: always
-    command: >
-      gunicorn api:asgi_app
-      -k uvicorn.workers.UvicornWorker
-      --bind 0.0.0.0:5729
-      --workers 3
-      --timeout 3600
-      --keep-alive 3600
-    ports:
-      - "5729:5729"
-    depends_on:
-      - redis 
-    networks: 
-      - rede_externa
+      context: ./internal-media-cuts-studio-server
+      dockerfile: Dockerfile 
+    container_name: internal_celery_worker_1
     volumes:
-      - ./internal-sheduler-server:/app
-      - videos_data:/app/tmp
-      - tokens:/app/Tokens
-    mem_limit: 2GB
-    cpus: "1.5"
-
-  celery_worker_scheduler:
-    build:
-      context: ./internal-sheduler-server
-      dockerfile: Dockerfile
-    container_name: celery_worker_scheduler
-    working_dir: /app  
+      - logger_data:/app/Studio/Logs
     restart: always
+    working_dir: /app
     command: >
-      celery -A celery_worker.celery_app worker --loglevel=info --beat
+      watchmedo auto-restart --directory=/app --pattern="*.py" --recursive -- 
+      celery -A celery_worker worker --loglevel=info --beat
     depends_on:
       - redis
     networks:
       - rede_externa
-    volumes:
-      - ./internal-sheduler-server:/app
-      - logger_data:/app/Logs
-      - videos_data:/app/tmp
-      - tokens:/app/Tokens
-    mem_limit: 800MB
-    cpus: "0.8"
-
-  # upload_media_bulk_api_1:
-  #   build:
-  #     context: ./internal-sheduler-uploader-server
-  #     dockerfile: Dockerfile
-  #   container_name: upload_media_bulk_api_1
-  #   restart: always
-  #   working_dir: /app
-  #   ports:
-  #     - "4062:4062"
-  #   command: [
-  #     "uvicorn", "server:asgi_app",
-  #     "--host", "0.0.0.0",
-  #     "--port", "4062",
-  #     "--workers", "1",
-  #     "--timeout-keep-alive", "9600",
-  #     "--lifespan", "off"
-  #   ]
-  #   healthcheck:
-  #     test: ["CMD", "curl", "-f", "http://127.0.0.1:4062"] 
-  #     interval: 129s
-  #     timeout: 2s
-  #     retries: 5
-  #   networks:
-  #     - rede_externa
-  #   mem_limit: 1200MB
-  #   cpus: "0.8"
-
-  landingpage_1:
-    build:
-      context: ./Media-Cuts-Studio
-      dockerfile: Dockerfile 
-    volumes:
-      - ./Media-Cuts-Studio:/app
-      - npm-modules:/app/node_modules
-    working_dir: /app
-    ports:
-      - "4343:4343"
-    restart: always
+    runtime: nvidia
     environment:
-      - CHOKIDAR_USEPOLLING=true
-      - CHOKIDAR_INTERVAL=100
-    command: >
-      sh -c "npm run dev -- --host 0.0.0.0 --port 4343"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://127.0.0.1:4343"] 
-      interval: 129s
-      timeout: 2s
-      retries: 5
-    networks:
-      - rede_externa
-    mem_limit: 500MB
-    cpus: "0.8"
-
-  # landingpage_api_1:
-  #   build:
-  #     context: ./internal-landing-api
-  #     dockerfile: Dockerfile
-  #   container_name: landingpage_api_1
-  #   restart: always
-  #   working_dir: /app
-  #   ports:
-  #     - "4252:4252"
-  #   command: ["waitress-serve", "--host=0.0.0.0", "--port=4252", "api:app"]
-  #   healthcheck:
-  #     test: ["CMD", "curl", "-f", "http://127.0.0.1:4252"] 
-  #     interval: 129s
-  #     timeout: 2s
-  #     retries: 5
-  #   mem_limit: 500MB
-  #   cpus: "0.8"
-  #   networks:
-  #     - rede_externa
-
-  internal_webhook_1:
-    build:
-      context: ./internal-webhook-server
-      dockerfile: Dockerfile 
-    volumes:
-      - ./internal-webhook-server:/app
-    container_name: internal_webhook_1
-    restart: always
-    working_dir: /app 
-    ports:
-      - "3008:3008"
-    command: >
-        sh -c "python webhook.py"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://127.0.0.1:3008/"] 
-      interval: 129s
-      timeout: 2s
-      retries: 5
-    mem_limit: 500MB
-    cpus: "0.8"
-    networks:
-      - rede_externa
-
-  internal_api_1:
-    build:
-      context: ./internal-shortify-api
-      dockerfile: Dockerfile 
-    volumes:
-      - ./internal-shortify-api:/app
-    container_name: internal_api_1
-    restart: always
-    working_dir: /app   
-    ports:
-      - "5050:5050"
-      
-    command: [
-      "uvicorn", "api:asgi_app",
-      "--host", "0.0.0.0",
-      "--port", "5050",
-      "--workers", "2",
-      "--timeout-keep-alive", "3600",
-      "--lifespan", "off"
-    ]
-   
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://127.0.0.1:5050/"] 
-      interval: 129s
-      timeout: 2s
-      retries: 5
-    networks:
-      - rede_externa
-    mem_limit: 500MB
-    cpus: "0.8"
-
+      - CUDA_VISIBLE_DEVICES=0  
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [compute, video, utility]
 
 
 networks:
@@ -199,8 +52,4 @@ networks:
 
 volumes:
   logger_data:
-  alfred_knowledge_data: 
   redis_data:
-  tokens:
-  videos_data:
-  npm-modules:
