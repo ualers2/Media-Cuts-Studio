@@ -162,23 +162,19 @@ const TaskComponent: React.FC<TaskSchedulerProps> = ({
   useEffect(() => {
     let timeout;
     if (typing) {
-      // Escreve uma letra por vez
       if (displayText.length < slogans[currentSloganIndex].length) {
         timeout = setTimeout(() => {
           setDisplayText(slogans[currentSloganIndex].slice(0, displayText.length + 1));
         }, 25);
       } else {
-        // Aguarda um pouco antes de começar apagar
         timeout = setTimeout(() => setTyping(false), 1500);
       }
     } else {
-      // Apaga uma letra por vez
       if (displayText.length > 0) {
         timeout = setTimeout(() => {
           setDisplayText(displayText.slice(0, -1));
         }, 25);
       } else {
-        // Vai para o próximo slogan e começa a digitar
         setCurrentSloganIndex((currentSloganIndex + 1) % slogans.length);
         setTyping(true);
       }

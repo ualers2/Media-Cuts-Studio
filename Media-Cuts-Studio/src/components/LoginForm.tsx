@@ -20,7 +20,6 @@ const LoginForm: React.FC = () => {
   const params = new URLSearchParams(location.search);
   const videoUrl = params.get('video_url');
   console.log(`videoUrl ${videoUrl}`)
-  // Aplica ou remove classe 'dark' no root
   useEffect(() => {
     const root = document.documentElement;
     if (isDarkMode) root.classList.add('dark');
