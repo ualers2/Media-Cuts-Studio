@@ -381,23 +381,6 @@ def process_queue():
                     "task_id": task.id
                 })
 
-                try:
-                    user_control_data = user_Control_Panel_ref.get()
-                    if not user_control_data or 'project_simultaneo' not in user_control_data:
-                        logger.error(f"Dados de controle de usuário ou 'project_simultaneo' não encontrados para a api_key. Pulando...")
-                    
-                    limite_simultaneo = user_control_data['project_simultaneo']
-                    projects_videos_base_completed_count = user_control_data.get('projects_videos_base_completed', 0) # Novo campo para controle
-                    projects_running_count = user_control_data.get('projects_running', 0) # Novo campo para controle
-                except Exception as e:
-                    logger.error(f"Erro ao buscar dados de controle para  {e}")
-                    
-                novo_valor = min(limite_simultaneo, projects_running_count + 1)
-                user_Control_Panel_ref.update({
-                    'projects_running': novo_valor,
-                    'projects_videos_base_completed': projects_videos_base_completed_count + 1
-                    })
-
 
                 running_count += 1
           
@@ -619,11 +602,19 @@ def run_shortify_task(task_params):
             
         limite_simultaneo = user_control_data['project_simultaneo']
         subscription_plan = user_control_data['subscription_plan']
-        projects_running_count = user_control_data.get('projects_running', 0) # Novo campo para controle
+        projects_videos_base_completed_count = user_control_data.get('projects_videos_base_completed', 0) 
+        projects_running_count = user_control_data.get('projects_running', 0) 
     except Exception as e:
         logger.error(f"Erro ao buscar dados de controle para {api_key}: {e}")
-        
-    
+
+    novo_valor = min(limite_simultaneo, projects_running_count + 1)
+    user_Control_Panel_ref.update({
+        'projects_running': novo_valor
+        })
+    user_Control_Panel_ref.update({
+        'projects_videos_base_completed': projects_videos_base_completed_count + 1
+        })
+
     try:
 
         shortify_instance = ShortifyAlgo(
