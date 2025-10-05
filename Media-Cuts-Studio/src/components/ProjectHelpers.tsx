@@ -153,17 +153,14 @@ export const useProjectHandlers = (
     const toastId = toast.loading('Iniciando download em lote...', { position: 'bottom-center' });
 
     try {
-      // função que realiza um download único
       const downloadOne = async (video: ProjectVideo) => {
         const videoId = video.id!;
         setDownloadingIds(prev => (prev.includes(videoId) ? prev : [...prev, videoId]));
         setDownloadProgress(prev => ({ ...prev, [videoId]: 0 }));
 
         try {
-          // monta URL otimizada com nome do projeto
           const projectNameEncoded = encodeURIComponent(selectedProject!.name);
           const downloadUrl = `${videomanager_URL}/api/projects/${projectNameEncoded}/videos/${videoId}/download`;
-
           const response = await fetch(downloadUrl, {
             method: 'GET',
             headers: {
@@ -182,7 +179,6 @@ export const useProjectHandlers = (
           const reader = response.body.getReader();
           const chunks: Uint8Array[] = [];
           let receivedLength = 0;
-
           while (true) {
             const { done, value } = await reader.read();
             if (done) break;
@@ -197,7 +193,6 @@ export const useProjectHandlers = (
               }
             }
           }
-
           const blob = createBlobFromChunks(chunks, 'video/mp4');
           const url = window.URL.createObjectURL(blob);
           const a = document.createElement('a');
@@ -207,7 +202,6 @@ export const useProjectHandlers = (
           a.click();
           a.remove();
           window.URL.revokeObjectURL(url);
-
           toast.success(`Download de "${video.filename}" concluído.`, { position: 'bottom-center' });
         } finally {
           setDownloadingIds(prev => prev.filter(id => id !== videoId));
@@ -218,12 +212,9 @@ export const useProjectHandlers = (
           });
         }
       };
-
-      // Executa os downloads um-a-um respeitando o limite de concorrência do runWithLimit
       for (const video of selectedProjectVideos) {
         await runWithLimit(() => downloadOne(video));
       }
-
       toast.success('Todos os vídeos foram baixados com sucesso!', { id: toastId });
     } catch (err: any) {
       toast.error(`Erro no download em lote: ${err?.message || err}`, { id: toastId });
@@ -236,7 +227,6 @@ export const useProjectHandlers = (
   };
 
   const handleDownloadClick = async (videoId: string, filename: string) => {
-    // evita clique duplo quando já baixando
     if (downloadingIds.includes(videoId) || downloadingAll) return;
     if (!selectedProject) {
       toast.error('Projeto não selecionado.', { position: 'bottom-center' });
