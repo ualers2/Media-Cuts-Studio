@@ -124,7 +124,7 @@ celery_app.conf.task_default_queue = 'internal_queue'
 celery_app.conf.beat_schedule = {
     'process-shortify-queue-every-minute': {
         'task': 'celery_worker.process_queue',
-        'schedule': crontab(minute='*/6'),
+        'schedule': crontab(minute='*/2'),
     },    
     'process-reset-monthly-counters-every-5-hour': {
         'task': 'celery_worker.reset_monthly_counters',
@@ -169,19 +169,14 @@ def reset_monthly_counters():
 
 @celery_app.task(name="celery_worker.process_queue")
 def process_queue():
-    # 1) Carrega tudo do shortify_queue e do process_queue_ref
     all_shortify = shortify_queue.get() or {}
     all_process = process_queue_ref.get() or {}
     all_items = {**all_shortify, **all_process}
-
-    # Conta quantas shortify estão em Running mas ignora as que têm erro
     running_shortify = {
         k: v for k, v in all_shortify.items()
         if v.get('status') == 'Running' and not (v.get('error') and str(v.get('error')).strip())
     }
     running_count = len(running_shortify)
-
-    # Filtra só os PENDING
     pending_items = {}
     for key, item in all_items.items():
         if item.get('status') != 'PENDING':
@@ -192,13 +187,11 @@ def process_queue():
                 scheduled_dt = tz_item.localize(datetime.strptime(item['scheduled_time'], '%Y-%m-%d %H:%M:%S'))
                 now_dt = datetime.now(tz_item)
                 if now_dt >= scheduled_dt:
-                    # chegou a hora reagendada -> limpa flags para tornar elegível de novo
                     shortify_queue.child(key).update({
                         "rescheduled": False,
                         "reschedule_count": 0
                     })
                 else:
-                    # ainda antes do horário reagendado -> ignora este item
                     continue
             except Exception as e:
                 logger.warning(f"Erro ao processar horário reagendado de {key}: {e}")
