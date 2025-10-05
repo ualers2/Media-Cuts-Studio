@@ -148,7 +148,6 @@ export const useProjectHandlers = (
     }
 
     setDownloadingAll(true);
-    // dá chance para o React/browser aplicar o re-render e propagar allowLoad=false aos VideoPreview
     await new Promise((resolve) => requestAnimationFrame(resolve));
 
     const toastId = toast.loading('Iniciando download em lote...', { position: 'bottom-center' });
