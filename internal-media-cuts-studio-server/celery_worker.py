@@ -230,8 +230,6 @@ def process_queue():
                 logger.error(f"Erro ao buscar dados de controle para {api_key}: {e}")
                 continue
 
-
-            # Verifica se title_origin existe e não está vazio
             if item['payload'].get('title_origin'):
                 title = item['payload']['title_origin']
             elif item['payload'].get('videoTitle'):
@@ -239,7 +237,6 @@ def process_queue():
             elif item['payload'].get('videoTitleForLatestVideo'):
                 title = item['payload']['videoTitleForLatestVideo']
 
-            # Se quiser em uma única linha, pode usar:
             title = (
                 item['payload'].get('title_origin')
                 or item['payload'].get('videoTitle')
@@ -287,7 +284,6 @@ def process_queue():
                         })
                         continue
 
-                # Novo: Verificação do limite de projetos simultâneos do usuário
                 if int(projects_running_count) >= int(limite_simultaneo):
                     tz = pytz.timezone(item['payload'].get('timezone', 'America/Sao_Paulo'))
                     nova_data = datetime.now(tz) + timedelta(hours=1)
@@ -392,16 +388,11 @@ def process_queue():
                     'projects_videos_base_completed': projects_videos_base_completed_count + 1
                     })
 
-
-
-
-
                 task = run_shortify_task.delay(item['payload'])
                 shortify_queue.child(key).update({
                     "status": "SCHEDULED",
                     "task_id": task.id
                 })
-
 
                 running_count += 1
           
