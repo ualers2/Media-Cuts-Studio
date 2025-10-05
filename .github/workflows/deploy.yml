@@ -1,13 +1,9 @@
 name: Deploy Media Cuts Studio
-
-
 on:
   pull_request:
     types: [closed]
     branches:
       - main
-
-
 jobs:
   build-and-deploy:
     if: github.event.pull_request.merged == true
@@ -44,10 +40,7 @@ jobs:
           mkdir -p /home/administrator/deploys/mediacutsstudio/internal-shortify-api/Cookies && \
           mkdir -p /home/administrator/deploys/mediacutsstudio/internal-shortify-api/Keys && \
           mkdir -p /home/administrator/deploys/mediacutsstudio/internal-uptime-server/Keys
-       
-       
         "
-
 
     - name: Create keys.env on VPS
       run: |
@@ -74,8 +67,6 @@ jobs:
 
           echo '${{ secrets.SECRET_JSON_FIREBASE_SHEDULER }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-sheduler-server/Keys/Firebasesheduler.json
           echo '${{ secrets.CLIENTE_SECRET }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-sheduler-server/Keys/client_secret_1.json
-
-
         "
 
     - name: Create COMPOSE on VPS
