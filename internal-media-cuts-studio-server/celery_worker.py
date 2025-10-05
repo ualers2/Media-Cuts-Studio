@@ -423,7 +423,6 @@ def process_queue():
                 })
                 payload = item['payload']
                 payload['task_id'] = task_id
-                # data['hash_id'] = hash_id
                 json_task = {
                     "user_email": user_email,
                     "timezone": payload.get('timezone'),
@@ -569,7 +568,6 @@ def run_shortify_task(task_params):
     pastedUrl = task_params.get('pastedUrl')
     includeVertical = task_params.get('includeVertical')
     includeHorizontal = task_params.get('includeHorizontal')
-
     id_task_sheduled = date_time.replace(".", "_").replace(":", "_").replace(" ", "_")
     ref_user_tasks = db.reference(f'user_tasks/{filtrer_user_email}/{id_task_sheduled}', app=app1)
     ref_shortify = db.reference(f'shortify_queue/{id_task_sheduled}', app=app1)
@@ -578,15 +576,6 @@ def run_shortify_task(task_params):
     if status_task == 'SCHEDULED':
         return f"uma tarefa com status SCHEDULED por algum motivo esta tentando rodar de novo"
     
-
-    # lock_file_path = os.path.join(os.path.dirname(__file__), "tmp", "uploads")
-    # lock_file = os.path.join(lock_file_path, f"upload_{post_id}.lock")
-    # if os.path.exists(lock_file):
-    #     logger.warning(f"Tarefa para {post_id} já agendada. Ignorando duplicata.")
-    #     return "Já agendado"
-    # open(lock_file, 'w').close()
-
-
     title_origin_for_project = secure_filename(title_origin).replace("-", "").replace("....", "").replace("...", "").replace("..", "").replace(".", "").replace("... - ", "").replace('"????????"', '').replace("...__", "_")
     ref_projects = db.reference(f'projects/{filtrer_user_email}/{title_origin_for_project}', app=appdocs)
     
@@ -698,31 +687,24 @@ def run_shortify_task(task_params):
 
             
         )
-
         asyncio.run(shortify_instance.Shortify())
-
-
         fim = time.time()  
         processing_time = fim - inicio
         horas, resto = divmod(processing_time, 3600)
         minutos, segundos = divmod(resto, 60)
         tempo_formatado = f"{int(horas):02}:{int(minutos):02}:{int(segundos):02}"
-
         ref_user_tasks.update({"status": "Completed",
                                "Success_rate": "100%",
                                "Processing_time": tempo_formatado
                                
                                }
-        
         )
         ref_shortify.update({"status": "Completed",
                             "Success_rate": "100%",
                             "Processing_time": tempo_formatado
-        
         })
         ref_projects.update({"status": "Completed"})
         user_Control_Panel_ref.update({'projects_running': max(0, projects_running_count - 1)})
-
         SendEmail(
             user_email_origin=user_email_origin,
             html_attach_flag=True,
@@ -765,8 +747,6 @@ def run_shortify_task(task_params):
         logger.info(f"Erro na tarefa run_shortify_task: {str(erro_project)}")
         
         return f"Erro na tarefa run_shortify_task: {str(erro_project)}"
-    
- 
 
 
 
@@ -850,7 +830,6 @@ def run_generate_subclip_ai_curation_task(task_params):
         ref_tasks.child(task_id_user_tasks).update({"status": "Failed"})
         process_queue_ref.child(task_id_process_queue_tasks).update({"status": "Failed"})
         return f"Erro na tarefa run_shortify_task: {str(e)}"
-    
 
 @celery_app.task(name="celery_worker.run_audio_transcriber_task")
 def run_audio_transcriber_task(task_params):
@@ -957,7 +936,6 @@ def run_audio_transcriber_task(task_params):
         ref_tasks.child(task_id_user_tasks).update({"status": "Failed"})
         process_queue_ref.child(task_id_process_queue_tasks).update({"status": "Failed"})
         return f"Erro na tarefa run_shortify_task: {str(e)}"
-    
 
 @celery_app.task(name="celery_worker.run_thumbnail_vertical_fusion_task")
 def run_thumbnail_vertical_fusion_task(task_params):
@@ -1066,7 +1044,6 @@ def run_thumbnail_vertical_fusion_task(task_params):
         ref_tasks.child(task_id_user_tasks).update({"status": "Failed"})
         process_queue_ref.child(task_id_process_queue_tasks).update({"status": "Failed"})
         return f"Erro na tarefa run_shortify_task: {str(e)}"
-    
 
 @celery_app.task(name="celery_worker.run_autoreframe_task")
 def run_autoreframe_task(task_params):
@@ -1205,9 +1182,6 @@ def run_autoreframe_task(task_params):
         ref_tasks.child(task_id_user_tasks).update({"status": "Failed"})
         process_queue_ref.child(task_id_process_queue_tasks).update({"status": "Failed"})
         return f"Erro na tarefa run_shortify_task: {str(e)}"
-    
-
-
 
 def _running_task_status_fix(scheduled_time_str, filtrer_user_email, process_flag=True):
     date_str = None
