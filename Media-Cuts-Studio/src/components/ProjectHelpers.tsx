@@ -148,23 +148,19 @@ export const useProjectHandlers = (
     }
 
     setDownloadingAll(true);
-    // dá chance para o React/browser aplicar o re-render e propagar allowLoad=false aos VideoPreview
     await new Promise((resolve) => requestAnimationFrame(resolve));
 
     const toastId = toast.loading('Iniciando download em lote...', { position: 'bottom-center' });
 
     try {
-      // função que realiza um download único
       const downloadOne = async (video: ProjectVideo) => {
         const videoId = video.id!;
         setDownloadingIds(prev => (prev.includes(videoId) ? prev : [...prev, videoId]));
         setDownloadProgress(prev => ({ ...prev, [videoId]: 0 }));
 
         try {
-          // monta URL otimizada com nome do projeto
           const projectNameEncoded = encodeURIComponent(selectedProject!.name);
           const downloadUrl = `${videomanager_URL}/api/projects/${projectNameEncoded}/videos/${videoId}/download`;
-
           const response = await fetch(downloadUrl, {
             method: 'GET',
             headers: {
@@ -183,7 +179,6 @@ export const useProjectHandlers = (
           const reader = response.body.getReader();
           const chunks: Uint8Array[] = [];
           let receivedLength = 0;
-
           while (true) {
             const { done, value } = await reader.read();
             if (done) break;
@@ -198,7 +193,6 @@ export const useProjectHandlers = (
               }
             }
           }
-
           const blob = createBlobFromChunks(chunks, 'video/mp4');
           const url = window.URL.createObjectURL(blob);
           const a = document.createElement('a');
@@ -208,7 +202,6 @@ export const useProjectHandlers = (
           a.click();
           a.remove();
           window.URL.revokeObjectURL(url);
-
           toast.success(`Download de "${video.filename}" concluído.`, { position: 'bottom-center' });
         } finally {
           setDownloadingIds(prev => prev.filter(id => id !== videoId));
@@ -219,12 +212,9 @@ export const useProjectHandlers = (
           });
         }
       };
-
-      // Executa os downloads um-a-um respeitando o limite de concorrência do runWithLimit
       for (const video of selectedProjectVideos) {
         await runWithLimit(() => downloadOne(video));
       }
-
       toast.success('Todos os vídeos foram baixados com sucesso!', { id: toastId });
     } catch (err: any) {
       toast.error(`Erro no download em lote: ${err?.message || err}`, { id: toastId });
@@ -237,21 +227,16 @@ export const useProjectHandlers = (
   };
 
   const handleDownloadClick = async (videoId: string, filename: string) => {
-    // evita clique duplo quando já baixando
     if (downloadingIds.includes(videoId) || downloadingAll) return;
     if (!selectedProject) {
       toast.error('Projeto não selecionado.', { position: 'bottom-center' });
       return;
     }
-
     setDownloadingIds(prev => [...prev, videoId]);
     setDownloadProgress(prev => ({ ...prev, [videoId]: 0 }));
-
-    // monta URL otimizada com nome do projeto
     const projectNameEncoded = encodeURIComponent(selectedProject.name);
     const downloadUrl = `${videomanager_URL}/api/projects/${projectNameEncoded}/videos/${videoId}/download`;
     const toastId = toast.loading('Iniciando download...', { position: 'bottom-center' });
-
     try {
       const response = await fetch(downloadUrl, {
         method: 'GET',
@@ -286,7 +271,6 @@ export const useProjectHandlers = (
             const percent = Math.round((receivedLength / totalLength) * 100);
             setDownloadProgress(prev => ({ ...prev, [videoId]: percent }));
           } else {
-            // quando o total é desconhecido, usa -1 para indicar atividade sem % exata
             setDownloadProgress(prev => ({ ...prev, [videoId]: -1 }));
           }
         }
@@ -301,13 +285,11 @@ export const useProjectHandlers = (
       a.click();
       a.remove();
       window.URL.revokeObjectURL(url);
-
       toast.success('Download concluído!', { id: toastId });
     } catch (err: any) {
       toast.error(`Falha no download: ${err?.message || err}`, { id: toastId });
       console.error(err);
     } finally {
-      // limpar estado
       setDownloadingIds(prev => prev.filter(id => id !== videoId));
       setDownloadProgress(prev => {
         const copy = { ...prev };
@@ -319,12 +301,11 @@ export const useProjectHandlers = (
 
   const handleCopyAll = (title: string, hashtags?: string[]) => {
     const normalized = hashtags
-      ?.map(h => `#${h.replace(/^[#\s]+/, '')}`) // remove # e espaços extras
+      ?.map(h => `#${h.replace(/^[#\s]+/, '')}`) 
       .join(' ');
 
     let formatted = `${title}${normalized ? ' ' + normalized : ''}`;
 
-    // garante no máximo 98 caracteres
     if (formatted.length > 98) {
       formatted = formatted.slice(0, 98);
     }
@@ -335,7 +316,7 @@ export const useProjectHandlers = (
 
   const handleCopyHashtags = (hashtags?: string[]) => {
     const normalized = hashtags
-      ?.map(h => `#${h.replace(/^[#\s]+/, '')}`) // remove # e espaços do começo
+      ?.map(h => `#${h.replace(/^[#\s]+/, '')}`) 
       .join(' ');
     const formatted = normalized ? normalized : '';
     navigator.clipboard.writeText(formatted);
@@ -345,7 +326,6 @@ export const useProjectHandlers = (
   const handleCopyTitle = (title: string) => {
     let formatted = `${title}`;
 
-    // garante no máximo 98 caracteres
     if (formatted.length > 98) {
       formatted = formatted.slice(0, 98);
     }
@@ -357,7 +337,6 @@ export const useProjectHandlers = (
     try {
       const user_email = localStorage.getItem('user_email') || '';
       const apiKey = localStorage.getItem('api_key') || '';
-
       const resp = await fetch(`${videomanager_URL}/api/projects/${encodeURIComponent(projectName)}/mark-utilizado`, {
         method: 'POST',
         headers: {
@@ -367,9 +346,7 @@ export const useProjectHandlers = (
         },
         body: JSON.stringify({ utilizado: !currentState }),
       });
-
       if (!resp.ok) throw new Error('Falha ao atualizar status');
-
       localStorage.setItem(`utilizado:${projectName}`, (!currentState).toString());
       setToggleUtilizado(prev => !prev);
       toast.success(`Projeto marcado como ${!currentState ? 'utilizado' : 'não utilizado'}`, { position: 'bottom-center' });
@@ -385,7 +362,6 @@ export const useProjectHandlers = (
     try {
       const user_email = localStorage.getItem('user_email') || '';
       const apiKey = localStorage.getItem('api_key') || '';
-
       const resp = await fetch(`${videomanager_URL}/api/projects/${encodeURIComponent(projectName)}`, {
         method: 'DELETE',
         headers: {
@@ -393,15 +369,10 @@ export const useProjectHandlers = (
           'X-User-Id': user_email,
         },
       });
-
       const json = await resp.json();
       if (!resp.ok) throw new Error(json.message || 'Erro ao excluir projeto.');
-
       toast.success(json.message);
-
-      // Atualiza lista de projetos localmente sem recarregar
       toggleProjectDeleted(projectName);
-
     } catch (err: any) {
       console.error(err);
       toast.error(`Falha ao excluir projeto: ${err.message || err}`);
@@ -421,10 +392,8 @@ export const useProjectHandlers = (
   };
 };
 
-// Função utilitária para formatação de tempo
 export const formatDuration = (startTime: string, endTime: string): string => {
   if (!startTime || !endTime) return '';
-  
   const toSeconds = (time: string): number => {
     const parts = time.split(':').map(Number);
     if (parts.length === 3) {
@@ -438,21 +407,18 @@ export const formatDuration = (startTime: string, endTime: string): string => {
     }
     return 0;
   };
-  
   const duration = toSeconds(endTime) - toSeconds(startTime);
   const min = Math.floor(duration / 60);
   const sec = duration % 60;
   return `${min}m${sec.toString().padStart(2, '0')}s`;
 };
 
-// Função utilitária para determinar cor da barra de progresso
 export const getProgressBarColor = (progress: number): string => {
   if (progress < 70) return 'bg-green-500';
   if (progress < 90) return 'bg-yellow-500';
   return 'bg-red-500';
 };
 
-// Função utilitária para filtrar projetos
 export const filterProjects = (
   projects: any[],
   searchTerm: string,
@@ -465,11 +431,10 @@ export const filterProjects = (
     .filter((project) => {
       if (filter === 'utilizados') return project.used === true;
       if (filter === 'nao-utilizados') return project.used === false;
-      return true; // todos
+      return true; 
     });
 };
 
-// Exportações dos componentes
 export {
   Spinner,
   StarIcon,

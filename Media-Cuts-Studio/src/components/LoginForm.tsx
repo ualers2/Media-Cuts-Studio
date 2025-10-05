@@ -20,7 +20,6 @@ const LoginForm: React.FC = () => {
   const params = new URLSearchParams(location.search);
   const videoUrl = params.get('video_url');
   console.log(`videoUrl ${videoUrl}`)
-  // Aplica ou remove classe 'dark' no root
   useEffect(() => {
     const root = document.documentElement;
     if (isDarkMode) root.classList.add('dark');
@@ -53,12 +52,10 @@ const LoginForm: React.FC = () => {
           alert(result.message || 'Erro no login');
           return;
         }
-        // Armazena dados de sessão
         localStorage.setItem('isAuthenticated', 'true');
         localStorage.setItem('user_email', email);
         localStorage.setItem('api_key', result.api_key);
         localStorage.setItem('expire_time_license', result.expire_time_license);
-        // Formata horário do login
         const now = new Date();
         const horas24 = now.getHours();
         const horas12 = horas24 % 12 || 12;
@@ -70,7 +67,6 @@ const LoginForm: React.FC = () => {
         const ano = now.getFullYear();
         const formattedTime = `${horas12}:${minutos} ${ampm} ${dia} ${mesAbrev} ${ano}`;
         localStorage.setItem('login_time', formattedTime);
-        // Busca configs e dados da conta
         const [configRes, accountRes] = await Promise.all([
           fetch(`${VITE_API_URL}/api/user-config/${email}`),
           fetch(`${VITE_API_URL}/api/account/${email}`),
@@ -79,7 +75,6 @@ const LoginForm: React.FC = () => {
         const account = await accountRes.json();
         localStorage.setItem('user_config', JSON.stringify(config.config || {}));
         localStorage.setItem('account_data', JSON.stringify(account.account || {}));
-        // Inicializa socket e fecha fluxo
         initSocket(result.api_key);
         login(result.api_key);
         console.log(videoUrl)

@@ -124,7 +124,7 @@ celery_app.conf.task_default_queue = 'internal_queue'
 celery_app.conf.beat_schedule = {
     'process-shortify-queue-every-minute': {
         'task': 'celery_worker.process_queue',
-        'schedule': crontab(minute='*/6'),
+        'schedule': crontab(minute='*/2'),
     },    
     'process-reset-monthly-counters-every-5-hour': {
         'task': 'celery_worker.reset_monthly_counters',
@@ -169,19 +169,14 @@ def reset_monthly_counters():
 
 @celery_app.task(name="celery_worker.process_queue")
 def process_queue():
-    # 1) Carrega tudo do shortify_queue e do process_queue_ref
     all_shortify = shortify_queue.get() or {}
     all_process = process_queue_ref.get() or {}
     all_items = {**all_shortify, **all_process}
-
-    # Conta quantas shortify estão em Running mas ignora as que têm erro
     running_shortify = {
         k: v for k, v in all_shortify.items()
         if v.get('status') == 'Running' and not (v.get('error') and str(v.get('error')).strip())
     }
     running_count = len(running_shortify)
-
-    # Filtra só os PENDING
     pending_items = {}
     for key, item in all_items.items():
         if item.get('status') != 'PENDING':
@@ -192,13 +187,11 @@ def process_queue():
                 scheduled_dt = tz_item.localize(datetime.strptime(item['scheduled_time'], '%Y-%m-%d %H:%M:%S'))
                 now_dt = datetime.now(tz_item)
                 if now_dt >= scheduled_dt:
-                    # chegou a hora reagendada -> limpa flags para tornar elegível de novo
                     shortify_queue.child(key).update({
                         "rescheduled": False,
                         "reschedule_count": 0
                     })
                 else:
-                    # ainda antes do horário reagendado -> ignora este item
                     continue
             except Exception as e:
                 logger.warning(f"Erro ao processar horário reagendado de {key}: {e}")
@@ -237,8 +230,6 @@ def process_queue():
                 logger.error(f"Erro ao buscar dados de controle para {api_key}: {e}")
                 continue
 
-
-            # Verifica se title_origin existe e não está vazio
             if item['payload'].get('title_origin'):
                 title = item['payload']['title_origin']
             elif item['payload'].get('videoTitle'):
@@ -246,7 +237,6 @@ def process_queue():
             elif item['payload'].get('videoTitleForLatestVideo'):
                 title = item['payload']['videoTitleForLatestVideo']
 
-            # Se quiser em uma única linha, pode usar:
             title = (
                 item['payload'].get('title_origin')
                 or item['payload'].get('videoTitle')
@@ -294,7 +284,6 @@ def process_queue():
                         })
                         continue
 
-                # Novo: Verificação do limite de projetos simultâneos do usuário
                 if int(projects_running_count) >= int(limite_simultaneo):
                     tz = pytz.timezone(item['payload'].get('timezone', 'America/Sao_Paulo'))
                     nova_data = datetime.now(tz) + timedelta(hours=1)
@@ -375,29 +364,35 @@ def process_queue():
                     })
                     continue
 
+
+                try:
+                    user_control_data = user_Control_Panel_ref.get()
+                    if not user_control_data or 'project_simultaneo' not in user_control_data:
+                        logger.error(f"Dados de controle de usuário ou 'project_simultaneo' não encontrados para a api_key {api_key}. Pulando...")
+                        
+                    limite_simultaneo = user_control_data['project_simultaneo']
+                    subscription_plan = user_control_data['subscription_plan']
+                    projects_videos_base_completed_count = user_control_data.get('projects_videos_base_completed', 0) 
+                    projects_running_count = user_control_data.get('projects_running', 0) 
+                except Exception as e:
+                    logger.error(f"Erro ao buscar dados de controle para {api_key}: {e}")
+
+
+                logger.info(f"Incrementando projects_running para {user_email_origin}")
+
+                novo_valor = min(limite_simultaneo, projects_running_count + 1)
+                user_Control_Panel_ref.update({
+                    'projects_running': novo_valor
+                    })
+                user_Control_Panel_ref.update({
+                    'projects_videos_base_completed': projects_videos_base_completed_count + 1
+                    })
+
                 task = run_shortify_task.delay(item['payload'])
                 shortify_queue.child(key).update({
                     "status": "SCHEDULED",
                     "task_id": task.id
                 })
-
-                try:
-                    user_control_data = user_Control_Panel_ref.get()
-                    if not user_control_data or 'project_simultaneo' not in user_control_data:
-                        logger.error(f"Dados de controle de usuário ou 'project_simultaneo' não encontrados para a api_key. Pulando...")
-                    
-                    limite_simultaneo = user_control_data['project_simultaneo']
-                    projects_videos_base_completed_count = user_control_data.get('projects_videos_base_completed', 0) # Novo campo para controle
-                    projects_running_count = user_control_data.get('projects_running', 0) # Novo campo para controle
-                except Exception as e:
-                    logger.error(f"Erro ao buscar dados de controle para  {e}")
-                    
-                novo_valor = min(limite_simultaneo, projects_running_count + 1)
-                user_Control_Panel_ref.update({
-                    'projects_running': novo_valor,
-                    'projects_videos_base_completed': projects_videos_base_completed_count + 1
-                    })
-
 
                 running_count += 1
           
@@ -428,7 +423,6 @@ def process_queue():
                 })
                 payload = item['payload']
                 payload['task_id'] = task_id
-                # data['hash_id'] = hash_id
                 json_task = {
                     "user_email": user_email,
                     "timezone": payload.get('timezone'),
@@ -574,7 +568,6 @@ def run_shortify_task(task_params):
     pastedUrl = task_params.get('pastedUrl')
     includeVertical = task_params.get('includeVertical')
     includeHorizontal = task_params.get('includeHorizontal')
-
     id_task_sheduled = date_time.replace(".", "_").replace(":", "_").replace(" ", "_")
     ref_user_tasks = db.reference(f'user_tasks/{filtrer_user_email}/{id_task_sheduled}', app=app1)
     ref_shortify = db.reference(f'shortify_queue/{id_task_sheduled}', app=app1)
@@ -583,15 +576,6 @@ def run_shortify_task(task_params):
     if status_task == 'SCHEDULED':
         return f"uma tarefa com status SCHEDULED por algum motivo esta tentando rodar de novo"
     
-
-    # lock_file_path = os.path.join(os.path.dirname(__file__), "tmp", "uploads")
-    # lock_file = os.path.join(lock_file_path, f"upload_{post_id}.lock")
-    # if os.path.exists(lock_file):
-    #     logger.warning(f"Tarefa para {post_id} já agendada. Ignorando duplicata.")
-    #     return "Já agendado"
-    # open(lock_file, 'w').close()
-
-
     title_origin_for_project = secure_filename(title_origin).replace("-", "").replace("....", "").replace("...", "").replace("..", "").replace(".", "").replace("... - ", "").replace('"????????"', '').replace("...__", "_")
     ref_projects = db.reference(f'projects/{filtrer_user_email}/{title_origin_for_project}', app=appdocs)
     
@@ -619,11 +603,11 @@ def run_shortify_task(task_params):
             
         limite_simultaneo = user_control_data['project_simultaneo']
         subscription_plan = user_control_data['subscription_plan']
-        projects_running_count = user_control_data.get('projects_running', 0) # Novo campo para controle
+        projects_videos_base_completed_count = user_control_data.get('projects_videos_base_completed', 0) 
+        projects_running_count = user_control_data.get('projects_running', 0) 
     except Exception as e:
         logger.error(f"Erro ao buscar dados de controle para {api_key}: {e}")
-        
-    
+
     try:
 
         shortify_instance = ShortifyAlgo(
@@ -703,31 +687,24 @@ def run_shortify_task(task_params):
 
             
         )
-
         asyncio.run(shortify_instance.Shortify())
-
-
         fim = time.time()  
         processing_time = fim - inicio
         horas, resto = divmod(processing_time, 3600)
         minutos, segundos = divmod(resto, 60)
         tempo_formatado = f"{int(horas):02}:{int(minutos):02}:{int(segundos):02}"
-
         ref_user_tasks.update({"status": "Completed",
                                "Success_rate": "100%",
                                "Processing_time": tempo_formatado
                                
                                }
-        
         )
         ref_shortify.update({"status": "Completed",
                             "Success_rate": "100%",
                             "Processing_time": tempo_formatado
-        
         })
         ref_projects.update({"status": "Completed"})
         user_Control_Panel_ref.update({'projects_running': max(0, projects_running_count - 1)})
-
         SendEmail(
             user_email_origin=user_email_origin,
             html_attach_flag=True,
@@ -770,8 +747,6 @@ def run_shortify_task(task_params):
         logger.info(f"Erro na tarefa run_shortify_task: {str(erro_project)}")
         
         return f"Erro na tarefa run_shortify_task: {str(erro_project)}"
-    
- 
 
 
 
@@ -855,7 +830,6 @@ def run_generate_subclip_ai_curation_task(task_params):
         ref_tasks.child(task_id_user_tasks).update({"status": "Failed"})
         process_queue_ref.child(task_id_process_queue_tasks).update({"status": "Failed"})
         return f"Erro na tarefa run_shortify_task: {str(e)}"
-    
 
 @celery_app.task(name="celery_worker.run_audio_transcriber_task")
 def run_audio_transcriber_task(task_params):
@@ -962,7 +936,6 @@ def run_audio_transcriber_task(task_params):
         ref_tasks.child(task_id_user_tasks).update({"status": "Failed"})
         process_queue_ref.child(task_id_process_queue_tasks).update({"status": "Failed"})
         return f"Erro na tarefa run_shortify_task: {str(e)}"
-    
 
 @celery_app.task(name="celery_worker.run_thumbnail_vertical_fusion_task")
 def run_thumbnail_vertical_fusion_task(task_params):
@@ -1071,7 +1044,6 @@ def run_thumbnail_vertical_fusion_task(task_params):
         ref_tasks.child(task_id_user_tasks).update({"status": "Failed"})
         process_queue_ref.child(task_id_process_queue_tasks).update({"status": "Failed"})
         return f"Erro na tarefa run_shortify_task: {str(e)}"
-    
 
 @celery_app.task(name="celery_worker.run_autoreframe_task")
 def run_autoreframe_task(task_params):
@@ -1210,9 +1182,6 @@ def run_autoreframe_task(task_params):
         ref_tasks.child(task_id_user_tasks).update({"status": "Failed"})
         process_queue_ref.child(task_id_process_queue_tasks).update({"status": "Failed"})
         return f"Erro na tarefa run_shortify_task: {str(e)}"
-    
-
-
 
 def _running_task_status_fix(scheduled_time_str, filtrer_user_email, process_flag=True):
     date_str = None

@@ -1,4 +1,4 @@
-# internal_api.py
+# api.py
 from Modules.utils import create_task,send_to_webhook , get_tasks_weekly
 from Modules.send_email import SendEmail
 from firebase_admin import db, App
@@ -16,21 +16,17 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from datetime import datetime, timedelta
-
 import pytz
 import requests
 from bs4 import BeautifulSoup
 import yt_dlp
 import stripe
-
 from flask import Flask, render_template, request, jsonify, session, redirect, send_from_directory, url_for
 from flask_cors import CORS
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-from werkzeug.utils import secure_filename  # Para sanitizar nomes de arquivos
-
+from werkzeug.utils import secure_filename  
 from firebase_admin import db, initialize_app, credentials, storage, get_app
-
 import asyncio
 from typing import Dict, Any, Optional
 from asgiref.wsgi import WsgiToAsgi
@@ -41,15 +37,12 @@ from dotenv import load_dotenv
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("_logger")
 
-
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(__file__), "Keys", "keys.env"))
 
 cred = credentials.Certificate(os.getenv('DATABASEPATH'))
 appfb = initialize_app(cred, {
     'databaseURL': os.getenv('DATABASEURL')
 }, name="appfb")
-
-
 
 cred = credentials.Certificate(os.getenv('DATABASEPATHDOCS'))
 appdocs = initialize_app(cred, {
@@ -65,19 +58,15 @@ if os.getenv("PRODUCTION_ENV") == "False":
         "https://www.mediacutsstudio.com",
         "https://dev.mediacutsstudio.com",
         "https://2ba9c7d26547.ngrok-free.app",
-        "https://4e799f508794.ngrok-free.app",  # novo domínio ngrok
+        "https://4e799f508794.ngrok-free.app", 
         "http://localhost:3001",
         "http://localhost:4343",
     ])
 
 asgi_app = WsgiToAsgi(app)
-app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024 # 50 MB
-
+app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024 
 WEBHOOK_URL = os.getenv("WEBHOOK_URL")
-
 BR = pytz.timezone('America/Sao_Paulo')
-key_openai = os.getenv("OPENAI_API_KEY")
-# client = OpenAI(api_key=key_openai)
 discord_token = os.getenv("discord_token")
 ClientID = os.getenv("ClientID")
 ClientSecret = os.getenv("ClientSecret")
@@ -110,7 +99,6 @@ PRICE_ID = os.getenv("STRIPE_PRICE_ID")
 WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
 UPLOAD_URL = os.getenv("UPLOAD_URL")
 UPLOAD_URL_VIDEOMANAGER = os.getenv("UPLOAD_URL_VIDEOMANAGER")
-
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 users_ref = db.reference("Users_Control_Panel", app=appfb)
 schedules_ref_root = db.reference("user_schedules", app=appfb)
@@ -147,7 +135,7 @@ def get_user_data_from_firebase(api_key, appfb):
     a partir da chave da API, na referência 'Users_Control_Panel'.
     """
     ref = db.reference(f'Users_Control_Panel/{api_key}', app=appfb)
-    user_data = ref.get()  # Obtém os dados do usuário com a chave especificada
+    user_data = ref.get() 
     return user_data
 
 def dynamic_rate_limit(appfb: App):
@@ -160,8 +148,7 @@ def dynamic_rate_limit(appfb: App):
     if api_key:
         user_data = get_user_data_from_firebase(api_key, appfb)
         if user_data:
-            return user_data.get("limit", "10 per minute")  # Retorna o limite configurado para o usuário
-    # Limite para usuários sem autenticação ou com API Key inválida
+            return user_data.get("limit", "10 per minute") 
     return "10 per minute"
 
 def autenticar_usuario():
@@ -173,13 +160,13 @@ def autenticar_usuario():
     api_key = get_api_key()
     if not api_key:
         response = jsonify({"error": "API Key inválida ou não fornecida."})
-        response.status_code = 401  # Unauthorized
+        response.status_code = 401 
         return None, response
 
     user_data = get_user_data_from_firebase(api_key, appfb)
     if not user_data:
         response = jsonify({"error": "Usuário não encontrado."})
-        response.status_code = 401  # Unauthorized
+        response.status_code = 401 
         return None, response
 
     return user_data, None
@@ -189,7 +176,6 @@ def index():
     return jsonify({"message": "#1 API Media Cuts Studio funcionando!"})
 
 def extract_youtube_id(url):
-    # tenta extrair o ID de 11 chars do vídeo
     m = re.search(r'(?:v=|\/)([0-9A-Za-z_-]{11})', url)
     return m.group(1) if m else None
 
@@ -201,9 +187,6 @@ def scrape_youtube_metadata(url):
     title = soup.find("meta", property="og:title")
     thumbnail = soup.find("meta", property="og:image")
     return title["content"] if title else "VideoSemTitulo", thumbnail["content"] if thumbnail else None
-
-
-
 
 @app.route("/api/Media_Cuts_Studio/Shortify/Mode/Create", methods=["POST"])
 @limiter.limit(lambda: dynamic_rate_limit(appfb))
@@ -226,7 +209,6 @@ def api_Media_Cuts_Studio_Shortify_Mode_Create():
     pasted_url = data.get("pastedUrl", "None")
     model = data.get("ShortifyMode", "")
     if pasted_url and pasted_url != "None":
-        # 1) tenta yt_dlp com opções mais permissivas
         try:
             ydl_opts = {
                 'cookiefile': COOKIES_FILE,
@@ -243,19 +225,16 @@ def api_Media_Cuts_Studio_Shortify_Mode_Create():
                     title_origin = info.get("title") or "VideoSemTitulo"
                     thumbnail_url = info.get("thumbnail")
                 else:
-                    # alguns extractors retornam lists/str; trate como falha
                     raise Exception("yt_dlp retornou formato inesperado")
         except Exception as e_yt:
             logger.warning(f"yt_dlp falhou para {pasted_url}: {e_yt}. Tentando fallback...")
 
-            # 2) tenta oEmbed (não precisa de chave)
             try:
                 oembed_url = f"https://www.youtube.com/oembed?url={requests.utils.requote_uri(pasted_url)}&format=json"
                 r = requests.get(oembed_url, timeout=6)
                 if r.status_code == 200:
                     j = r.json()
                     title_origin = j.get("title", "VideoSemTitulo")
-                    # oEmbed fornece thumbnail_url em "thumbnail_url"
                     thumbnail_url = j.get("thumbnail_url")
                 else:
                     raise Exception(f"oEmbed status {r.status_code}")
@@ -265,18 +244,6 @@ def api_Media_Cuts_Studio_Shortify_Mode_Create():
                     title_origin, thumbnail_url = scrape_youtube_metadata(pasted_url)
                 except Exception as e_scrape_youtube_metadata:
                     raise Exception(f"e_scrape_youtube_metadata {e_scrape_youtube_metadata}")
-
-        # try:
-        #     with yt_dlp.YoutubeDL({'quiet': True,'skip_download': True}) as ydl:
-        #         info = ydl.extract_info(pasted_url, download=False)
-        #         title_origin = info.get("title", "VideoSemTitulo")
-        #         thumbnail_url = info.get("thumbnail", "Thumbnail não encontrada")
-        # except Exception as e:
-        #     logger.warning(f"Erro ao extrair título da URL {pasted_url}: {str(e)}")
-        #     # fallback: usar apenas o ID do vídeo como título
-        #     video_id = pasted_url.split("v=")[-1]
-        #     title_origin = f"Video_{video_id}"
-        #     thumbnail_url = None
 
     else:
         lastlongvideotitle = data.get('videoTitleForLatestVideo', '')
@@ -291,9 +258,7 @@ def api_Media_Cuts_Studio_Shortify_Mode_Create():
     logger.info(f"title_origin ? {title_origin}")
     logger.info(f"thumbnail_url ? {thumbnail_url}")
 
-    mode = data.get('mode', 'date').lower()
     tz_str = data.get('timezone', 'America/Sao_Paulo')
-
     ref_queue = db.reference('shortify_queue', app=appfb)
     ref_projects = db.reference(f'projects/{user_email_filter}', app=appdocs)
     user_tasks_ref = db.reference(f'user_tasks/{user_email_filter}', app=appfb)
@@ -304,26 +269,23 @@ def api_Media_Cuts_Studio_Shortify_Mode_Create():
         return jsonify({'error': f'Timezone inválido: {str(e)}'}), 400
 
     scheduled_time_str = datetime.now(tz).strftime('%Y-%m-%d %H:%M:%S')
-    
     hash_obj = hashlib.sha256(scheduled_time_str.encode())
     hash_id = hash_obj.hexdigest()
     safe_project_name = secure_filename(title_origin).replace("-", "").replace("....", "").replace("...", "").replace("..", "").replace(".", "").replace("... - ", "").replace('"????????"', '').replace("...__", "_")
     safe_project_name_filter = re.sub(r'[^0-9A-Za-z_-]', '', safe_project_name)
-
     project_ref = ref_projects.child(safe_project_name_filter) 
     if not project_ref.get():
-        # Se o projeto não existe, cria-o com um ID
         project_ref.set({
             "name": title_origin,
             "model_ai": model,
             "status": "Created",
             "url_original": pasted_url,
-            "progress_percent": "0", # Inicia com 0%
+            "progress_percent": "0",
             "used": False,
             "thumbnail_url": thumbnail_url,
             "createdAt": datetime.now(tz).isoformat(),
             "delete_after": (datetime.now(tz) + timedelta(days=3)).isoformat(),  # data 3 dias à frente
-            "videos": {} # Inicializa a subcoleção de vídeos
+            "videos": {}
         })
     user_tasks_ = {
         "payload": {**data, "title_origin": title_origin, "date_time": scheduled_time_str},
@@ -354,18 +316,14 @@ def api_Media_Cuts_Studio_Shortify_Mode_Create():
     id_task = scheduled_time_str.replace(".", "_").replace(":", "_").replace(" ", "_")
     ref_queue.child(id_task).set(queue_item)
     user_tasks_ref.child(id_task).set(user_tasks_)
-
     send_to_webhook(data['api_key'], "finish_timer_loader_shortify", "None", "yellow")
-
-        
     return jsonify({
         "message": "✅ Task received and archived for availability check. Video placeholder created.",
         "id_task": id_task,
         'scheduled_time': scheduled_time_str,
         "user_email": user_email,
-        "project_name": title_origin # Retorna o nome do projeto
+        "project_name": title_origin 
     }), 202
-
 
 
 @app.route("/api/Media_Cuts_Studio/Process/Mode/generate_subclip_ai_curation", methods=["POST"])
@@ -1256,7 +1214,6 @@ def new_account_instagram():
     ig_password = config['ig_password']
     ref_tasks = db.reference(f'users_account_instagram/{api_key}', app=appfb)
 
-    # 1) Recupera plano do usuário
     plano = get_user_plan(api_key)
     if not plano:
         return jsonify({'error': 'Plano do usuário não encontrado.'}), 404
@@ -1291,7 +1248,6 @@ def new_account_instagram():
 @app.route('/api/proxy/accounts/active', methods=['POST'])
 def proxy_get_active_accounts():
     try:
-        # Dados da requisição do frontend
         frontend_data = request.get_json()
 
         app.logger.info(f"{urlbase}/api/accounts/active")
@@ -1313,11 +1269,8 @@ def get_active_accounts():
         snapshot1 = ref1.get() or {}
         ref2 = db.reference(f'users_account_instagram/{api_key}', app=appfb)
         snapshot2 = ref2.get() or {}
-
-        # snapshot é um dict { account_id: {platform, username, status, ...}, ... }
         active_accounts = []
         for key, data in snapshot1.items():
-            # app.logger.info(f"data? {data}")
             if isinstance(data, dict) and data.get('status') == 'active':
                 active_accounts.append({
                     'id': key,
@@ -1345,11 +1298,8 @@ def get_user_account(email):
     try:
         all_users_ref = db.reference('Users_Control_Panel', app=appfb)
         all_users = all_users_ref.get()
-
         if not all_users:
             return jsonify({'error': 'Nenhum usuário encontrado'}), 404
-
-        # Varre os nós e busca pelo e-mail no campo `email`
         for user_id, data in all_users.items():
             if data.get('email') == email:
                 return jsonify({
@@ -1371,7 +1321,6 @@ def get_user_config(user_id):
         config = ref.get()
         if config is None:
             return jsonify({'error': 'Configurações não encontradas'}), 404
-
         return jsonify({
             'status': 'success',
             'action': 'get',
@@ -1389,7 +1338,6 @@ def tarefas_config(user_id):
         tasks = ref.get()
         if tasks is None:
             return jsonify({'error': 'tasks não encontradas'}), 404
-
         return jsonify({
             'status': 'success',
             'action': 'get',
@@ -1406,7 +1354,6 @@ def user_account_instagram():
     raw_username = config.get('ig_username', '')
     username_busca = raw_username.strip().replace("  ", "").replace(" ", "").replace("\n", "").lower()
     logger.info(f"Buscando cookies para usuário normalizado: {username_busca}")
-
     def extrair_info(data):
         """
         Retorna tupla (ig_username, ig_password) se encontrar,
@@ -1458,8 +1405,6 @@ def user_account():
     config = request.get_json()
     api_key = config.get('api_key')
     raw_username = config.get('username_account', '')
-
-    # Normaliza o username de busca
     username_busca = raw_username.strip().replace("  ", "").replace(" ", "").replace("\n", "").lower()
     logger.info(f"Buscando cookies para usuário normalizado: {username_busca}")
 
@@ -1469,14 +1414,12 @@ def user_account():
         ou (None, None) se não conseguir extrair.
         """
         if isinstance(data, dict):
-            # 1) Estrutura aninhada
             primeiro_valor = next(iter(data.values()), {})
             if isinstance(primeiro_valor, dict):
                 return (
                     primeiro_valor.get('username', '').strip().lower(),
                     primeiro_valor.get('AccountCookies', '')
                 )
-            # 2) Estrutura plana
             return (
                 data.get('username', '').strip().lower(),
                 data.get('AccountCookies', '')
@@ -1488,16 +1431,12 @@ def user_account():
         Remove espaços nas pontas, colapsa múltiplos
         espaços internos em um só e normaliza Unicode.
         """
-        # strip + colapsar espaços
         collapsed = " ".join(s.split())
-        # normalização NFC
         return unicodedata.normalize("NFC", collapsed).casefold()
 
-    # Faz até 4 tentativas completas de busca antes de retornar erro
     for tentativa in range(4):
         logger.info(f"Tentativa {tentativa + 1} de 2 para localizar usuário")
         snapshot = db.reference(f'users_account_cookies/{api_key}', app=appfb).get() or {}
-        # logger.info(f"Snapshot bruto: {snapshot!r}")
         if list(snapshot.keys()) == [api_key]:
             snapshot = snapshot[api_key]
             logger.info("Camada extra de api_key detectada — ajustando snapshot")
@@ -1512,9 +1451,7 @@ def user_account():
                     return jsonify({'AccountCookies': cookies}), 200
             except Exception as err:
                 logger.info(f"Erro ao processar user_id={user_id}: {err}")
-                # continua para o próximo registro
 
-    # Se não achou após 4 tentativas
     logger.info(f"Nenhuma conta encontrada após 4 tentativas: {username_busca}")
     return jsonify({'error': "None Account"}), 500
 
@@ -1527,7 +1464,6 @@ def upsert_user_config(user_id):
             return jsonify({'error': 'Payload inválido'}), 400
 
         ref = db.reference(f'user_configs/{fixx_email}', app=appfb)
-        # update() faz merge: cria ou atualiza
         ref.update(config)
 
         return jsonify({
@@ -1561,13 +1497,9 @@ def login():
         data = request.get_json()
         username = data.get("username")
         password = data.get("password")
-        
-        # Busca todos os usuários cadastrados
         users = users_ref.get()
         if not users:
             return jsonify({'error': 'No user registered with this email'}), 404
-
-        # Verifica se existe algum usuário com as credenciais informadas
         for key, user_data in users.items():
             if user_data.get('login') == username and user_data.get('password') == password:
                 session.permanent = True
@@ -1576,7 +1508,6 @@ def login():
                 api_key = user_data.get('api_key')
                 return jsonify({'message': 'Login successfully', 'user': username, 'expire_time_license': expire_time, 'api_key': api_key}), 200
 
-        # Caso não encontre, retorna erro
         return jsonify({"success": False, "message": "Invalid credentials."}), 401
 
     except Exception as e:
@@ -1603,7 +1534,6 @@ def proxy_login():
 def create_checkout():
     data = request.get_json()
     try:
-        # Calcula a data de expiração: data atual + 31 dias
         expiration_time = datetime.now() + timedelta(days=31)
         plan = data["plano"]
         if plan == "studio":
@@ -1613,13 +1543,13 @@ def create_checkout():
 
         session = stripe.checkout.Session.create(
             line_items=[{
-                "price": SUBSCRIPTION_PRICE_ID,  # Usando o ID do preço definido no .env
+                "price": SUBSCRIPTION_PRICE_ID, 
                 "quantity": 1
             }],
-            mode="subscription",  # Modo de assinatura
+            mode="subscription",  
             payment_method_types=["card"],
-            success_url="https://mediacutsstudio.com/checkout/sucess",  # 
-            cancel_url="https://mediacutsstudio.com/checkout/cancel",  # Caso o usuário cancele o pagamento
+            success_url="https://mediacutsstudio.com/checkout/sucess",  
+            cancel_url="https://mediacutsstudio.com/checkout/cancel",  
             metadata={"email": data["email"],
                       "password": data["password"],
                       "SUBSCRIPTION_PLAN": data["plano"],
@@ -1646,8 +1576,6 @@ def proxy_checkout():
     except Exception as e:
         return jsonify({"error": f"Erro no servidor {e}"}), 500
 
-# -------------------------------------------------------------------
-# Endpoint Webhook Stripe
 @app.route("/webhook", methods=["POST"])
 def stripe_webhook():
     """
@@ -1667,7 +1595,6 @@ def stripe_webhook():
         logger.info("Assinatura inválida")
         return jsonify({"message": "Invalid signature"}), 400
 
-    # Processa o evento conforme o seu tipo
     if event["type"] == "checkout.session.completed":
         session = event["data"]["object"]
         if session.get("payment_status") == "paid":
@@ -1675,10 +1602,7 @@ def stripe_webhook():
             password_metadata = session["metadata"].get("password")
             SUBSCRIPTION_PLAN = session["metadata"].get("SUBSCRIPTION_PLAN")
             TIMESTAMP = session["metadata"].get("TIMESTAMP")
-
             logger.info(f"Pagamento por cartão com sucesso: {SUBSCRIPTION_PLAN} {email_metadata}" )
-
-
             data = {
                 "email": email_metadata,
                 "password": password_metadata,
@@ -1694,7 +1618,6 @@ def stripe_webhook():
             if response.status_code == 200:
                 response_data = response.json()
                 
-                # Obtém cada argumento retornado pelo endpoint
                 message = response_data.get("message")
                 user_id = response_data.get("user_id")
                 login = response_data.get("login")
@@ -1702,7 +1625,6 @@ def stripe_webhook():
                 expiration = response_data.get("expiration")
                 subscription_plan = response_data.get("subscription_plan")
                 
-                # Exibe os valores obtidos
                 logger.info(f"Mensagem: {message}")
                 logger.info(f"User ID: {user_id}")
                 logger.info(f"Login: {login}")
@@ -1723,14 +1645,8 @@ def stripe_webhook():
                     title_origin="",
                     new_scheduled_time=""
                 )
-
-
-
-
             else:
                 logger.info(f"Erro na requisição: {response.status_code}{response.text}")
-
-
 
         elif session.get("payment_status") == "unpaid" and session.get("payment_intent"):
             payment_intent = stripe.PaymentIntent.retrieve(session["payment_intent"])
@@ -1765,7 +1681,6 @@ def stripe_webhook():
         print("Cliente cancelou o plano")
     
     return jsonify({"result": event, "ok": True})
-
 
 def validate_api_key():
     api_key = get_api_key()
@@ -1806,7 +1721,7 @@ def get_user_data_from_firebase(api_key, appfb):
     a partir da chave da API, na referência 'Users_Control_Panel'.
     """
     ref = db.reference(f'Users_Control_Panel/{api_key}', app=appfb)
-    user_data = ref.get()  # Obtém os dados do usuário com a chave especificada
+    user_data = ref.get() 
     return user_data
 
 def dynamic_rate_limit(appfb):
@@ -1819,8 +1734,7 @@ def dynamic_rate_limit(appfb):
     if api_key:
         user_data = get_user_data_from_firebase(api_key, appfb)
         if user_data:
-            return user_data.get("limit", "10 per minute")  # Retorna o limite configurado para o usuário
-    # Limite para usuários sem autenticação ou com API Key inválida
+            return user_data.get("limit", "10 per minute")
     return "10 per minute"
 
 
@@ -1894,17 +1808,9 @@ def get_user_plan(api_key):
         logger.error(f"Erro ao buscar plano do usuário {api_key}: {e}")
     return None
 
-# Exemplo de rota protegida (você precisará de uma lógica de autenticação real)
 def authenticate_user(req):
-    # Lógica REAL de autenticação:
-    # 1. Obter token do cabeçalho Authorization
-    # 2. Validar token (JWT de Firebase Auth, por exemplo)
-    # 3. Retornar o UID do usuário ou None se falhar
-    # Por enquanto, um mock:
-    mock_user_id = req.headers.get('X-User-Id') # Apenas para teste, NÃO USE EM PRODUÇÃO
+    mock_user_id = req.headers.get('X-User-Id') 
     return mock_user_id
-
-
 
 def get_video_title_scrape(video_id):
     url = f"https://www.youtube.com/watch?v={video_id}"
@@ -1923,19 +1829,6 @@ def get_video_title_scrape(video_id):
         return tag['content']
 
     return "Desconhecido"
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 # if __name__ == '__main__':
 #     app.run(host="0.0.0.0", port=5000)

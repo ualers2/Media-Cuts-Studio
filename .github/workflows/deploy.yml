@@ -1,13 +1,9 @@
 name: Deploy Media Cuts Studio
-
-
 on:
   pull_request:
     types: [closed]
     branches:
       - main
-
-
 jobs:
   build-and-deploy:
     if: github.event.pull_request.merged == true
@@ -44,16 +40,12 @@ jobs:
           mkdir -p /home/administrator/deploys/mediacutsstudio/internal-shortify-api/Cookies && \
           mkdir -p /home/administrator/deploys/mediacutsstudio/internal-shortify-api/Keys && \
           mkdir -p /home/administrator/deploys/mediacutsstudio/internal-uptime-server/Keys
-       
-       
         "
-
 
     - name: Create keys.env on VPS
       run: |
         ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "
           printf '%s' '${{ secrets.SECRET_KEYS_ENV }}' > /home/administrator/deploys/mediacutsstudio/internal-sheduler-server/Keys/keys.env && \
-          printf '%s' '${{ secrets.SECRET_YT_COOKIES }}' > /home/administrator/deploys/mediacutsstudio/internal-shortify-api/Cookies/yt.json && \
           printf '%s' '${{ secrets.SECRET_KEYS_ENV }}' > /home/administrator/deploys/mediacutsstudio/internal-shortify-api/Keys/keys.env && \
           printf '%s' '${{ secrets.SECRET_KEYS_ENV }}' > /home/administrator/deploys/mediacutsstudio/internal-uptime-server/Keys/keys.env
         
@@ -71,12 +63,10 @@ jobs:
           echo '${{ secrets.SECRET_JSON_FIREBASE_DOCS }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-shortify-api/Keys/FirebaseDocs.json
           echo '${{ secrets.SECRET_JSON_FIREBASE }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-shortify-api/Keys/Firebase.json
           echo '${{ secrets.SECRET_JSON_FIREBASE }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-uptime-server/Keys/Firebase.json
-
+          echo '${{ secrets.SECRET_YT_COOKIES }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-shortify-api/Cookies/yt.json
 
           echo '${{ secrets.SECRET_JSON_FIREBASE_SHEDULER }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-sheduler-server/Keys/Firebasesheduler.json
           echo '${{ secrets.CLIENTE_SECRET }}' | base64 --decode > /home/administrator/deploys/mediacutsstudio/internal-sheduler-server/Keys/client_secret_1.json
-
-
         "
 
     - name: Create COMPOSE on VPS
